@@ -7,7 +7,7 @@
   </div>
   <div class="form-group row">
     <label for="syntax" class="col-form-label col-md-2">{{ __('Składnia') }}</label>
-    <div class="col-md-10">
+    <div class="col-md-10" data-toggle="tooltip" title="<div style='text-align: left;'><B>{counter} - {{ __('licznik') }}</B><br/>{month} - {{ __('miesiąc wystawienia') }}<br/>{year} - {{ __('rok wystawienia') }}</div>" data-placement="bottom">
       <input type="text" class="form-control" id="syntax" name="syntax" value="{{ $signature->syntax ?? '' }}" autocomplete="off" placeholder="FV/{year}/{month}/{counter}">
     </div>
   </div>
@@ -31,7 +31,7 @@
     <div class="col-md-10">
       <div class="selectgroup selectgroup-pills">
         @foreach($invoice_types as $invoice_type)
-          <label class="selectgroup-item" data-toggle="tooltip" title="{{ $invoice_type->name }}">
+          <label class="selectgroup-item" data-toggle="tooltip" title="{{ $invoice_type->name }}" data-placement="bottom">
             <input type="checkbox" name="invoice_types[]" value="{{ $invoice_type->id }}" class="selectgroup-input"
             @foreach($signature->invoice_types ?? [] as $s_invoice_type)
               @if ($s_invoice_type->id == $invoice_type->id) checked @endif

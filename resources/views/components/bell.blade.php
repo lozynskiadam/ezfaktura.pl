@@ -1,7 +1,7 @@
 <li class="nav-item dropdown hidden-caret">
   <a class="nav-link dropdown-toggle" href="#" id="bell" role="button" data-toggle="dropdown">
     <i class="fa fa-bell" data-number="{{ $number }}"></i>
-    <span class="notification">@if ($number > 0) {{ $number }} @endif</span>
+    <span class="counter">@if ($number > 0) {{ $number }} @endif</span>
   </a>
   <ul class="dropdown-menu notif-box animated slideIn" aria-labelledby="bell">
     <li>
@@ -39,7 +39,7 @@
           }
           $content.html(html.join(''));
           $('#bell i.fa', document).attr('data-number', '0');
-          $('#bell .notification', document).text('');
+          $('#bell .counter', document).text('');
         },
       });
     });

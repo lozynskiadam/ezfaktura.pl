@@ -168,10 +168,28 @@ button.dt-button i, div.dt-button i, a.dt-button i, input.dt-button i {
 .user-box .u-text {
   max-width: 180px;
 }
+#tasks i.fa[data-number="0"],
 #bell i.fa[data-number="0"] {
   color: rgba(0,0,0,0.4);
 }
-#bell .notification:empty {
+#tasks .counter,
+#bell .counter {
+  position: absolute;
+  background-color: #ce3131;
+  text-align: center;
+  border-radius: 10px;
+  min-width: 17px;
+  height: 17px;
+  font-size: 11px;
+  color: #ffffff;
+  font-weight: 300;
+  line-height: 17px;
+  top: 3px;
+  right: 3px;
+  letter-spacing: -1px;
+}
+#tasks .counter:empty,
+#bell .counter:empty {
   display: none;
 }
 @media (min-width: 992px) {
@@ -233,4 +251,22 @@ a.dropdown-lang:hover {
 .has-error .selectgroup-button {
   border-color: #f25961;
   color: #f25961;
+}
+.profile-image {
+  height: 250px;
+  max-height: 250px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #dfe5e9;
+  text-align: center;
+}
+.profile-image img {
+  max-width: calc(100% - 10px);
+  max-height: 240px;
+  vertical-align: middle;
+}
+.profile-image span {
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
 }

@@ -9,7 +9,7 @@
               <i class="fa fa-search search-icon"></i>
             </span>
           </div>
-          <input type="text" placeholder="Search ..." class="form-control">
+          <input type="text" placeholder="{{ __('Szukaj ...') }}" class="form-control">
         </div>
       </form>
     </div>
@@ -34,8 +34,8 @@
 
       <li class="nav-item dropdown hidden-caret">
         <a class="nav-link dropdown-toggle" href="#" id="tasks" role="button" data-toggle="dropdown">
-          <i class="fa fa-cogs" style="color: rgba(0,0,0,0.4);"></i>
-{{--          <span class="notification">4</span>--}}
+          <i class="fa fa-cogs" data-number="0"></i>
+          <span class="counter"></span>
         </a>
       </li>
 

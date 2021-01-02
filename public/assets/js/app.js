@@ -30,7 +30,8 @@ const App = {
 
 		$('body').tooltip({
 			selector: '[data-toggle="tooltip"]',
-			trigger : 'hover'
+			trigger : 'hover',
+			html: true
 		}).click(function(){
 			$('[data-toggle="tooltip"]', $(this)).tooltip("hide");
 		});

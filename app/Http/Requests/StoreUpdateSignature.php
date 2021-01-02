@@ -46,8 +46,8 @@ class StoreUpdateSignature extends FormRequest
     public function messages()
     {
         return [
-          'name.regex' => 'ID must contain only lower case letters, numbers and dashes',
-          'syntax.regex' => 'Syntax must contain {counter}',
+          'name.regex' => __('ID must contain only lower case letters, numbers and dashes'),
+          'syntax.regex' => __('Field must contain {counter}'),
         ];
     }
 }
