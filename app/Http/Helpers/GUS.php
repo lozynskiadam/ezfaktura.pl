@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Http\Helpers;
+
+use App\Models\GusApiRequest;
+use GusApi\GusApi;
+use Illuminate\Support\Facades\Auth;
+
+class GUS
+{
+    public static function find($NIP)
+    {
+        if(!(env('GUS_API_ENABLED', 0))) {
+            return false;
+        }
+
+        $gusApiRequest = new GusApiRequest;
+        $gusApiRequest->user_id = Auth::id();
+        $gusApiRequest->request = $NIP;
+
+        try {
+            $gus = new GusApi(env('GUS_API_KEY', ''), env('GUS_API_ENVIRONMENT', 'prod'));
+            $gus->login();
+            $response = $gus->getByNip($NIP)[0] ?? false;
+            $gusApiRequest->response = json_encode($response);
+            $gusApiRequest->save();
+            return $response;
+        } catch (\Exception $e) {
+            $gusApiRequest->response = $e->getMessage();
+            $gusApiRequest->save();
+            return false;
+        }
+    }
+}
