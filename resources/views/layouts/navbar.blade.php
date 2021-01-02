@@ -62,16 +62,13 @@
             </li>
             <li>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{{ route('profile') }}">Edit profile</a>
-              <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
-
-              <div class="dropdown-divider"></div>
-
               <div class="text-center">
                 <a class="dropdown-lang" href="{{ URL::to('language/en') }}"><img src="/assets/img/flags/gb.png"/> EN</a>
                 <a class="dropdown-lang" href="{{ URL::to('language/pl') }}"><img src="/assets/img/flags/pl.png"/> PL</a>
               </div>
-
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{{ route('profile') }}">{{ __('Edycja profilu') }}</a>
+              <a class="dropdown-item" href="{{ route('logout') }}">{{ __('Wyloguj') }}</a>
             </li>
           </div>
         </ul>

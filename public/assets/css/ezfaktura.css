@@ -253,7 +253,7 @@ a.dropdown-lang:hover {
   color: #f25961;
 }
 .profile-image {
-  height: 250px;
+  height: 200px;
   max-height: 250px;
   padding: 5px;
   border-radius: 5px;
@@ -262,7 +262,7 @@ a.dropdown-lang:hover {
 }
 .profile-image img {
   max-width: calc(100% - 10px);
-  max-height: 240px;
+  max-height: 190px;
   vertical-align: middle;
 }
 .profile-image span {

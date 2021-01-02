@@ -19,12 +19,12 @@
             <ul class="nav">
               <li>
               <a href="{{ route('profile') }}">
-                <span class="link-collapse">Edit Profile</span>
+                <span class="link-collapse">{{ __('Edycja profilu') }}</span>
               </a>
               </li>
               <li>
                 <a href="{{ route('logout') }}">
-                  <span class="link-collapse">Logout</span>
+                  <span class="link-collapse">{{ __('Wyloguj') }}</span>
                 </a>
               </li>
             </ul>

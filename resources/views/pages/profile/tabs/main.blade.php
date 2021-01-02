@@ -30,33 +30,33 @@
             <div class="col-md-9">
 
               <div class="form-group">
-                <label for="test">{{ __('Nazwa firmy') }}</label>
-                <input type="text" class="form-control" id="test">
+                <label for="name">{{ __('Nazwa firmy') }}</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
               </div>
 
               <div class="form-group">
-                <label for="test">{{ __('NIP') }}</label>
-                <input type="text" class="form-control" id="test">
+                <label for="nip">{{ __('NIP') }}</label>
+                <input type="text" class="form-control" id="nip" name="nip" value="{{ $user->nip }}"/>
               </div>
 
               <div class="form-group">
-                <label for="test">{{ __('Adres email') }}</label>
-                <input type="text" class="form-control" id="test">
+                <label for="email">{{ __('Adres email') }}</label>
+                <input type="text" class="form-control" id="email" name="email" value="{{ $user->email }}"/>
               </div>
 
               <div class="form-group">
-                <label for="test">{{ __('Adres firmy') }}</label>
-                <input type="text" class="form-control" id="test">
+                <label for="address">{{ __('Adres firmy') }}</label>
+                <input type="text" class="form-control" id="address" name="address" value="{{ $user->address }}"/>
               </div>
 
               <div class="form-group">
-                <label for="test">{{ __('Kod pocztowy') }}</label>
-                <input type="text" class="form-control" id="test">
+                <label for="postcode">{{ __('Kod pocztowy') }}</label>
+                <input type="text" class="form-control" id="postcode" name="postcode" value="{{ $user->postcode }}"/>
               </div>
 
               <div class="form-group">
-                <label for="test">{{ __('Miasto') }}</label>
-                <input type="text" class="form-control" id="test">
+                <label for="city">{{ __('Miasto') }}</label>
+                <input type="text" class="form-control" id="city" name="city" value="{{ $user->city }}"/>
               </div>
 
               <div class="form-group">
