@@ -38,24 +38,8 @@
 {{--          <span class="notification">4</span>--}}
         </a>
       </li>
-      <li class="nav-item dropdown hidden-caret">
-        <a class="nav-link dropdown-toggle" href="#" id="bell" role="button" data-toggle="dropdown">
-          <i class="fa fa-bell"></i>
-          <span class="notification">4</span>
-        </a>
-        <ul class="dropdown-menu notif-box animated slideIn" aria-labelledby="bell">
-          <li>
-            <div class="dropdown-title">{{ __('Lista powiadomień') }}</div>
-          </li>
-          <li>
-            <div class="notif-scroll scrollbar-outer">
-              <div class="notif-center">
-              </div>
-            </div>
-          </li>
-          <li class="p-1"></li>
-        </ul>
-      </li>
+
+      <x-bell/>
 
       <li class="nav-item dropdown" style="border-left: 1px solid #0202021f; height: 40px;"></li>
 
@@ -82,11 +66,6 @@
               <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
 
               <div class="dropdown-divider"></div>
-
-
-
-              {{Lang::locale()}}
-
 
               <div class="text-center">
                 <a class="dropdown-lang" href="{{ URL::to('language/en') }}"><img src="/assets/img/flags/gb.png"/> EN</a>

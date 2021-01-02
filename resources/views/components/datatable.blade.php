@@ -1,5 +1,7 @@
 <table id="{{ $name }}" class="table dataTable"></table>
 
 <script>
-  App.addDataTable('{{ $name }}', '{!!  @addslashes($dataTable->getJSON()) !!}');
+  window.addEventListener('load', (event) => {
+    App.addDataTable('{{ $name }}', '{!!  @addslashes($dataTable->getJSON()) !!}');
+  });
 </script>
