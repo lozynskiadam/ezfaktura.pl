@@ -63,14 +63,15 @@
     <div class="home-background jarallax">
         <div class="container position-relative">
             <div class="row min-vh-100 align-items-center py-10">
-                <div class="col-lg-6 col-xl-5 py-8 mr-auto">
+                <div class="col-lg-6 col-xl-5 col-sm-12 py-8 mr-auto">
                     <h1 class="display-4 text-white mb-3">{{ __('Hello world...') }}</h1>
                     <p class="lead text-white-50">{{ __('') }}</p>
                     <div class="pt-3">
                         <a class="btn btn-light btn-lg" href="{{ env('APP_PANEL_URL') }}">{{ __('Przejdź do aplikacji') }}</a>
                     </div>
                 </div>
-{{--                <div class="col-lg-6"></div>--}}
+                <div class="col-lg-6 d-none d-lg-block home-screenshot">
+                </div>
             </div>
         </div>
     </div>
