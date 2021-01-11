@@ -39,11 +39,7 @@
 }
 
 .navbar-light .navbar {
-    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
-}
-
-.header-main .navbar-expand-lg .navbar-nav > .nav-item > .nav-link {
-    line-height: 40px;
+    box-shadow: 0 1rem 1rem rgba(20, 20, 50, 0.2);
 }
 
 .navbar-nav .nav-link {
@@ -63,6 +59,11 @@
     opacity: 0.75;
 }
 
+.navbar-light .navbar .navbar-nav .nav-item .nav-link.active {
+    position: relative;
+    color: #1163CB;
+}
+
 .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 1rem;
     padding-left: 1rem;
@@ -76,6 +77,36 @@
     line-height: 35px;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+@media (max-width: 991px) {
+    .navbar-light .navbar .navbar-nav .nav-item .nav-link.active {
+        border-left: 4px solid #1572e8;
+        background-color: #f0f0f0;
+    }
+}
+@media (min-width: 992px) {
+    .header-main .navbar-expand-lg .navbar-nav > .nav-item > .nav-link {
+        line-height: 40px;
+    }
+
+    .navbar-light .navbar .navbar-nav .nav-item .nav-link:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -9px;
+        width: 0;
+        height: 3px;
+        margin: auto;
+        background-color: #1163CB;
+        border-radius: 5px;
+    }
+
+    .navbar-light .navbar .navbar-nav .nav-item .nav-link.active:after {
+        width: 100%;
+        transition: all 0.2s;
+    }
 }
 
 .section {
@@ -149,12 +180,6 @@
     background-color: #fff;
 }
 
-@media (min-width: 1400px) {
-    .container {
-        max-width: 1320px;
-    }
-}
-
 .footer {
     background-color: #101010;
     color: #eeeeee;
@@ -177,4 +202,10 @@
 .footer h6 {
     font-weight: bold;
     font-size: 20px;
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
 }
