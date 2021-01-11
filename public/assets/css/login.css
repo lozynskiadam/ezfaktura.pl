@@ -14086,7 +14086,7 @@ img.mfp-img {
     padding: 20px; } }
 /*     	Login     */
 .login {
-  background: #fafafa url(../img/loginbg.png) center;
+  background: #fafafa url(../img/login-bg.png) center;
   background-size: contain;}
   .login .wrapper.wrapper-login {
     display: flex;
