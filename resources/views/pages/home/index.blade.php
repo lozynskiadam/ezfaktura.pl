@@ -123,13 +123,13 @@
                         <div class="form-group mb-3">
                             <input id="contact-name" type="text" name="name" placeholder="{{ __('Imię lub nazwa firmy') }}"
                                    data-constraints="@Required"
-                                   class="form-control form-control-sm form-control-has-validation form-control-last-child">
+                                   class="form-control form-control form-control-has-validation form-control-last-child">
                             <span class="invalid-feedback"></span>
                         </div>
                         <div class="form-group mb-3">
                             <input id="contact-email" type="email" name="email" placeholder="{{ __('Adres email') }}"
                                    data-constraints="@Required"
-                                   class="form-control form-control-sm form-control-has-validation form-control-last-child">
+                                   class="form-control form-control form-control-has-validation form-control-last-child">
                             <span class="invalid-feedback"></span>
                         </div>
                         <div class="form-group mb-3">
