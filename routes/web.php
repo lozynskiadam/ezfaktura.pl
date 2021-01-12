@@ -43,6 +43,7 @@ Route::group(['domain' => env('APP_PANEL_URL')], function() {
         Route::any('/', [InvoiceController::class, 'index'])->name('home');
         Route::any('/logout', [LogoutController::class, 'index'])->name('logout');
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+        Route::post('/profile', [ProfileController::class, 'update']);
         Route::resource('invoices', InvoiceController::class, ['only' => ['index']]);
         Route::resource('signatures', SignatureController::class, ['except' => ['show']]);
         Route::get('/templates/list', [TemplateController::class, 'list'])->name('templates/list');

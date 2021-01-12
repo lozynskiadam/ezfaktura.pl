@@ -35,19 +35,19 @@ class StoreUpdateSignature extends FormRequest
     public function rules()
     {
         return [
-          'name' => 'required|regex:/^[a-z0-9-]*$/',
-          'syntax' => 'required|regex:/{counter}/',
-          'description' => 'required',
-          'mode' => 'required|in:monthly,yearly',
-          'invoice_types' => 'required'
+            'name' => 'required|regex:/^[a-z0-9-]*$/',
+            'syntax' => 'required|regex:/{counter}/',
+            'description' => 'required',
+            'mode' => 'required|in:monthly,yearly',
+            'invoice_types' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-          'name.regex' => __('ID must contain only lower case letters, numbers and dashes'),
-          'syntax.regex' => __('Field must contain {counter}'),
+            'name.regex' => __('ID must contain only lower case letters, numbers and dashes'),
+            'syntax.regex' => __('Field must contain {counter}'),
         ];
     }
 }

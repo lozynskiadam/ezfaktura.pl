@@ -52,6 +52,12 @@ const App = {
 			});
 		});
 
+        setTimeout(function() {
+            $("#RequestMessage", document).fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();
+            });
+        }, 2000);
+
 		if(App.view) {
 			App.view.init();
 		}

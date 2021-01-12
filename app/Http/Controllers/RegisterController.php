@@ -24,20 +24,20 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-          'nip' => 'required|digits:10',
-          'email' => 'unique:users|required|email',
-          'password' => 'required|confirmed|min:6',
-          'agree' => 'required'
+            'nip' => 'required|digits:10',
+            'email' => 'unique:users|required|email',
+            'password' => 'required|confirmed|min:6',
+            'agree' => 'required'
         ]);
         if ($validator->fails()) {
             return redirect()->route('register')->withErrors($validator->errors())->withInput();
         }
 
         $user = new User([
-          'nip' => $request->get('nip'),
-          'email' => $request->get('email'),
-          'password' => Hash::make($request->get('password')),
-          'api_key' => ApiHelper::generateKey(),
+            'nip' => $request->get('nip'),
+            'email' => $request->get('email'),
+            'password' => Hash::make($request->get('password')),
+            'api_key' => ApiHelper::generateKey(),
         ]);
         $user->save();
         Auth::attempt($request->only('email', 'password'));
@@ -52,7 +52,7 @@ class RegisterController extends Controller
 
         $notification = new Notification();
         $notification->user_id = Auth::id();
-        $notification->title = __('Witaj w serwisie ') .env('APP_NAME'). '!';
+        $notification->title = __('Witaj w serwisie ') . env('APP_NAME') . '!';
         $notification->message = __('Gratulacje! Twoje konto zostało utworzone pomyślnie.');
         $notification->date = date('Y-m-d H:i:s');
         $notification->icon = 'fa fa-hands-helping';
