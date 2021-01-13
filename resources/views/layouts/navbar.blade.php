@@ -46,14 +46,14 @@
       <li class="nav-item dropdown hidden-caret">
         <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
           <div class="avatar-nav">
-            <img src="/assets/img/profile.png" class="avatar-img rounded-circle">
+            <img src="{{ Auth::user()->logo }}" class="avatar-img rounded-circle">
           </div>
         </a>
         <ul class="dropdown-menu dropdown-user animated slideIn">
           <div class="dropdown-user-scroll scrollbar-outer">
             <li>
               <div class="user-box">
-                <div class="avatar"><img src="/assets/img/profile.png" alt="image profile" class="avatar-img rounded"></div>
+                <div class="avatar"><img src="{{ Auth::user()->logo }}" alt="image profile" class="avatar-img rounded"></div>
                 <div class="u-text">
                   <h4>{{ Auth::user()->name }}</h4>
                   <p class="text-muted">{{ Auth::user()->email }}</p>
@@ -67,7 +67,7 @@
                 <a class="dropdown-lang" href="{{ URL::to('language/pl') }}"><img src="/assets/img/flags/pl.png"/> PL</a>
               </div>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{{ route('profile') }}">{{ __('Edycja profilu') }}</a>
+              <a class="dropdown-item" href="{{ route('profile.index') }}">{{ __('Edycja profilu') }}</a>
               <a class="dropdown-item" href="{{ route('logout') }}">{{ __('Wyloguj') }}</a>
             </li>
           </div>

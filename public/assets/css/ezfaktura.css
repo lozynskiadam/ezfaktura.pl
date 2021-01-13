@@ -92,9 +92,6 @@ div.user div.info span.user-name {
   border-radius: 4px !important; }
 .avatar-nav .avatar-title {
   font-size: 15px; }
-.avatar-nav img {
-  background-color: rgba(0,0,0,0.4);
-}
 .notif-box .notif-center a .notif-icon {
   background: transparent !important;
 }
@@ -252,17 +249,21 @@ a.dropdown-lang:hover {
   border-color: #f25961;
   color: #f25961;
 }
+.avatar-img {
+  background-color: #dfe5e9;
+}
 .profile-image {
-  height: 200px;
+  height: 210px;
   max-height: 250px;
   padding: 5px;
   border-radius: 5px;
+  background-image: url('/assets/img/transparency-bg.png');
   background-color: #dfe5e9;
   text-align: center;
 }
 .profile-image img {
   max-width: calc(100% - 10px);
-  max-height: 190px;
+  max-height: 200px;
   vertical-align: middle;
 }
 .profile-image span {

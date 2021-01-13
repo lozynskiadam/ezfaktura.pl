@@ -3,7 +3,7 @@
     <div class="sidebar-content">
       <div class="user">
         <div class="avatar-sm float-left mr-2">
-          <img src="/assets/img/profile.png" alt="..." class="avatar-img rounded-circle">
+          <img src="{{ Auth::user()->logo }}" alt="..." class="avatar-img rounded-circle">
         </div>
         <div class="info">
           <a data-toggle="collapse" href="#ProfileCollapse" aria-expanded="true">
@@ -18,7 +18,7 @@
           <div class="collapse in" id="ProfileCollapse" style="padding: 0 5px;">
             <ul class="nav">
               <li>
-              <a href="{{ route('profile') }}">
+              <a href="{{ route('profile.index') }}">
                 <span class="link-collapse">{{ __('Edycja profilu') }}</span>
               </a>
               </li>

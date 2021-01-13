@@ -3,7 +3,7 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('profile') }}" method="POST" autocomplete="off">
+                <form action="{{ route('profile.index') }}" method="POST" autocomplete="off">
                     @csrf
                     <x-input name="email" :label="__('Adres email')" :value="$user->email" disabled/>
                     <x-input name="name" :label="__('Nazwa firmy')" :value="$user->name"/>
@@ -24,11 +24,11 @@
                 <div class="form-group">
                     <div class="profile-image">
                         <span></span>
-                        <img src="./assets/img/profile.png"/>
+                        <img id="Logo" src="{{ $user->logo }}"/>
                     </div>
-                    <button class="btn btn-dark form-control">
+                    <label id="UploadLogo" class="btn btn-dark form-control text-white">
                         <i class="fa fa-upload mr-1"></i> {{ __('Aktualizuj logo') }}
-                    </button>
+                    </label>
                 </div>
 
                 <hr/>

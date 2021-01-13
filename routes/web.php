@@ -22,18 +22,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/language/{locale}', function($locale) {
-   session(['locale' => $locale]);
-   return redirect()->route('home');
+Route::get('/language/{locale}', function ($locale) {
+    session(['locale' => $locale]);
+    return redirect()->route('home');
 });
 
-Route::group(['domain' => env('APP_URL')], function() {
-    Route::any('/', function(){
+Route::group(['domain' => env('APP_URL')], function () {
+    Route::any('/', function () {
         return view('pages.home.index');
     });
 });
 
-Route::group(['domain' => env('APP_PANEL_URL')], function() {
+Route::group(['domain' => env('APP_PANEL_URL')], function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
     Route::get('/register', [RegisterController::class, 'index'])->name('register');
@@ -42,8 +42,9 @@ Route::group(['domain' => env('APP_PANEL_URL')], function() {
     Route::group(['middleware' => 'auth'], function () {
         Route::any('/', [InvoiceController::class, 'index'])->name('home');
         Route::any('/logout', [LogoutController::class, 'index'])->name('logout');
-        Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-        Route::post('/profile', [ProfileController::class, 'update']);
+        Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+        Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::post('/profile/logo', [ProfileController::class, 'update_logo'])->name('profile.update_logo');
         Route::resource('invoices', InvoiceController::class, ['only' => ['index']]);
         Route::resource('signatures', SignatureController::class, ['except' => ['show']]);
         Route::get('/templates/list', [TemplateController::class, 'list'])->name('templates/list');
@@ -53,6 +54,6 @@ Route::group(['domain' => env('APP_PANEL_URL')], function() {
     });
 });
 
-Route::group(['domain' => env('APP_API_URL')], function() {
+Route::group(['domain' => env('APP_API_URL')], function () {
 
 });
