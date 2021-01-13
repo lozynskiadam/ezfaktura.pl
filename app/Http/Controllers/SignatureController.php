@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Helpers\DataTable;
-use App\Http\Requests\EditDeleteSignature;
-use App\Http\Requests\StoreUpdateSignature;
+use App\Http\Requests\EditDeleteSignatureRequest;
+use App\Http\Requests\StoreUpdateSignatureRequest;
 use App\Models\InvoiceType;
 use App\Models\Signature;
 use Illuminate\Support\Facades\Auth;
@@ -15,34 +15,34 @@ class SignatureController extends Controller
     {
         $dataTable = new DataTable();
         $dataTable->columns = [
-          ['data' => 'name', 'title' => __('ID'), 'width' => 100],
-          ['data' => 'description', 'title' => __('Opis')],
-          ['data' => 'syntax', 'title' => __('Składnia')],
-          ['data' => 'invoiceType', 'title' => __('Typy faktur'), 'width' => 150, 'className' => 'text-center', 'render' => 'App.view.renderer'],
+            ['data' => 'name', 'title' => __('ID'), 'width' => 100],
+            ['data' => 'description', 'title' => __('Opis')],
+            ['data' => 'syntax', 'title' => __('Składnia')],
+            ['data' => 'invoiceType', 'title' => __('Typy faktur'), 'width' => 150, 'className' => 'text-center', 'render' => 'App.view.renderer'],
         ];
         $dataTable->buttons = [
-          [
-            'text' => '<i class="fa fa-plus"></i> ' . __('Dodaj'),
-            'action' => 'App.view.onAddClick',
-            'className' => 'btn btn-primary btn-labeled'
-          ]
+            [
+                'text' => '<i class="fa fa-plus"></i> ' . __('Dodaj'),
+                'action' => 'App.view.onAddClick',
+                'className' => 'btn btn-primary btn-labeled'
+            ]
         ];
         $dataTable->createdRow = 'App.view.onRowCreate';
         $dataTable->data = Auth::user()->signatures()->with('invoice_types')->get();
 
         return view('pages.signatures.index', [
-          'dataTable' => $dataTable
+            'dataTable' => $dataTable
         ]);
     }
 
     public function create()
     {
         return view('pages.signatures.edit', [
-          'invoice_types' => InvoiceType::all()
+            'invoice_types' => InvoiceType::all()
         ]);
     }
 
-    public function store(StoreUpdateSignature $request)
+    public function store(StoreUpdateSignatureRequest $request)
     {
         $signature = new Signature();
         $signature->user_id = Auth::id();
@@ -55,15 +55,15 @@ class SignatureController extends Controller
         return ['row' => Signature::where('id', $signature->id)->with('invoice_types')->firstOrFail()];
     }
 
-    public function edit(EditDeleteSignature $request, Signature $signature)
+    public function edit(EditDeleteSignatureRequest $request, Signature $signature)
     {
         return view('pages.signatures.edit', [
-          'signature' => $signature,
-          'invoice_types' => InvoiceType::all()
+            'signature' => $signature,
+            'invoice_types' => InvoiceType::all()
         ]);
     }
 
-    public function update(StoreUpdateSignature $request, Signature $signature)
+    public function update(StoreUpdateSignatureRequest $request, Signature $signature)
     {
         $signature->fill($request->all());
         $signature->mode = $request->input('mode');
@@ -74,7 +74,7 @@ class SignatureController extends Controller
         return ['row' => Signature::where('id', $signature->id)->with('invoice_types')->firstOrFail()];
     }
 
-    public function destroy(EditDeleteSignature $request, Signature $signature)
+    public function destroy(EditDeleteSignatureRequest $request, Signature $signature)
     {
         $signature->delete();
         return true;

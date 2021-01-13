@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
 
 class LoginController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         if (Auth::check()) {
             return redirect()->route('home');
@@ -17,16 +16,8 @@ class LoginController extends Controller
         return view('pages.login.index', []);
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-          'email' => 'required|email',
-          'password' => 'required|alphaNum'
-        ]);
-        if ($validator->fails()) {
-            return redirect()->route('login')->withErrors($validator->errors())->withInput();
-        }
-
         if (Auth::attempt($request->only('email', 'password'), $request->has('remember'))) {
             return redirect()->route('home');
         }

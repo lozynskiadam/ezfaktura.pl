@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateProfile;
+use App\Http\Requests\UpdateProfileRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -16,7 +16,7 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function update(UpdateProfile $request)
+    public function update(UpdateProfileRequest $request)
     {
         $user = Auth::user();
         $user->name = $request->get('name');
@@ -31,10 +31,10 @@ class ProfileController extends Controller
 
     public function update_logo(Request $request)
     {
-        if($request->hasFile('logo')) {
+        if ($request->hasFile('logo')) {
             $logo = $request->file('logo');
             $path = '/uploaded/' . time() . '.png';
-            Image::make($logo)->resize(200,200, function ($constraint) {
+            Image::make($logo)->resize(200, 200, function ($constraint) {
                 $constraint->aspectRatio();
             })->save(public_path($path));
 

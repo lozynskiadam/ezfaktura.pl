@@ -7,6 +7,10 @@
   background: #1162C8 !important;
   background: -webkit-linear-gradient(right, #07397B, #1162C8) !important;
   background: linear-gradient(right, #07397B, #1162C8) !important; }
+.btn-dark:focus {
+  background-color: #343a40 !important;
+  border-color: #1b1e21 !important;
+}
 .btn-labeled {
   padding: 0 12px 0 10px;
 }

@@ -26,16 +26,17 @@
                         <span></span>
                         <img id="Logo" src="{{ $user->logo }}"/>
                     </div>
-                    <label id="UploadLogo" class="btn btn-dark form-control text-white">
+                    <button id="UploadLogo" class="btn btn-dark form-control text-white">
                         <i class="fa fa-upload mr-1"></i> {{ __('Aktualizuj logo') }}
-                    </label>
+                    </button>
                 </div>
 
                 <hr/>
 
                 <div class="form-group">
-                    <button class="btn btn-primary  form-control btn-round">
-                        <i class="fa fa-file-export mr-1"></i> {{ __('Eksportuj swoje dane') }}</button>
+                    <button class="btn btn-primary form-control btn-round">
+                        <i class="fa fa-file-export mr-1"></i> {{ __('Eksportuj swoje dane') }}
+                    </button>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-danger form-control btn-round">

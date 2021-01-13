@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class TemplateController extends Controller
 {
-    public function list(Request $request)
+    public function list()
     {
         return view('pages.templates.index', []);
     }

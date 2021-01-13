@@ -4,16 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Helpers\ApiHelper;
 use App\Http\Helpers\GUS;
+use App\Http\Requests\RegisterRequest;
 use App\Models\Notification;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         if (Auth::check()) {
             return redirect()->route('home');
@@ -21,25 +20,15 @@ class RegisterController extends Controller
         return view('pages.login.index', []);
     }
 
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'nip' => 'required|digits:10',
-            'email' => 'unique:users|required|email',
-            'password' => 'required|confirmed|min:6',
-            'agree' => 'required'
-        ]);
-        if ($validator->fails()) {
-            return redirect()->route('register')->withErrors($validator->errors())->withInput();
-        }
-
-        $user = new User([
-            'nip' => $request->get('nip'),
-            'email' => $request->get('email'),
-            'password' => Hash::make($request->get('password')),
-            'api_key' => ApiHelper::generateKey(),
-        ]);
+        $user = new User;
+        $user->nip = $request->get('nip');
+        $user->email = $request->get('email');
+        $user->password = Hash::make($request->get('password'));
+        $user->api_key = ApiHelper::generateKey();
         $user->save();
+
         Auth::attempt($request->only('email', 'password'));
 
         if ($report = GUS::find($request->get('nip'))) {

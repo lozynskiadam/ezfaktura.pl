@@ -11,7 +11,7 @@ class ApiController extends Controller
     public function index()
     {
         return view('pages.api.index', [
-          'key' => Auth::user()->api_key
+            'key' => Auth::user()->api_key
         ]);
     }
 
