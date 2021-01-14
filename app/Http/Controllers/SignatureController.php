@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Helpers\DataTable;
+use App\Classes\DataTable;
 use App\Http\Requests\EditDeleteSignatureRequest;
 use App\Http\Requests\StoreUpdateSignatureRequest;
 use App\Models\InvoiceType;
@@ -11,9 +11,8 @@ use Illuminate\Support\Facades\Auth;
 
 class SignatureController extends Controller
 {
-    public function index()
+    public function index(DataTable $dataTable)
     {
-        $dataTable = new DataTable();
         $dataTable->columns = [
             ['data' => 'name', 'title' => __('ID'), 'width' => 100],
             ['data' => 'description', 'title' => __('Opis')],

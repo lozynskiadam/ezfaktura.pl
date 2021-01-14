@@ -4,7 +4,7 @@
  * DataTable Manager - A PHP Manager for JS DataTables library (https://datatables.net/)
  */
 
-namespace App\Http\Helpers;
+namespace App\Classes;
 
 class DataTable
 {

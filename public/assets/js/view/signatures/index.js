@@ -23,7 +23,6 @@ App.view = {
 
   onAddClick: function(e, dt, node, config) {
     dialog({
-      id: 'AddSignatureModal',
       title: 'Dodaj sygnaturę',
       load: {
         url: "/signatures/create",
@@ -45,7 +44,6 @@ App.view = {
   onRowClick: function(e) {
     let id = e.data.id;
     dialog({
-      id: 'EditSignatureModal',
       title: 'Edytuj sygnaturę',
       load: {
         url: '/signatures/' + id + '/edit',

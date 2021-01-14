@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Helpers\DataTable;
-use Illuminate\Http\Request;
+use App\Classes\DataTable;
 
 class InvoiceController extends Controller
 {
-    public function index(Request $request)
+    public function index(DataTable $dataTable)
     {
-        $dataTable = new DataTable();
         $dataTable->columns = [
           ['data' => 'IssueDate', 'title' => __('Data wystawienia'), 'width' => 140],
           ['data' => 'InvoiceType', 'title' => __('Typ faktury'), 'width' => 120],
