@@ -36,11 +36,13 @@ window.dialog = function (params = {}) {
     id: null,
     title: '',
     message: '',
+    size: 'modal-md',
     class: 'bg-primary',
     loading: '<div class="text-center"><i class="fa fa-sync-alt fa-spin fa-3x"></i></div>',
     load: {
       url: null,
       method: 'GET',
+      data: {},
       dataType: 'html',
       callback: null
     },
@@ -62,7 +64,7 @@ window.dialog = function (params = {}) {
 
   DialogRef.close = function () {
     DialogRef.getContainer().modal('hide');
-  }
+  };
 
   DialogRef.getContainer = function () {
     return this.object;
@@ -86,7 +88,7 @@ window.dialog = function (params = {}) {
 
   DialogRef.object = (function () {
     let $container = $('<div/>').addClass('modal fade').attr('role', 'dialog').attr('tabindex', '-1').attr('id', DialogRef.params.id);
-    let $dialog = $('<div/>').addClass('modal-dialog').appendTo($container);
+    let $dialog = $('<div/>').addClass('modal-dialog').addClass(DialogRef.params.size).appendTo($container);
     let $content = $('<div/>').addClass('modal-content').appendTo($dialog);
     let $header = $('<div/>').addClass('modal-header').addClass(DialogRef.params.class).appendTo($content);
     let $title = $('<h5/>').addClass('modal-title').appendTo($header);
@@ -124,15 +126,16 @@ window.dialog = function (params = {}) {
     $body.html(DialogRef.params.message);
 
     if (DialogRef.params.load.url) {
-      $footer.hide();
+      $footer.addClass('d-none');
       $body.html(DialogRef.params.loading);
       $.ajax({
         method: DialogRef.params.load.method,
         url: DialogRef.params.load.url,
+        data: DialogRef.params.load.data,
         dataType: DialogRef.params.load.dataType,
         success: function (data) {
           $body.html(data);
-          $footer.show();
+          $footer.removeClass('d-none');
           $('.act-save', DialogRef.getModalFooter()).on('click', function () {
             $('[name]', DialogRef.getModalBody()).closest('.form-group').removeClass('has-error');
             $('.error-block', DialogRef.getModalBody()).remove();
@@ -162,7 +165,7 @@ window.dialog = function (params = {}) {
     }
 
     $container.on('hidden.bs.modal', function () {
-      $(this).dialogRef = undefined
+      $(this).dialogRef = undefined;
       $(this).remove();
     });
 
@@ -175,4 +178,4 @@ window.dialog = function (params = {}) {
   })();
 
   return DialogRef;
-}
+};

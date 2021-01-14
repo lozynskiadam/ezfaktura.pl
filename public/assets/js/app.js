@@ -1,65 +1,82 @@
 const App = {
-	view: null,
+  view: null,
 
-	addDataTable: function(id, config) {
-		config = JSON.parse(config);
-		config.createdRow = eval(config.createdRow);
-		config.drawCallback = eval(config.drawCallback);
-		config.columns.map(function(item) {
-			item.render = eval(item.render);
-		});
-		config.buttons.map(function(item) {
-			item.action = eval(item.action);
-		});
-		if(typeof window.dataTables == 'undefined') {
-			window.dataTables = [];
-		}
-		window.dataTables.push({id: id, config: config, table: $('#' + id).DataTable(config)});
-	},
+  addDataTable: function (id, config) {
+    config = JSON.parse(config);
+    config.createdRow = eval(config.createdRow);
+    config.drawCallback = eval(config.drawCallback);
+    config.columns.map(function (item) {
+      item.render = eval(item.render);
+    });
+    config.buttons.map(function (item) {
+      item.action = eval(item.action);
+    });
+    if (typeof window.dataTables == 'undefined') {
+      window.dataTables = [];
+    }
+    window.dataTables.push({id: id, config: config, table: $('#' + id).DataTable(config)});
+  },
 
-	getDataTable: function(id) {
-		return window.dataTables.find((table) => table.id === id).table;
-	},
+  getDataTable: function (id) {
+    return window.dataTables.find((table) => table.id === id).table;
+  },
 
-	init: function() {
-		$.ajaxSetup({
-			headers: {
-				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-			}
-		});
+  init: function () {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
 
-		$('body').tooltip({
-			selector: '[data-toggle="tooltip"]',
-			trigger : 'hover',
-			html: true
-		}).click(function(){
-			$('[data-toggle="tooltip"]', $(this)).tooltip("hide");
-		});
+    $('body').tooltip({
+      selector: '[data-toggle="tooltip"]',
+      trigger: 'hover',
+      html: true
+    }).click(function () {
+      $('[data-toggle="tooltip"]', $(this)).tooltip("hide");
+    });
 
-		$('#tasks', document).on('click', function (){
-			$.notify({
-				icon: 'fa fa-cogs',
-				title: 'Brak zleconych operacji',
-				message: 'Aktualnie nie posiadasz żadnych aktywnych operacji'
-			},{
-				// settings
-				type: 'info',
-				placement: {
-					from: 'bottom',
-					align: 'right'
-				},
-				delay: 2000
+    $('#tasks', document).on('click', function () {
+      $.notify({
+        icon: 'fa fa-cogs',
+        title: 'Brak zleconych operacji',
+        message: 'Aktualnie nie posiadasz żadnych aktywnych operacji'
+      }, {
+        // settings
+        type: 'info',
+        placement: {
+          from: 'bottom',
+          align: 'right'
+        },
+        delay: 2000
+      });
+    });
+
+    $('#SearchForm', document).on('submit', function(e){
+    	e.preventDefault();
+
+			dialog({
+				title: 'Wyniki wyszukiwania',
+        size: 'modal-wide',
+        class: 'bg-dark text-white',
+        draggable: false,
+				load: {
+					url: "/search",
+					data: {
+						q: $('#Search', document).val()
+					}
+				}
 			});
 		});
 
-        setTimeout(function() {
-            $("#RequestMessage", document).fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove();
-            });
-        }, 2000);
+    setTimeout(function () {
+      $("#RequestMessage", document).fadeTo(500, 0).slideUp(500, function () {
+        $(this).remove();
+      });
+    }, 2000);
 
-		if(App.view) {
-			App.view.init();
-		}
-	},
+    if (App.view) {
+      App.view.init();
+    }
+  },
 }

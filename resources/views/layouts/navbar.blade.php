@@ -1,15 +1,15 @@
 <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
 
   <div class="container-fluid">
-    <div class="collapse" id="search-nav">
-      <form class="navbar-left navbar-form nav-search mr-md-2">
+    <div class="collapse position-relative" id="search-nav">
+      <form id="SearchForm" class="navbar-left navbar-form nav-search mr-md-2">
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="btn btn-search pr-1">
               <i class="fa fa-search search-icon"></i>
             </span>
           </div>
-          <input type="text" placeholder="{{ __('Szukaj ...') }}" class="form-control">
+          <input id="Search" type="text" placeholder="{{ __('Szukaj ...') }}" class="form-control">
         </div>
       </form>
     </div>

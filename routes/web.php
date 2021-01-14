@@ -7,6 +7,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\TemplateController;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,7 @@ Route::group(['domain' => env('APP_PANEL_URL')], function () {
         Route::get('/api', [ApiController::class, 'index'])->name('api');
         Route::post('/api/resetkey', [ApiController::class, 'resetKey']);
         Route::get('/notifications/list', [NotificationController::class, 'list']);
+        Route::any('/search', [SearchController::class, 'search'])->name('search');
     });
 });
 
