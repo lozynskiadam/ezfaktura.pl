@@ -35,7 +35,7 @@
 
         <div class="form-group">
           <button class="btn btn-primary form-control btn-round">
-            <i class="fa fa-file-export mr-1"></i> {{ __('Eksportuj swoje dane') }}
+            <i class="fa fa-file-download mr-1"></i> {{ __('Eksportuj dane') }}
           </button>
         </div>
         <div class="form-group">
