@@ -279,3 +279,19 @@ a.dropdown-lang:hover {
   width: 80%;
   max-width: 80%;
 }
+.search-results {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  max-height: 470px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.search-results .list-group-item div:first-child {
+  float: left;
+  width: 40px;
+  margin: 8px 15px 0 0;
+  text-align: center;
+}
+.search-results .list-group-item div:nth-child(2) {
+  width: 100%;
+}

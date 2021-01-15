@@ -57,9 +57,6 @@ const App = {
 
 			dialog({
 				title: 'Wyniki wyszukiwania',
-        size: 'modal-wide',
-        class: 'bg-dark text-white',
-        draggable: false,
 				load: {
 					url: "/search",
 					data: {
