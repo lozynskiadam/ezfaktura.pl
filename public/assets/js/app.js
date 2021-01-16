@@ -54,13 +54,18 @@ const App = {
 
     $('#SearchForm', document).on('submit', function(e){
     	e.preventDefault();
-
+    	let $search = $('#Search', document);
+    	let q = $search.val();
+    	if(!q) {
+    	  return;
+      }
+      $search.val('');
 			dialog({
 				title: 'Wyniki wyszukiwania',
 				load: {
 					url: "/search",
 					data: {
-						q: $('#Search', document).val()
+						q: q
 					}
 				}
 			});

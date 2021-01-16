@@ -23,6 +23,10 @@
   border-radius: 3px 0 0 3px;
   width: 40px;
 }
+.modal-wide {
+  width: 80%;
+  max-width: 80%;
+}
 
 /* table */
 .table-row-callback tbody tr:hover{
@@ -87,15 +91,6 @@ div.user div.info span.user-name {
 }
 
 
-.avatar-nav {
-  margin-left: 5px;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-width: 0 !important; }
-.avatar-nav .rounded {
-  border-radius: 4px !important; }
-.avatar-nav .avatar-title {
-  font-size: 15px; }
 .notif-box .notif-center a .notif-icon {
   background: transparent !important;
 }
@@ -169,12 +164,10 @@ button.dt-button i, div.dt-button i, a.dt-button i, input.dt-button i {
 .user-box .u-text {
   max-width: 180px;
 }
-#tasks i.fa[data-number="0"],
-#bell i.fa[data-number="0"] {
+i.fa[data-number="0"] {
   color: rgba(0,0,0,0.4);
 }
-#tasks .counter,
-#bell .counter {
+.counter {
   position: absolute;
   background-color: #ce3131;
   text-align: center;
@@ -189,8 +182,7 @@ button.dt-button i, div.dt-button i, a.dt-button i, input.dt-button i {
   right: 3px;
   letter-spacing: -1px;
 }
-#tasks .counter:empty,
-#bell .counter:empty {
+.counter:empty {
   display: none;
 }
 @media (min-width: 992px) {
@@ -253,6 +245,20 @@ a.dropdown-lang:hover {
   border-color: #f25961;
   color: #f25961;
 }
+
+
+.avatar-nav {
+  margin-left: 5px;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-width: 0 !important;
+}
+.avatar-nav .rounded {
+  border-radius: 4px !important;
+}
+.avatar-nav .avatar-title {
+  font-size: 15px;
+}
 .avatar-img {
   background-color: #dfe5e9;
 }
@@ -275,10 +281,8 @@ a.dropdown-lang:hover {
   display: inline-block;
   vertical-align: middle;
 }
-.modal-wide {
-  width: 80%;
-  max-width: 80%;
-}
+
+
 .search-results {
   border: 1px solid #ddd;
   border-radius: 3px;
@@ -294,4 +298,34 @@ a.dropdown-lang:hover {
 }
 .search-results .list-group-item div:nth-child(2) {
   width: 100%;
+}
+
+
+div.parameters-header {
+  padding: 10px;
+  font-weight: 600;
+  background: #fafafa;
+  border: 1px solid #eaeaea;
+  border-bottom: 2px solid #cccccc !important;
+}
+div.parameter {
+  display: flex;
+  background: #ffffff;
+}
+div.parameter:hover {
+  background: rgba(21, 114, 232, 0.15);
+}
+div.parameter div.label {
+  width: 75%;
+  padding: 8px;
+  border: 1px solid #eeeeee;
+}
+div.parameter div.option {
+  width: 25%;
+  min-width: 120px;
+}
+div.parameter div.option input,
+div.parameter div.option select {
+  border-radius: 0 !important;
+  height: 100% !important;
 }
