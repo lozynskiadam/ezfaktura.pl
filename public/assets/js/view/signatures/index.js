@@ -3,16 +3,6 @@ App.view = {
   init: function() {
   },
 
-  renderer: function(data, type, row, meta) {
-    let html = [];
-    for(const invoice_type of row.invoice_types) {
-      html.push('<span class="font-weight-bold px-1" style="white-space: nowrap;">');
-      html.push('<i class="far fa-file-pdf"></i> ' + invoice_type.initials);
-      html.push('</span>');
-    }
-    return html.join('\r\n');
-  },
-
   onRowCreate: function(row, data) {
     $(row).hover(
       () => $(this).addClass('table-row-callback'),
@@ -92,4 +82,4 @@ App.view = {
     });
   },
 
-}
+};

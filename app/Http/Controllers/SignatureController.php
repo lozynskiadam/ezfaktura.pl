@@ -17,7 +17,7 @@ class SignatureController extends Controller
             ['data' => 'name', 'title' => __('ID'), 'width' => 100],
             ['data' => 'description', 'title' => __('Opis')],
             ['data' => 'syntax', 'title' => __('Składnia')],
-            ['data' => 'invoiceType', 'title' => __('Typy faktur'), 'width' => 150, 'className' => 'text-center', 'render' => 'App.view.renderer'],
+            ['data' => 'invoice_type', 'title' => __('Typy faktur'), 'width' => 150, 'className' => 'text-center', 'render' => 'Renderers.invoice_type'],
         ];
         $dataTable->buttons = [
             [

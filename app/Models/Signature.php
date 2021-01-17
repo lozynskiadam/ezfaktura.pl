@@ -22,6 +22,11 @@ class Signature extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
     public function invoice_types()
     {
         return $this->belongsToMany(InvoiceType::class, 'signature_invoice_type');

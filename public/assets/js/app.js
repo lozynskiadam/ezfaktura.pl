@@ -28,6 +28,17 @@ const App = {
       }
     });
 
+    $.fn.dataTable.ext.type.order["currency-asc"] = function(a,b) {
+      a = parseInt(a.replace(/\s/g, '').replace(/\./g, '').match(/\d+/)[0]);
+      b = parseInt(b.replace(/\s/g, '').replace(/\./g, '').match(/\d+/)[0]);
+      return (a<b)?1:-1;
+    };
+    $.fn.dataTable.ext.type.order["currency-desc"] = function(a,b) {
+      a = parseInt(a.replace(/\s/g, '').replace(/\./g, '').match(/\d+/)[0]);
+      b = parseInt(b.replace(/\s/g, '').replace(/\./g, '').match(/\d+/)[0]);
+      return (a>b)?1:-1;
+    };
+
     $('body').tooltip({
       selector: '[data-toggle="tooltip"]',
       trigger: 'hover',

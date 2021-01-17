@@ -89,6 +89,7 @@
 <script src="/assets/js/plugin/datatables/datatables.min.js"></script>
 <script src="/assets/js/plugin/datatables/dataTables.buttons.min.js"></script>
 <link rel="stylesheet" href="/assets/js/plugin/datatables/buttons.dataTables.min.css">
+<script src="/assets/js/renderers.js"></script>
 
 <!-- Bootstrap Notify -->
 <script src="/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>

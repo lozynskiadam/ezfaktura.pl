@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <x-header :title="__('Sygnatury')" :description="__('Opis do sygnatur')"/>
+  <x-header :title="__('Sygnatury')" :description="__('Lista sygnatur fakturowych')"/>
 
   <div class="page-inner mt--5">
     <div class="row mt--2">
