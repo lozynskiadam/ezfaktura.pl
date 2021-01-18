@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Classes\DataTable;
+use App\Http\Requests\DownloadInvoiceRequest;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Models\Invoice;
+use App\Models\Signature;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,7 +40,7 @@ class InvoiceController extends Controller
 
     public function create()
     {
-        return view('pages.invoices.edit', []);
+        return view('pages.invoices.create', []);
     }
 
     public function store(StoreInvoiceRequest $request)
@@ -76,8 +78,11 @@ class InvoiceController extends Controller
         return ['row' => Invoice::where('id', $invoice->id)->with('invoice_type')->firstOrFail()];
     }
 
-    public function show()
+    public function download(DownloadInvoiceRequest $request, Invoice $invoice)
     {
-        return view('pages.invoices.edit', []);
+        $filePath = base_path($invoice->file_path);
+        $headers = ['Content-Type: application/pdf'];
+        $fileName = time().'.pdf';
+        return response()->download($filePath, $fileName, $headers);
     }
 }

@@ -33,17 +33,7 @@ App.view = {
 
   onRowClick: function(e) {
     let id = e.data.id;
-    dialog({
-      title: 'Podgląd faktury',
-      load: {
-        url: "/invoices/" + id
-      },
-      buttons: [
-        { label: 'Pobierz', class: 'btn btn-primary act-delete mr-auto' },
-        { label: 'Usuń', class: 'btn btn-danger act-delete mr-auto' },
-        { label: 'Zamknij', class: 'btn btn-light act-close' }
-      ],
-    });
+    window.location.href = "/invoices/" + id + "/download";
   },
 
 };

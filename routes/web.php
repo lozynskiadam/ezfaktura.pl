@@ -47,6 +47,7 @@ Route::group(['domain' => env('APP_PANEL_URL')], function () {
         Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::post('/profile/logo', [ProfileController::class, 'update_logo'])->name('profile.update_logo');
         Route::resource('invoices', InvoiceController::class, ['except' => ['edit', 'update']]);
+        Route::get('/invoices/{invoice}/download', [InvoiceController::class, 'download'])->name('invoice.download');
         Route::resource('signatures', SignatureController::class, ['except' => ['show']]);
         Route::get('/templates/list', [TemplateController::class, 'list'])->name('templates/list');
         Route::get('/api', [ApiController::class, 'index'])->name('api');
