@@ -2,7 +2,16 @@
 
   @foreach($invoices as $invoice)
     <a href="#" class="list-group-item list-group-item-action">
-      <i class="fas fa-file-pdf fa-2x"></i> {{ $invoice->name }}
+      <div>
+        <i class="fas fa-file-pdf fa-2x"></i>
+      </div>
+      <div>
+        <B>{{ $invoice->signature }}</B>
+        <span class="pull-right">
+            <i class="far fa-file-pdf ml-1"></i> {{ $invoice->invoice_type->initials }}
+          </span><br/>
+        <small>{{ $invoice->buyer['name'] }}</small>
+      </div>
     </a>
   @endforeach
 

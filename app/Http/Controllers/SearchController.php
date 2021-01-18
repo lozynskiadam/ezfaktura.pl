@@ -12,7 +12,13 @@ class SearchController extends Controller
         $q = '%' .$request->get('q') . '%';
 
         return view('pages.search.index', [
-            'invoices' => [],
+            'invoices' => Auth::user()
+                ->invoices()
+                ->where('signature','LIKE', $q)
+                ->orWhere('buyer','LIKE', $q)
+                ->orWhere('positions','LIKE', $q)
+                ->with('invoice_type')
+                ->get(),
             'signatures' => Auth::user()
                 ->signatures()
                 ->where('name','LIKE', $q)
