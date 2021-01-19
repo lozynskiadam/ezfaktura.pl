@@ -22,6 +22,15 @@
     <link rel="stylesheet" href="assets/css/landing.css">
 </head>
 <body>
+
+<!-- Preload -->
+<div id="loading" class="preloader">
+    <div class="spinner" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<!-- End Preload -->
+
 <header class="header-main fixed-top navbar-dark">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
@@ -70,7 +79,8 @@
                         <a class="btn btn-light btn-lg" href="{{ env('APP_PANEL_URL') }}">{{ __('Przejdź do aplikacji') }}</a>
                     </div>
                 </div>
-                <div class="col-lg-6 d-none d-lg-block home-screenshot">
+                <div class="col-lg-6 d-none d-lg-block">
+                    <img src="/assets/img/screen.png"/>
                 </div>
             </div>
         </div>

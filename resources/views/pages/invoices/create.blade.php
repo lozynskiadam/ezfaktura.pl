@@ -17,7 +17,7 @@
 </style>
 <form>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 pr-2">
       <table class="table dataTable dataTable-modal">
         <thead>
         <tr>
@@ -48,7 +48,7 @@
         </tbody>
       </table>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 pl-2">
       <table class="table dataTable dataTable-modal">
         <thead>
         <tr>

@@ -40,6 +40,7 @@
                 });
             }
         });
+        $('#loading').fadeOut();
     });
     $(window).scroll(function () {
         app.header();

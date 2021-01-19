@@ -61,11 +61,11 @@
               </div>
             </li>
             <li>
-              <div class="dropdown-divider"></div>
-              <div class="text-center">
-                <a class="dropdown-lang" href="{{ URL::to('language/en') }}"><img src="/assets/img/flags/gb.png"/> EN</a>
-                <a class="dropdown-lang" href="{{ URL::to('language/pl') }}"><img src="/assets/img/flags/pl.png"/> PL</a>
-              </div>
+{{--              <div class="dropdown-divider"></div>--}}
+{{--              <div class="text-center">--}}
+{{--                <a class="dropdown-lang" href="{{ URL::to('language/en') }}"><img src="/assets/img/flags/gb.png"/> EN</a>--}}
+{{--                <a class="dropdown-lang" href="{{ URL::to('language/pl') }}"><img src="/assets/img/flags/pl.png"/> PL</a>--}}
+{{--              </div>--}}
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{ route('profile.index') }}">{{ __('Edycja profilu') }}</a>
               <a class="dropdown-item" href="{{ route('logout') }}">{{ __('Wyloguj') }}</a>
