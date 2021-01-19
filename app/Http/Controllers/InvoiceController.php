@@ -6,8 +6,6 @@ use App\Classes\DataTable;
 use App\Http\Requests\DownloadInvoiceRequest;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Models\Invoice;
-use App\Models\Signature;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class InvoiceController extends Controller
@@ -40,7 +38,9 @@ class InvoiceController extends Controller
 
     public function create()
     {
-        return view('pages.invoices.create', []);
+        return view('pages.invoices.create', [
+            'user' => Auth::user()
+        ]);
     }
 
     public function store(StoreInvoiceRequest $request)

@@ -137,7 +137,7 @@ window.dialog = function (params = {}) {
           $body.html(data);
           $footer.removeClass('d-none');
           $('.act-save', DialogRef.getModalFooter()).on('click', function () {
-            $('[name]', DialogRef.getModalBody()).closest('.form-group').removeClass('has-error');
+            $('[name]', DialogRef.getModalBody()).closest('.form-group').removeClass('has-error text-danger');
             $('.error-block', DialogRef.getModalBody()).remove();
             $('.validation-block', DialogRef.getModalBody()).text('');
             let $btn = $(this);

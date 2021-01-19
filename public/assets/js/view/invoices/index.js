@@ -25,8 +25,9 @@ App.view = {
         }
       },
       buttons: [
-        { label: 'Zamknij', class: 'btn btn-light act-close' },
-        { label: 'Zapisz', class: 'btn btn-primary act-save' }
+        { label: 'Podgląd', class: 'btn btn-secondary mr-auto' },
+        { label: 'Anuluj', class: 'btn btn-light act-close' },
+        { label: 'Wystaw', class: 'btn btn-primary act-save' }
       ],
     });
   },
