@@ -356,3 +356,10 @@ div.parameter div.option select {
   border-radius: 0 !important;
   height: 100% !important;
 }
+
+.preview-pdf {
+  width: 100%;
+  height: calc(100vh - 230px);
+  border: 1px solid #cccccc;
+  background: #ededf0;
+}

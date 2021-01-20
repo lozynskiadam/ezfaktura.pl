@@ -43,15 +43,22 @@ Route::group(['domain' => env('APP_PANEL_URL')], function () {
     Route::group(['middleware' => 'auth'], function () {
         Route::any('/', [InvoiceController::class, 'index'])->name('home');
         Route::any('/logout', [LogoutController::class, 'index'])->name('logout');
+
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
         Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::post('/profile/logo', [ProfileController::class, 'update_logo'])->name('profile.update_logo');
+
         Route::resource('invoices', InvoiceController::class, ['except' => ['edit', 'update']]);
         Route::get('/invoices/{invoice}/download', [InvoiceController::class, 'download'])->name('invoice.download');
+
         Route::resource('signatures', SignatureController::class, ['except' => ['show']]);
-        Route::get('/templates/list', [TemplateController::class, 'list'])->name('templates/list');
+
+        Route::get('/template', [TemplateController::class, 'index'])->name('template.index');
+        Route::get('/template/preview', [TemplateController::class, 'preview'])->name('template.preview');
+
         Route::get('/api', [ApiController::class, 'index'])->name('api');
         Route::post('/api/resetkey', [ApiController::class, 'resetKey']);
+        
         Route::get('/notifications/list', [NotificationController::class, 'list']);
         Route::any('/search', [SearchController::class, 'search'])->name('search');
     });

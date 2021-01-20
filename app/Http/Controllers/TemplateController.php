@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Helpers\TemplateHelper;
+use InvoiceGenerator\Invoice AS InvoiceGenerator;
+use InvoiceGenerator\InvoiceException;
+
 class TemplateController extends Controller
 {
-    public function list()
+    public function index()
     {
         $columns = [
             'position_number' => __('Lp.'),
@@ -22,5 +26,13 @@ class TemplateController extends Controller
         return view('pages.templates.index', [
             'columns' => $columns
         ]);
+    }
+
+    public function preview()
+    {
+        try {
+            $generator = new InvoiceGenerator(TemplateHelper::getGeneratorParams());
+            $generator->pdf();
+        } catch (InvoiceException $e) {}
     }
 }

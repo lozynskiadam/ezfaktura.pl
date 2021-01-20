@@ -47,10 +47,10 @@
           </a>
         </li>
 
-        <li class="nav-item @if (request()->path() == 'templates/list') active @endif">
-          <a href="{{ route('templates/list') }}">
+        <li class="nav-item @if (request()->path() == 'template') active @endif">
+          <a href="{{ route('template.index') }}">
             <i class="fas fa-file-invoice"></i>
-            <p>{{ __('Szablony') }}</p>
+            <p>{{ __('Szablon') }}</p>
           </a>
         </li>
 
