@@ -20,10 +20,10 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('nip', 10);
-            $table->string('name')->nullable();
-            $table->string('postcode', 6)->nullable();
-            $table->string('city')->nullable();
-            $table->string('address')->nullable();
+            $table->string('name')->default('');
+            $table->string('postcode', 6)->default('');
+            $table->string('city')->default('');
+            $table->string('address')->default('');
             $table->string('logo')->default('/assets/img/logo-default.png');
             $table->rememberToken();
             $table->timestamps();

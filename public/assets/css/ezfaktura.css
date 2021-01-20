@@ -363,3 +363,26 @@ div.parameter div.option select {
   border: 1px solid #cccccc;
   background: #ededf0;
 }
+
+#ProfileCollapse {
+  margin: 0 -3px;
+}
+#ProfileCollapse ul.nav li a {
+  padding: 0 10px;
+  border-radius: 5px;
+}
+#ProfileCollapse ul.nav li:hover a {
+  background: rgba(199, 199, 199, 0.2);
+}
+#ProfileCollapse ul.nav li:hover a span.link-collapse {
+  font-weight: bold;
+}
+#ProfileCollapse ul.nav li.active a {
+  border-radius: 5px;
+  background: #1572E8 !important;
+  box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1), 4px 4px 15px -5px rgba(21, 114, 232, 0.4) !important;
+}
+#ProfileCollapse ul.nav li.active a span.link-collapse {
+  color: #ffffff;
+  font-weight: bold;
+}

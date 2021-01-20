@@ -58,7 +58,7 @@ Route::group(['domain' => env('APP_PANEL_URL')], function () {
 
         Route::get('/api', [ApiController::class, 'index'])->name('api');
         Route::post('/api/resetkey', [ApiController::class, 'resetKey']);
-        
+
         Route::get('/notifications/list', [NotificationController::class, 'list']);
         Route::any('/search', [SearchController::class, 'search'])->name('search');
     });

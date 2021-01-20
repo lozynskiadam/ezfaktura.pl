@@ -6,7 +6,7 @@
           <img src="{{ Auth::user()->logo }}" alt="..." class="avatar-img rounded-circle">
         </div>
         <div class="info">
-          <a data-toggle="collapse" href="#ProfileCollapse" aria-expanded="true">
+          <a data-toggle="collapse" href="#ProfileCollapse">
             <span>
               <span class="user-name">{{ Auth::user()->name }}</span>
               <span class="user-level">{{ Auth::user()->email }}</span>
@@ -15,9 +15,9 @@
           </a>
           <div class="clearfix"></div>
 
-          <div class="collapse in" id="ProfileCollapse" style="padding: 0 5px;">
+          <div class="collapse in @if (in_array(request()->path(), ['profile'])) show @endif" id="ProfileCollapse">
             <ul class="nav">
-              <li>
+              <li class="@if (request()->path() == 'profile') active @endif">
               <a href="{{ route('profile.index') }}">
                 <span class="link-collapse">{{ __('Edycja profilu') }}</span>
               </a>
