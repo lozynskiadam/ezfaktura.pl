@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Classes\DataTable;
 use App\Http\Requests\DownloadInvoiceRequest;
 use App\Http\Requests\StoreInvoiceRequest;
+use App\Models\Contractor;
 use App\Models\Invoice;
 use Illuminate\Support\Facades\Auth;
+use InvoiceGenerator\Invoice AS InvoiceGenerator;
+use InvoiceGenerator\InvoiceException;
 
 class InvoiceController extends Controller
 {
@@ -19,7 +22,7 @@ class InvoiceController extends Controller
             ['data' => 'buyer', 'title' => __('Kontrahent'), 'render' => 'Renderers.contractor'],
             ['data' => 'buyer', 'title' => __('NIP'), 'render' => 'Renderers.tax_id'],
             ['data' => 'net_total', 'title' => __('Netto'), 'render' => 'Renderers.currency', 'className' => 'text-right', 'type' => 'currency'],
-            ['data' => 'gross_total', 'title' => __('Brutto'), 'render' => 'Renderers.currency', 'className' => 'text-right','type' => 'currency'],
+            ['data' => 'gross_total', 'title' => __('Brutto'), 'render' => 'Renderers.currency', 'className' => 'text-right', 'type' => 'currency'],
         ];
         $dataTable->buttons = [
             [
@@ -43,10 +46,25 @@ class InvoiceController extends Controller
         ]);
     }
 
+    /**
+     * @param StoreInvoiceRequest $request
+     * @return array
+     * @throws InvoiceException
+     */
     public function store(StoreInvoiceRequest $request)
     {
         $user = Auth::user();
-        $generator = new \InvoiceGenerator\Invoice([
+
+        $contractor = $user->contractors()->where('nip', $request->get('buyer_nip'))->first() ?? new Contractor();
+        $contractor->user_id = $user->id;
+        $contractor->name = $request->get('buyer_name');
+        $contractor->address = $request->get('buyer_address');
+        $contractor->city = $request->get('buyer_city');
+        $contractor->postcode = $request->get('buyer_postcode');
+        $contractor->nip = $request->get('buyer_nip');
+        $contractor->save();
+
+        $generator = new InvoiceGenerator([
             'payment_due_date' => $request->get('payment_due_date'),
             'payment_method' => $request->get('payment_method'),
             'seller' => [
@@ -69,10 +87,10 @@ class InvoiceController extends Controller
         $generator->pdf(['output' => base_path($output)]);
 
         $invoice = new Invoice();
-        $invoice->user_id = Auth::id();
+        $invoice->user_id = $user->id;
         $invoice->invoice_type_id = 1;
         $invoice->file_path = $output;
-        $invoice->fill((array) $generator);
+        $invoice->fill((array)$generator);
         $invoice->save();
 
         return ['row' => Invoice::where('id', $invoice->id)->with('invoice_type')->firstOrFail()];
@@ -82,7 +100,7 @@ class InvoiceController extends Controller
     {
         $filePath = base_path($invoice->file_path);
         $headers = ['Content-Type: application/pdf'];
-        $fileName = time().'.pdf';
+        $fileName = time() . '.pdf';
         return response()->download($filePath, $fileName, $headers);
     }
 }

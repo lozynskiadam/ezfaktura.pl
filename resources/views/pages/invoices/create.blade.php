@@ -1,49 +1,52 @@
-<style>
-  table.dataTable-modal {
-    margin-top: 0 !important;
-  }
-  table.dataTable-modal th {
-    padding: 5px;
-  }
-  table.dataTable-modal td {
-    padding: 0 !important;
-    height: 30px !important;
-  }
-  table.dataTable-modal td input,
-  table.dataTable-modal td select {
-    padding: 5px;
-    border-radius: 0;
-  }
-</style>
 <form>
   <div class="row">
     <div class="col-md-6 pr-2">
       <table class="table dataTable dataTable-modal">
         <thead>
         <tr>
-          <th colspan="2">{{ __('Sprzedawca') }}</th>
+          <th colspan="2">{{ __('Daty i płatność') }}</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>{{ __('Nazwa') }}</td>
-          <td>{{ $user->name }}</td>
+        <tr class="form-group">
+          <td>
+            <label>{{ __('Data wystawienia') }}</label>
+          </td>
+          <td>
+            <x-input name="issue_date"/>
+          </td>
         </tr>
-        <tr>
-          <td>{{ __('Adres') }}</td>
-          <td>{{ $user->address }}</td>
+        <tr class="form-group">
+          <td>
+            <label>{{ __('Data sprzedaży') }}</label>
+          </td>
+          <td>
+            <x-input name="sale_date"/>
+          </td>
         </tr>
-        <tr>
-          <td>{{ __('Miasto') }}</td>
-          <td>{{ $user->city }}</td>
+        <tr class="form-group">
+          <td>
+            <label>{{ __('Data dostawy') }}</label>
+          </td>
+          <td>
+            <x-input name="delivery_date"/>
+          </td>
         </tr>
-        <tr>
-          <td>{{ __('Kod pocztowy') }}</td>
-          <td>{{ $user->postcode }}</td>
+        <tr class="form-group">
+          <td>
+            <label>{{ __('Termin płatności') }}</label>
+          </td>
+          <td>
+            <x-input name="payment_due_date"/>
+          </td>
         </tr>
-        <tr>
-          <td>{{ __('NIP') }}</td>
-          <td>{{ $user->nip }}</td>
+        <tr class="form-group">
+          <td>
+            <label>{{ __('Metoda płatności') }}</label>
+          </td>
+          <td>
+            <x-input name="payment_method"/>
+          </td>
         </tr>
         </tbody>
       </table>
@@ -57,45 +60,49 @@
         </thead>
         <tbody>
         <tr class="form-group">
-          <td>{{ __('Nazwa') }}</td>
-          <td><x-input name="buyer_name"/></td>
+          <td>
+            <label>{{ __('NIP') }}</label>
+          </td>
+          <td>
+            <x-input name="buyer_nip"/>
+          </td>
         </tr>
         <tr class="form-group">
-          <td>{{ __('Adres') }}</td>
-          <td><x-input name="buyer_address"/></td>
+          <td>
+            <label>{{ __('Nazwa') }}</label>
+          </td>
+          <td>
+            <x-input name="buyer_name"/>
+          </td>
         </tr>
         <tr class="form-group">
-          <td>{{ __('Miasto') }}</td>
-          <td><x-input name="buyer_city"/></td>
+          <td>
+            <label>{{ __('Adres') }}</label>
+          </td>
+          <td>
+            <x-input name="buyer_address"/>
+          </td>
         </tr>
         <tr class="form-group">
-          <td>{{ __('Kod pocztowy') }}</td>
-          <td><x-input name="buyer_postcode"/></td>
+          <td>
+            <label>{{ __('Miasto') }}</label>
+          </td>
+          <td>
+            <x-input name="buyer_city"/>
+          </td>
         </tr>
         <tr class="form-group">
-          <td>{{ __('NIP') }}</td>
-          <td><x-input name="buyer_nip"/></td>
+          <td>
+            <label>{{ __('Kod pocztowy') }}</label>
+          </td>
+          <td>
+            <x-input name="buyer_postcode"/>
+          </td>
         </tr>
         </tbody>
       </table>
     </div>
   </div>
-
-
-  <table class="table dataTable dataTable-modal">
-    <thead>
-    <tr>
-      <th>{{ __('Termin płatności') }}</th>
-      <th>{{ __('Metoda płatności') }}</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="form-group">
-      <td><x-input name="payment_due_date"/></td>
-      <td><x-input name="payment_method"/></td>
-    </tr>
-    </tbody>
-  </table>
 
   <table class="table dataTable dataTable-modal">
     <thead>
@@ -110,26 +117,34 @@
     </tr>
     </thead>
     <tr>
-      <td><x-input name="positions[1][name]"/></td>
-      <td><x-input name="positions[1][quantity]"/></td>
+      <td>
+        <x-input name="positions[1][name]"/>
+      </td>
+      <td>
+        <x-input name="positions[1][quantity]"/>
+      </td>
       <td>
         <select class="form-control" name="positions[1][unit]">
-          <option>szt</option>
-          <option>kg</option>
-          <option>godz</option>
+          <option value="szt">szt</option>
+          <option value="kg">kg</option>
+          <option value="godz">godz</option>
         </select>
       </td>
-      <td><x-input name="positions[1][price]"/></td>
+      <td>
+        <x-input name="positions[1][price]"/>
+      </td>
       <td>
         <select class="form-control" name="positions[1][tax_rate]">
-          <option>23%</option>
-          <option>8%</option>
-          <option>5%</option>
-          <option>0%</option>
-          <option>zw</option>
+          <option value="23">23%</option>
+          <option value="8">8%</option>
+          <option value="5">5%</option>
+          <option value="0">0%</option>
+          <option value="0">zw</option>
         </select>
       </td>
-      <td><x-input name="positions[1][discount]"/></td>
+      <td>
+        <x-input name="positions[1][discount]"/>
+      </td>
       <td class="text-center"><a href="#"><i class="fa fa-plus"></i></a></td>
     </tr>
   </table>
