@@ -24,8 +24,8 @@
   </script>
 
   <script src="/assets/js/app.js"></script>
-  @if (file_exists(public_path('/assets/js/view/' . str_replace('.', '/', request()->route()->getName()) . '.js')))
-    <script src="/assets/js/view/{{ str_replace('.', '/', request()->route()->getName()) }}.js"></script>
+  @if (file_exists(public_path('/assets/js/view/' . request()->path() . '.js')))
+    <script src="/assets/js/view/{{ request()->path() }}.js"></script>
   @endif
 </head>
 <body>

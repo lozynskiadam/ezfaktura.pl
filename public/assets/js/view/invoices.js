@@ -32,6 +32,15 @@ App.view = {
     });
   },
 
+  onDialogShow: function(dialogRef) {
+    let modalBody = dialogRef.getModalBody();
+    $('[name="issue_date"], [name="sale_date"], [name="delivery_date"], [name="payment_due_date"]', modalBody).datepicker({
+      format: 'yyyy-mm-dd',
+      autoclose: true,
+      language: 'pl'
+    });
+  },
+
   onRowClick: function(e) {
     let id = e.data.id;
     window.location.href = "/invoices/" + id + "/download";
