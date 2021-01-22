@@ -85,6 +85,11 @@
 <!-- Chart Circle -->
 <script src="/assets/js/plugin/chart-circle/circles.min.js"></script>
 
+<!-- Datepicker -->
+<script src="/assets/js/plugin/datepicker/bootstrap-datepicker.min.js"></script>
+<script src="/assets/js/plugin/datepicker/locales/bootstrap-datepicker.pl.min.js"></script>
+<link rel="stylesheet" href="/assets/js/plugin/datepicker/bootstrap-datepicker3.min.css"/>
+
 <!-- Datatables -->
 <script src="/assets/js/plugin/datatables/datatables.min.js"></script>
 <script src="/assets/js/plugin/datatables/dataTables.buttons.min.js"></script>
