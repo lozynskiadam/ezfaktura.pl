@@ -87,7 +87,7 @@
 
 <!-- Datepicker -->
 <script src="/assets/js/plugin/datepicker/bootstrap-datepicker.min.js"></script>
-<script src="/assets/js/plugin/datepicker/locales/bootstrap-datepicker.pl.min.js"></script>
+<script src="/assets/js/plugin/datepicker/locales/pl.min.js"></script>
 <link rel="stylesheet" href="/assets/js/plugin/datepicker/bootstrap-datepicker3.min.css"/>
 
 <!-- Datatables -->
