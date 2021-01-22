@@ -8,6 +8,7 @@ use App\Http\Requests\StoreInvoiceRequest;
 use App\Models\Contractor;
 use App\Models\Invoice;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
 use InvoiceGenerator\Invoice AS InvoiceGenerator;
 use InvoiceGenerator\InvoiceException;
 
@@ -42,7 +43,10 @@ class InvoiceController extends Controller
     public function create()
     {
         return view('pages.invoices.create', [
-            'user' => Auth::user()
+            'user' => Auth::user(),
+            'issue_date' => date('Y-m-d'),
+            'sale_date' => date('Y-m-d'),
+            'delivery_date' => date('Y-m-d'),
         ]);
     }
 

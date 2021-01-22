@@ -51,8 +51,32 @@
 .form-control {
   border-color: #e0e0e0;
 }
+select.form-control:not(.select2) {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFAgMAAAAF/0XGAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAlQTFRFdHR0iIiIAAAARYnjeQAAAAN0Uk5T//8A18oNQQAAABdJREFUeJxjEA1haA1iWOjFsEKLYdUqABtgBFIElp/QAAAAAElFTkSuQmCC') !important;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: center right 10px;
+  background-size: auto;
+}
+select.form-control:focus:not(.select2) {
+  background-image:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAA4SURBVHjafIyxDQAgDIB4qQ/4Xg/w1s44aTQaByYIRJat+ySyJLJ4RZGlCnpHU6oAZ7TLdfgxBgBPR2vsLb5AIgAAAABJRU5ErkJggg==') !important;
+}
 .topbar_open .main-panel {
   transform: translate3d(0, 60px, 0) !important;
+}
+
+/* datepicker */
+.datepicker-dropdown {
+  font-size: 13px;
+}
+.datepicker table tr td.active.active, .datepicker table tr td.active.highlighted.active, .datepicker table tr td.active.highlighted:active, .datepicker table tr td.active:active {
+  background-color: #1572e8 !important;
+}
+.datepicker table tr td.active.active.focus, .datepicker table tr td.active.active:focus, .datepicker table tr td.active.active:hover, .datepicker table tr td.active.highlighted.active.focus, .datepicker table tr td.active.highlighted.active:focus, .datepicker table tr td.active.highlighted.active:hover, .datepicker table tr td.active.highlighted:active.focus, .datepicker table tr td.active.highlighted:active:focus, .datepicker table tr td.active.highlighted:active:hover, .datepicker table tr td.active:active.focus, .datepicker table tr td.active:active:focus, .datepicker table tr td.active:active:hover {
+  background-color: #115dbd !important;
 }
 
 /* table */
@@ -67,13 +91,13 @@ table.dataTable {
   width: 100%;
   border-spacing: 0;
 }
-table.dataTable td,
-table.dataTable th {
+table.dataTable > tbody > tr > td,
+table.dataTable > thead > tr > th {
   padding: 0 10px !important;
   height: 45px !important;
   margin: 0 !important;
 }
-table.dataTable th {
+table.dataTable > thead > tr > th {
   background-color: #FAFAFA;
   border-top: 1px solid #EAEAEA !important;
   border-left: 0 solid #EAEAEA !important;
@@ -81,17 +105,17 @@ table.dataTable th {
   border-bottom: 2px solid #CCCCCC !important;
   text-align: left !important;
 }
-table.dataTable th:first-child {
+table.dataTable > thead > tr > th:first-child {
   border-left: 1px solid #EAEAEA !important;
 }
-table.dataTable th:hover {
+table.dataTable > thead > tr > th:hover {
   background-color: #fdffde;
 }
-table.dataTable td {
+table.dataTable > tbody > tr > td {
   border-left: 0 solid #EAEAEA !important;
   border-right: 1px solid #EAEAEA !important;
 }
-table.dataTable td:first-child {
+table.dataTable > tbody > tr > td:first-child {
   border-left: 1px solid #EAEAEA !important;
 }
 table.dataTables_filter {
@@ -100,24 +124,26 @@ table.dataTables_filter {
 table.dataTable-modal {
   margin-top: 0 !important;
 }
-table.dataTable-modal th {
+table.dataTable-modal > thead > th {
   padding: 5px;
 }
-table.dataTable-modal td {
+table.dataTable-modal > tbody > tr > td {
   padding: 2px 2px !important;
   height: 30px !important;
 }
-table.dataTable-modal td input,
-table.dataTable-modal td select,
-table.dataTable-modal td label {
-  padding: 5px;
+table.dataTable-modal > tbody > tr > td input,
+table.dataTable-modal > tbody > tr > td select {
+  padding: 4px 6px;
+}
+table.dataTable-modal > tbody > tr > td label {
+  padding: 4px;
   margin-bottom: 0;
   font-weight: normal;
 }
-table.dataTable-modal td:not(:last-child) {
+table.dataTable-modal > tbody > tr > td:not(:last-child) {
   border-right: 0 !important;
 }
-table.dataTable-modal th {
+table.dataTable-modal > thead > tr >th {
   height: 40px !important;
 }
 
@@ -411,4 +437,11 @@ div.parameter div.option select {
 
 .dropdown-item.active, .dropdown-item:active {
   background-color: #1572e8;
+}
+.addon-gus {
+  position: absolute;
+  right: 8px;
+  top: 6px;
+  font-size: 14px;
+  font-weight: bold;
 }

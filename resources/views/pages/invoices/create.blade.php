@@ -4,16 +4,26 @@
       <table class="table dataTable dataTable-modal">
         <thead>
         <tr>
-          <th colspan="2">{{ __('Daty i płatność') }}</th>
+          <th colspan="2">{{ __('Informacje') }}</th>
         </tr>
         </thead>
         <tbody>
         <tr class="form-group">
           <td>
+            <label>{{ __('Sygnatura') }}</label>
+          </td>
+          <td>
+            <select class="form-control" name="signature">
+              <option value="default">domyślna</option>
+            </select>
+          </td>
+        </tr>
+        <tr class="form-group">
+          <td>
             <label>{{ __('Data wystawienia') }}</label>
           </td>
           <td>
-            <x-input name="issue_date"/>
+            <x-input name="issue_date" value="{{ $issue_date }}"/>
           </td>
         </tr>
         <tr class="form-group">
@@ -21,7 +31,7 @@
             <label>{{ __('Data sprzedaży') }}</label>
           </td>
           <td>
-            <x-input name="sale_date"/>
+            <x-input name="sale_date" value="{{ $sale_date }}"/>
           </td>
         </tr>
         <tr class="form-group">
@@ -29,7 +39,7 @@
             <label>{{ __('Data dostawy') }}</label>
           </td>
           <td>
-            <x-input name="delivery_date"/>
+            <x-input name="delivery_date" value="{{ $delivery_date }}"/>
           </td>
         </tr>
         <tr class="form-group">
@@ -63,8 +73,11 @@
           <td>
             <label>{{ __('NIP') }}</label>
           </td>
-          <td>
+          <td style="position: relative;">
             <x-input name="buyer_nip"/>
+            <a href="#" class="addon-gus" data-toggle="tooltip" title="{{ __('Uzupełnij pole NIP po czym kliknij ten przycisk aby pobrać dane zarejestrowanie w GUSie') }}">
+              <i class="fa fa-sign-in-alt fa-rotate-90"></i>GUS
+            </a>
           </td>
         </tr>
         <tr class="form-group">
