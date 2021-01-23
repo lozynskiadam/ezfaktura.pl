@@ -15,7 +15,9 @@ window.dialog = function (params = {}) {
       case 422:
         let errors = jqXHR.responseJSON.errors;
         for (let field in errors) if (errors.hasOwnProperty(field)) {
-          let $input = $('[name="' + field + '"], [name^="' + field + '["]', DialogRef.getModalBody());
+          let name = '';
+          field.split('.').forEach((item, i) => name += i === 0 ? item : '[' + item + ']');
+          let $input = $('[name="' + name + '"], [name^="' + name + '["]', DialogRef.getModalBody());
           let $form = $input.closest('.form-group');
           let $error_block = $('.validation-block', $form).length > 0 ? $('.validation-block', $form) : $('<div/>').addClass('error-block').insertAfter($input);
           $form.addClass('has-error text-danger');

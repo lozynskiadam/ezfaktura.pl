@@ -9,6 +9,7 @@
            id="{{ $name }}"
            name="{{ $name }}"
            autocomplete="off"
+           @isset($maxlength) maxlength="{{ $maxlength }}" @endisset
            @isset($value) value="{{ old($name, $value) }}" @endisset
            @isset($disabled) disabled @endisset/>
 

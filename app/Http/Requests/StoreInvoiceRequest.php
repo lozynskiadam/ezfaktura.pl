@@ -31,6 +31,19 @@ class StoreInvoiceRequest extends FormRequest
             'buyer_city' => 'required|max:255',
             'buyer_postcode' => 'required|max:10',
             'buyer_nip' => 'required|digits:10',
+            'positions.*.name' => 'required|max:255',
+            'positions.*.quantity' => 'required|numeric',
+            'positions.*.unit' => 'required|string|max:255',
+            'positions.*.price' => 'required|numeric|gt:0',
+            'positions.*.tax_rate' => 'required|numeric',
+            'positions.*.discount' => 'numeric'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'positions.*.*.*' => '',
         ];
     }
 }

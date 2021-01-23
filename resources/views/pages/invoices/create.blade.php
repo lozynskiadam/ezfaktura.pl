@@ -74,7 +74,7 @@
             <label>{{ __('NIP') }}</label>
           </td>
           <td style="position: relative;">
-            <x-input name="buyer_nip"/>
+            <x-input name="buyer_nip" maxlength="10"/>
             <a href="#" class="addon-gus" data-toggle="tooltip" title="{{ __('Uzupełnij pole NIP po czym kliknij ten przycisk aby pobrać dane zarejestrowanie w GUSie') }}">
               <i class="fa fa-sign-in-alt fa-rotate-90"></i>GUS
             </a>
@@ -130,23 +130,23 @@
     </tr>
     </thead>
     <tr>
-      <td>
+      <td class="form-group">
         <x-input name="positions[1][name]"/>
       </td>
-      <td>
+      <td class="form-group">
         <x-input name="positions[1][quantity]"/>
       </td>
-      <td>
+      <td class="form-group">
         <select class="form-control" name="positions[1][unit]">
           <option value="szt">szt</option>
           <option value="kg">kg</option>
           <option value="godz">godz</option>
         </select>
       </td>
-      <td>
+      <td class="form-group">
         <x-input name="positions[1][price]"/>
       </td>
-      <td>
+      <td class="form-group">
         <select class="form-control" name="positions[1][tax_rate]">
           <option value="23">23%</option>
           <option value="8">8%</option>
@@ -155,10 +155,12 @@
           <option value="0">zw</option>
         </select>
       </td>
-      <td>
+      <td class="form-group">
         <x-input name="positions[1][discount]"/>
       </td>
-      <td class="text-center"><a href="#"><i class="fa fa-plus"></i></a></td>
+      <td class="text-center">
+        <a href="#"><i class="fa fa-plus"></i></a>
+      </td>
     </tr>
   </table>
 </form>
