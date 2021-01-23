@@ -26,9 +26,9 @@ class UpdateProfileRequest extends FormRequest
         return [
             'name' => 'required',
             'nip' => 'required|digits:10',
-            'postcode' => 'required',
-            'city' => 'required',
-            'address' => 'required'
+            'postcode' => 'required|max:10',
+            'city' => 'required|max:255',
+            'address' => 'required|max:255'
         ];
     }
 }

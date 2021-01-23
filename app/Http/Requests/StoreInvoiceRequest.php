@@ -25,12 +25,12 @@ class StoreInvoiceRequest extends FormRequest
     {
         return [
             'payment_due_date' => 'required|date_format:Y-m-d',
-            'payment_method' => 'required',
-            'buyer_name' => 'required',
-            'buyer_address' => 'required',
-            'buyer_city' => 'required',
-            'buyer_postcode' => 'required',
-            'buyer_nip' => 'required',
+            'payment_method' => 'required|max:255',
+            'buyer_name' => 'required|max:255',
+            'buyer_address' => 'required|max:255',
+            'buyer_city' => 'required|max:255',
+            'buyer_postcode' => 'required|max:10',
+            'buyer_nip' => 'required|digits:10',
         ];
     }
 }

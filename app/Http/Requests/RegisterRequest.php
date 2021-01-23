@@ -25,8 +25,8 @@ class RegisterRequest extends FormRequest
     {
         return [
             'nip' => 'required|digits:10',
-            'email' => 'unique:users|required|email',
-            'password' => 'required|confirmed|min:6',
+            'email' => 'unique:users|required|string|email|max:255',
+            'password' => 'required|string|confirmed|min:6|max:255',
             'agree' => 'required'
         ];
     }
