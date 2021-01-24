@@ -129,25 +129,26 @@
       <th style="width: 5px;"></th>
     </tr>
     </thead>
-    <tr>
+
+    <tr class="default-row">
       <td class="form-group">
-        <x-input name="positions[1][name]"/>
+        <x-input name="%NAME%[name]"/>
       </td>
       <td class="form-group">
-        <x-input name="positions[1][quantity]"/>
+        <x-input name="%NAME%[quantity]"/>
       </td>
       <td class="form-group">
-        <select class="form-control" name="positions[1][unit]">
+        <select class="form-control" name="%NAME%[unit]">
           <option value="szt">szt</option>
           <option value="kg">kg</option>
           <option value="godz">godz</option>
         </select>
       </td>
       <td class="form-group">
-        <x-input name="positions[1][price]"/>
+        <x-input name="%NAME%[price]"/>
       </td>
       <td class="form-group">
-        <select class="form-control" name="positions[1][tax_rate]">
+        <select class="form-control" name="%NAME%[tax_rate]">
           <option value="23">23%</option>
           <option value="8">8%</option>
           <option value="5">5%</option>
@@ -156,11 +157,12 @@
         </select>
       </td>
       <td class="form-group">
-        <x-input name="positions[1][discount]"/>
+        <x-input name="%NAME%[discount]"/>
       </td>
       <td class="text-center">
-        <a href="#"><i class="fa fa-plus"></i></a>
+        <a href="#" class="%BTN_CLASS%"><i class="%BTN_ICON%"></i></a>
       </td>
     </tr>
+
   </table>
 </form>

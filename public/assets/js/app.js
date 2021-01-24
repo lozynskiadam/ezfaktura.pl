@@ -88,6 +88,20 @@ const App = {
       });
     }, 2000);
 
+
+    $.fn.strtr = function(pattern) {
+      for(const element of this) {
+        let $element = $(element);
+        let html = $element.html();
+        for(const key in pattern) if(pattern.hasOwnProperty(key)) {
+          let value = pattern[key];
+          html = html.split(key).join(value);
+        }
+        $element.html(html);
+      }
+      return this;
+    };
+
     if (App.view) {
       App.view.init();
     }

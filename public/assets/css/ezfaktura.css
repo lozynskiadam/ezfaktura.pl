@@ -146,6 +146,9 @@ table.dataTable-modal > tbody > tr > td:not(:last-child) {
 table.dataTable-modal > thead > tr >th {
   height: 40px !important;
 }
+table.dataTable-modal > tbody > tr.default-row {
+  display: none;
+}
 
 .page-item.active .page-link {
   z-index: 1;

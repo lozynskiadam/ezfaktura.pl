@@ -8,7 +8,6 @@ use App\Http\Requests\StoreInvoiceRequest;
 use App\Models\Contractor;
 use App\Models\Invoice;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Date;
 use InvoiceGenerator\Invoice AS InvoiceGenerator;
 use InvoiceGenerator\InvoiceException;
 
