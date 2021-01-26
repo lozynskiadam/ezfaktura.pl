@@ -18,14 +18,13 @@
       google: {"families": ["Lato:300,400,700,900", "Khand:300,400,500,600,700"]},
       custom: {
         "families": ["Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"],
-        urls: ['/assets/css/fonts.min.css']
+        urls: ['{{ asset('/assets/css/fonts.min.css') }}']
       },
       active: function () {
         sessionStorage.fonts = true;
       }
     });
   </script>
-
   <script src="/assets/js/app.js"></script>
 </head>
 <body>
@@ -76,29 +75,19 @@
 <!-- jQuery Scrollbar -->
 <script src="{{ asset('/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
 
-<!-- Chart JS -->
-<script src="{{ asset('/assets/js/plugin/chart.js/chart.min.js') }}"></script>
-
-<!-- jQuery Sparkline -->
-<script src="{{ asset('/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
-
-<!-- Datepicker -->
-<script src="{{ asset('/assets/js/plugin/datepicker/bootstrap-datepicker.min.js') }}"></script>
-<script src="{{ asset('/assets/js/plugin/datepicker/locales/pl.min.js') }}"></script>
-<link rel="stylesheet" href="{{ asset('/assets/js/plugin/datepicker/bootstrap-datepicker3.min.css') }}"/>
-
 <!-- Datatables -->
 <script src="{{ asset('/assets/js/plugin/datatables/datatables.min.js') }}"></script>
 <script src="{{ asset('/assets/js/plugin/datatables/dataTables.buttons.min.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('/assets/js/plugin/datatables/buttons.dataTables.min.css') }}">
 <script src="{{ asset('/assets/js/renderers.js') }}"></script>
 
+<!-- Bootstrap Datepicker -->
+<script src="{{ asset('/assets/js/plugin/datepicker/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('/assets/js/plugin/datepicker/locales/pl.min.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('/assets/js/plugin/datepicker/bootstrap-datepicker3.min.css') }}"/>
+
 <!-- Bootstrap Notify -->
 <script src="{{ asset('/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
-
-<!-- jQuery Vector Maps -->
-<script src="{{ asset('/assets/js/plugin/jqvmap/jquery.vmap.min.js') }}"></script>
-<script src="{{ asset('/assets/js/plugin/jqvmap/maps/jquery.vmap.world.js') }}"></script>
 
 <!-- Sweet Alert -->
 <script src="{{ asset('/assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
