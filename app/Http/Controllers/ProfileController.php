@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Constraint;
 use Intervention\Image\Facades\Image;
 
@@ -32,6 +34,15 @@ class ProfileController extends Controller
         $user->save();
 
         return redirect()->back()->with('message', __('Informacje zostały zaktualizowane pomyślnie.'));
+    }
+
+    public function change_password(ChangePasswordRequest $request)
+    {
+        $user = Auth::user();
+        $user->password = Hash::make($request->get('new_password'));
+        $user->save();
+
+        return ['success' => true];
     }
 
     public function update_logo(Request $request)

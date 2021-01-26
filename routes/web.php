@@ -47,6 +47,7 @@ Route::group(['domain' => env('APP_PANEL_URL')], function () {
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
         Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::post('/profile/logo', [ProfileController::class, 'update_logo'])->name('profile.update_logo');
+        Route::post('/profile/changepassword', [ProfileController::class, 'change_password'])->name('profile.change_password');
 
         Route::resource('invoices', InvoiceController::class, ['except' => ['edit', 'update']]);
         Route::get('/invoices/{invoice}/download', [InvoiceController::class, 'download'])->name('invoice.download');

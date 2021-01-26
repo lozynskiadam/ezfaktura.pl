@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\CurrentPassword;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateProfileRequest extends FormRequest
+class ChangePasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +25,8 @@ class UpdateProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'nip' => 'required|digits:10',
-            'postcode' => 'required|max:10',
-            'city' => 'required|max:255',
-            'address' => 'required|max:255'
+            'current_password' => ['required', new CurrentPassword],
+            'new_password' => 'required|string|confirmed|min:6|max:255',
         ];
     }
 }

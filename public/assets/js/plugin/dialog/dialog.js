@@ -120,10 +120,6 @@ window.dialog = function (params = {}) {
       btn.appendTo($footer);
     }
 
-    $container.on('click', '.act-close', function () {
-      DialogRef.close(DialogRef, this);
-    });
-
     $title.html(DialogRef.params.title);
     $body.html(DialogRef.params.message);
 
@@ -138,26 +134,6 @@ window.dialog = function (params = {}) {
         success: function (data) {
           $body.html(data);
           $footer.removeClass('d-none');
-          $('.act-save', DialogRef.getModalFooter()).on('click', function () {
-            $('[name]', DialogRef.getModalBody()).closest('.form-group').removeClass('has-error text-danger');
-            $('.error-block', DialogRef.getModalBody()).remove();
-            $('.validation-block', DialogRef.getModalBody()).text('');
-            let $btn = $(this);
-            $btn.attr('disabled', 'disabled');
-            $.ajax({
-              method: DialogRef.params.save.method,
-              data: $('form', DialogRef.getModalBody()).serialize(),
-              url: DialogRef.params.save.url,
-              dataType: DialogRef.params.save.dataType,
-              success: function (data) {
-                if ($.isFunction(DialogRef.params.save.callback)) {
-                  DialogRef.params.save.callback(DialogRef, data);
-                }
-                DialogRef.close();
-              },
-              error: onError
-            });
-          });
           if ($.isFunction(DialogRef.params.load.callback)) {
             DialogRef.params.load.callback(DialogRef, data);
           }
@@ -165,6 +141,31 @@ window.dialog = function (params = {}) {
         error: onError
       });
     }
+
+    $container.on('click', '.act-close', function () {
+      DialogRef.close(DialogRef, this);
+    });
+
+    $container.on('click', '.act-save', function () {
+      $('[name]', DialogRef.getModalBody()).closest('.form-group').removeClass('has-error text-danger');
+      $('.error-block', DialogRef.getModalBody()).remove();
+      $('.validation-block', DialogRef.getModalBody()).text('');
+      let $btn = $(this);
+      $btn.attr('disabled', 'disabled');
+      $.ajax({
+        method: DialogRef.params.save.method,
+        data: $('form', DialogRef.getModalBody()).serialize(),
+        url: DialogRef.params.save.url,
+        dataType: DialogRef.params.save.dataType,
+        success: function (data) {
+          if ($.isFunction(DialogRef.params.save.callback)) {
+            DialogRef.params.save.callback(DialogRef, data);
+          }
+          DialogRef.close();
+        },
+        error: onError
+      });
+    });
 
     $container.on('hidden.bs.modal', function () {
       $(this).dialogRef = undefined;

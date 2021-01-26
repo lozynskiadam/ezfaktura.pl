@@ -26,7 +26,7 @@
             <span></span>
             <img id="Logo" src="{{ $user->logo }}"/>
           </div>
-          <button id="UploadLogo" class="btn btn-dark form-control text-white">
+          <button class="btn btn-dark form-control text-white act-upload-logo">
             <i class="fa fa-upload mr-1"></i> {{ __('Aktualizuj logo') }}
           </button>
         </div>
@@ -34,12 +34,17 @@
         <hr/>
 
         <div class="form-group">
-          <button class="btn btn-primary form-control btn-round">
+          <button class="btn btn-primary form-control btn-round act-change-password">
+            <i class="fa fa-lock mr-1"></i> {{ __('Zmień hasło') }}
+          </button>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary form-control btn-round act-export-data">
             <i class="fa fa-file-download mr-1"></i> {{ __('Eksportuj dane') }}
           </button>
         </div>
         <div class="form-group">
-          <button class="btn btn-danger form-control btn-round">
+          <button class="btn btn-danger form-control btn-round act-delete-account">
             <i class="fa fa-times mr-1"></i> {{ __('Usuń konto') }}
           </button>
         </div>
