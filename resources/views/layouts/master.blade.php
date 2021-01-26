@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <title>{{ env('APP_NAME') }}</title>
-  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'/>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="icon" href="/assets/img/icon.png" type="image/png"/>
 
@@ -15,18 +15,18 @@
   <script src="/assets/js/plugin/webfont/webfont.min.js"></script>
   <script>
     WebFont.load({
-      google: {"families":["Lato:300,400,700,900","Khand:300,400,500,600,700"]},
-      custom: {"families":["Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['/assets/css/fonts.min.css']},
-      active: function() {
+      google: {"families": ["Lato:300,400,700,900", "Khand:300,400,500,600,700"]},
+      custom: {
+        "families": ["Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"],
+        urls: ['/assets/css/fonts.min.css']
+      },
+      active: function () {
         sessionStorage.fonts = true;
       }
     });
   </script>
 
   <script src="/assets/js/app.js"></script>
-  @if (file_exists(public_path('/assets/js/view/' . request()->path() . '.js')))
-    <script src="/assets/js/view/{{ request()->path() }}.js"></script>
-  @endif
 </head>
 <body>
 <div class="wrapper">
@@ -39,9 +39,9 @@
       </a>
       <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse"
               aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon">
-						<i class="icon-menu"></i>
-					</span>
+        <span class="navbar-toggler-icon">
+          <i class="icon-menu"></i>
+        </span>
       </button>
       <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
       <div class="nav-toggle">
@@ -112,8 +112,10 @@
 <!-- Dialog -->
 <script src="/assets/js/plugin/dialog/dialog.js"></script>
 
+@yield('scripts')
+
 <script>
-  $(document).ready(function(){
+  $(document).ready(function () {
     App.init();
   });
 </script>

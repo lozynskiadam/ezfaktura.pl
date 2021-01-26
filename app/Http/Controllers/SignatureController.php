@@ -22,11 +22,11 @@ class SignatureController extends Controller
         $dataTable->buttons = [
             [
                 'text' => '<i class="fa fa-plus"></i> ' . __('Dodaj'),
-                'action' => 'App.view.onAddClick',
+                'action' => 'Pages_Signatures.onAddClick',
                 'className' => 'btn btn-primary btn-labeled'
             ]
         ];
-        $dataTable->createdRow = 'App.view.onRowCreate';
+        $dataTable->createdRow = 'Pages_Signatures.onRowCreate';
         $dataTable->data = Auth::user()->signatures()->with('invoice_types')->get();
 
         return view('pages.signatures.index', [

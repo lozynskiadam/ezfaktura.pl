@@ -1,7 +1,8 @@
-App.view = {
+let Pages_Api = {
+
   init: function() {
-    $('.act-toggle-key', document).on('click', App.view.onToggleKeyClick);
-    $('.act-reset-key', document).on('click', App.view.onResetKeyClick);
+    $('.act-toggle-key', document).on('click', Pages_Api.onToggleKeyClick);
+    $('.act-reset-key', document).on('click', Pages_Api.onResetKeyClick);
   },
 
   onToggleKeyClick: function() {
@@ -34,4 +35,5 @@ App.view = {
       },
     });
   },
-}
+
+};

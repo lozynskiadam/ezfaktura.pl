@@ -1,14 +1,11 @@
-App.view = {
-
-  init: function() {
-  },
+let Pages_Signatures = {
 
   onRowCreate: function(row, data) {
     $(row).hover(
       () => $(this).addClass('table-row-callback'),
       () => $(this).removeClass('table-row-callback')
     );
-    $(row).on('click', data, App.view.onRowClick);
+    $(row).on('click', data, Pages_Signatures.onRowClick);
   },
 
   onAddClick: function(e, dt, node, config) {
@@ -16,7 +13,7 @@ App.view = {
       title: 'Dodaj sygnaturę',
       load: {
         url: "/signatures/create",
-        callback: App.view.onDialogShow
+        callback: Pages_Signatures.onDialogShow
       },
       save: {
         url: "/signatures",
@@ -37,7 +34,7 @@ App.view = {
       title: 'Edytuj sygnaturę',
       load: {
         url: '/signatures/' + id + '/edit',
-        callback: App.view.onDialogShow
+        callback: Pages_Signatures.onDialogShow
       },
       save: {
         url: '/signatures/' + id,
@@ -47,7 +44,7 @@ App.view = {
         }
       },
       buttons: [
-        { label: 'Usuń', class: 'btn btn-danger act-delete mr-auto', event: App.view.onDeleteClick, data: {id: id} },
+        { label: 'Usuń', class: 'btn btn-danger act-delete mr-auto', event: Pages_Signatures.onDeleteClick, data: {id: id} },
         { label: 'Zamknij', class: 'btn btn-light act-close' },
         { label: 'Zapisz', class: 'btn btn-primary act-save' }
       ],

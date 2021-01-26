@@ -1,5 +1,11 @@
 @extends('layouts.master')
 
+@section('scripts')
+  @parent
+  <script src="/assets/js/pages/profile.js"></script>
+  <script>window.addEventListener('load', Pages_Profile.init);</script>
+@stop
+
 @section('content')
   <div class="page-navs bg-white">
     <div class="nav-scroller">

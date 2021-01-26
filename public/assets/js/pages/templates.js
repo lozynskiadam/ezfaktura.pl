@@ -1,4 +1,4 @@
-App.view = {
+let Pages_Templates = {
 
   init: function() {
     $('#sortable').sortable({
@@ -6,4 +6,4 @@ App.view = {
     });
   },
 
-}
+};

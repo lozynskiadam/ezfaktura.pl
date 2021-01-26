@@ -1,7 +1,11 @@
 @extends('layouts.master')
 
-@section('content')
+@section('scripts')
+  @parent
+  <script src="/assets/js/pages/invoices.js"></script>
+@stop
 
+@section('content')
   <x-header :title="__('Lista faktur')" :description="__('Spis faktur wystawionych na twoim koncie')"/>
 
   <div class="page-inner mt--5">

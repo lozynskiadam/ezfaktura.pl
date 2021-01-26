@@ -1,5 +1,4 @@
 const App = {
-  view: null,
 
   addDataTable: function (id, config) {
     config = JSON.parse(config);
@@ -101,9 +100,6 @@ const App = {
       }
       return this;
     };
-
-    if (App.view) {
-      App.view.init();
-    }
   },
-}
+
+};

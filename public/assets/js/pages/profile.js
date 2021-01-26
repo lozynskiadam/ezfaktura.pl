@@ -1,7 +1,7 @@
-App.view = {
+let Pages_Profile = {
 
   init: function () {
-    $("#UploadLogo", document).on("click", App.view.onUploadLogoClick);
+    $("#UploadLogo", document).on("click", Pages_Profile.onUploadLogoClick);
   },
 
   onUploadLogoClick: function() {
@@ -31,4 +31,4 @@ App.view = {
     file.click();
   }
 
-}
+};

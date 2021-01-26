@@ -27,11 +27,11 @@ class InvoiceController extends Controller
         $dataTable->buttons = [
             [
                 'text' => '<i class="fa fa-plus"></i> ' . __('Wystaw'),
-                'action' => 'App.view.onAddClick',
+                'action' => 'Pages_Invoices.onAddClick',
                 'className' => 'btn btn-primary btn-labeled'
             ]
         ];
-        $dataTable->createdRow = 'App.view.onRowCreate';
+        $dataTable->createdRow = 'Pages_Invoices.onRowCreate';
         $dataTable->data = Auth::user()->invoices()->with('invoice_type')->get();
 
         return view('pages.invoices.index', [

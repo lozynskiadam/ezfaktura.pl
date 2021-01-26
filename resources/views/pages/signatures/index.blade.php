@@ -1,7 +1,11 @@
 @extends('layouts.master')
 
-@section('content')
+@section('scripts')
+  @parent
+  <script src="/assets/js/pages/signatures.js"></script>
+@stop
 
+@section('content')
   <x-header :title="__('Sygnatury')" :description="__('Lista sygnatur fakturowych')"/>
 
   <div class="page-inner mt--5">
