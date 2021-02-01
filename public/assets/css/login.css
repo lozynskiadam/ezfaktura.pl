@@ -14355,3 +14355,11 @@ input:-moz-ui-valid {
   box-shadow: none !important;
   border-color: #3e72e8 !important;
 }
+.well {
+  max-height: 350px;
+  background: #eee;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px 15px;
+  overflow: auto;
+}

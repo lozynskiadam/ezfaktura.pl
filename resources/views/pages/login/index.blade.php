@@ -53,7 +53,7 @@
           <input type="checkbox" class="custom-control-input" id="rememberme" name="remember">
           <label class="custom-control-label" for="rememberme">{{ __('Zapamiętaj mnie') }}</label>
         </div>
-        <a href="javascript:void(0);" class="link float-right">{{ __('Zapomniałeś hasła?') }}</a>
+{{--        <a href="javascript:void(0);" class="link float-right">{{ __('Zapomniałeś hasła?') }}</a>--}}
       </div>
       <div class="form-action mb-3">
         <input type="submit" class="btn btn-primary btn-rounded btn-login" value="Login">
@@ -101,7 +101,7 @@
           <input type="checkbox" class="custom-control-input" name="agree" value="1" id="agree">
           <label class="custom-control-label" for="agree">
             {{ __('Akceptuję') }}
-            <a href="javascript:void(0);" id="show-conditions" class="link">{{ __('warunki') }}</a>
+            <a href="javascript:void(0);" data-toggle="modal" data-target="#ConditionsModal" class="link">{{ __('warunki') }}</a>
             {{ __('korzystania z serwisu') }}</label>
         </div>
         @error('agree') <label class="text-danger">{{ $message }}</label> @enderror
@@ -116,6 +116,43 @@
         <input type="submit" class="btn btn-primary btn-rounded btn-login" value="{{ __('Załóż konto') }}"/>
       </div>
     </form>
+  </div>
+</div>
+
+<!-- ConditionsModal -->
+<div class="modal fade" id="ConditionsModal" tabindex="-1" role="dialog" aria-labelledby="ConditionsLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ConditionsLabel">{{ __('Regulamin serwisu ezFaktura.pl') }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="well">
+          <h4>{{ __('1. Warunki ogólne') }}</h4>
+          <p>
+            {{ __('Niniejszy regulamin określa warunki korzystania oraz funkcjonowania, a także prawa i obowiązki użytkowników oraz obowiązki i zakres odpowiedzialności administracji serwisu znajdującego się pod adresem www.ezfaktura.pl. Uzyskując dostęp i rejestrując się w serwisie ezFaktura.pl potwierdzasz, że zgadzasz się z warunkami zawartymi w regulaminie.') }}
+          </p>
+          <h4>{{ __('2. Odpowiedzialność administratora serwisu') }}</h4>
+          <p>
+            {{ __('Serwis ezFaktura.pl został uruchomiony jako aplikacja pokazowa. Nie ponosimy odpowiedzialności za wszelkie błędy w działaniu aplikacji.') }}
+          </p>
+          <h4>{{ __('3. Obowiązki użytkownika') }}</h4>
+          <p>
+            {{ __('W trakcie procesu rejestracji użytkownik zobowiązany jest do podania numeru identyfikacji podatkowej, adresu email oraz hasła. Podane hasło musi być unikalne nie może być używane w żadnej innej aplikacji.') }}
+          </p>
+          <h4>{{ __('4. Zmiany w regulaminie') }}</h4>
+          <p>
+            {{ __('Jeśli zmienimy nasze warunki użytkowania, opublikujemy te zmiany na tej stronie. Treść regulaminu jest dostępna w serwisie i może zostać w każdym momencie zapisana na nośniku bądź wydrukowana.') }}
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">{{ __('Zamknij') }}</button>
+      </div>
+    </div>
   </div>
 </div>
 
