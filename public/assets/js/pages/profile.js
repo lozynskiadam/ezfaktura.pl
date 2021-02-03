@@ -11,7 +11,7 @@ let Pages_Profile = {
     let file = document.createElement("input");
     file.type = "file";
     file.accept = "image/x-png";
-    file.addEventListener('change', (event) => {
+    file.addEventListener('change', function () {
       let fd = new FormData();
       let files = file.files;
       if (files.length > 0) {
@@ -23,10 +23,8 @@ let Pages_Profile = {
           contentType: false,
           processData: false,
           success: function (data) {
-            if(data) {
-              $('#Logo', document).attr('src', data);
-              $('.avatar-img', document).attr('src', data);
-            }
+            $('#Logo', document).attr('src', data.logo);
+            $('.avatar-img', document).attr('src', data.logo);
           },
         });
       }

@@ -21,6 +21,6 @@ class ApiController extends Controller
         $user->api_key = ApiHelper::generateKey();
         $user->save();
 
-        return ['key' => $user->api_key];
+        return response()->json(['key' => $user->api_key]);
     }
 }

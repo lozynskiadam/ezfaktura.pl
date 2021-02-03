@@ -45,7 +45,7 @@ class SignatureController extends Controller
     {
         $signature = new Signature();
         $signature->user_id = Auth::id();
-        $signature->fill($request->all());
+        $signature->fill($request->validated());
         $signature->mode = $request->input('mode');
         $signature->save();
 
@@ -64,7 +64,7 @@ class SignatureController extends Controller
 
     public function update(StoreUpdateSignatureRequest $request, Signature $signature)
     {
-        $signature->fill($request->all());
+        $signature->fill($request->validated());
         $signature->mode = $request->input('mode');
         $signature->save();
 

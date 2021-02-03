@@ -42,7 +42,7 @@ class ProfileController extends Controller
         $user->password = Hash::make($request->get('new_password'));
         $user->save();
 
-        return ['success' => true];
+        return response()->json(['success' => true]);
     }
 
     public function update_logo(Request $request)
@@ -58,6 +58,6 @@ class ProfileController extends Controller
             $user->save();
         }
 
-        return $user->logo;
+        return response()->json(['logo' => $user->logo]);
     }
 }

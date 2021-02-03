@@ -7,6 +7,7 @@ use App\Http\Requests\DownloadInvoiceRequest;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Models\Contractor;
 use App\Models\Invoice;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use InvoiceGenerator\Invoice AS InvoiceGenerator;
 use InvoiceGenerator\InvoiceException;
@@ -51,7 +52,7 @@ class InvoiceController extends Controller
 
     /**
      * @param StoreInvoiceRequest $request
-     * @return array
+     * @return JsonResponse
      * @throws InvoiceException
      */
     public function store(StoreInvoiceRequest $request)
@@ -96,7 +97,7 @@ class InvoiceController extends Controller
         $invoice->fill((array)$generator);
         $invoice->save();
 
-        return ['row' => Invoice::where('id', $invoice->id)->with('invoice_type')->firstOrFail()];
+        return response()->json(['row' => Invoice::where('id', $invoice->id)->with('invoice_type')->firstOrFail()]);
     }
 
     public function download(DownloadInvoiceRequest $request, Invoice $invoice)

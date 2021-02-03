@@ -21,9 +21,6 @@ class Invoice extends Model
     ];
 
     protected $fillable = [
-        'user_id',
-        'invoice_type_id',
-        'signature_id',
         'signature',
         'issue_date',
         'sale_date',
@@ -48,7 +45,6 @@ class Invoice extends Model
         'gross_total_in_words',
         'annotation',
         'additional',
-        'file_path',
     ];
 
     public function user()
