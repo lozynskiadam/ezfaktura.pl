@@ -302,28 +302,24 @@ function showPassword(button) {
 	}
 }
 
-$('.show-password').on('click', function(){
+$('.show-password', document).on('click', function(){
 	showPassword(this);
-})
+});
 
 // Login & Register
-$('#show-login').on('click', function(){
+$('#show-login', document).on('click', function(){
 	history.pushState({}, null, '/login');
-	$('.container-login').css('display', 'block');
-	$('.container-register').css('display', 'none');
-})
+	$('.container-login', document).css('display', 'block');
+	$('.container-register', document).css('display', 'none');
+});
 
-$('#show-register').on('click', function(){
+$('#show-register', document).on('click', function(){
 	history.pushState({}, null, '/register');
-	$('.container-login').css('display', 'none');
-	$('.container-register').css('display', 'block');
-})
+	$('.container-login', document).css('display', 'none');
+	$('.container-register', document).css('display', 'block');
+});
 
 //Input with Floating Label
-$('.form-floating-label .form-control').keyup(function(){
-	if($(this).val() !== '') {
-		$(this).addClass('filled');
-	} else {
-		$(this).removeClass('filled');
-	}
-})
+$('.form-floating-label .form-control', document).on('keyup', function() {
+	$(this).toggleClass('filled', $(this).val() !== '');
+}).trigger('keyup');

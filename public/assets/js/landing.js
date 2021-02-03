@@ -1,5 +1,7 @@
 (function ($) {
+
     let app = {};
+
     app.header = function () {
         let $header = $('.header-main', document);
         if ($(window).scrollTop() === 0 && $(window).width() >= 975) {
@@ -21,14 +23,44 @@
             }
         });
     };
+
     app.parallax = function () {
         $('.jarallax').jarallax({
             speed: 0.2
         });
     };
+
+    app.form = function() {
+        $("#contact-form", document).submit(function(e) {
+            e.preventDefault();
+            $('#contact-submit', document).text('Proszę czekać...').attr('disabled', 'disabled');
+            $.ajax({
+                method: "POST",
+                url: "/contact",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]', document).attr('content')
+                },
+                data: {
+                    name: $('#contact-name', document).val(),
+                    email: $('#contact-email', document).val(),
+                    message: $('#contact-message', document).val(),
+                },
+                dataType: 'json',
+                success: function () {
+                    $('#contact-submit', document).text('Wiadomość wysłana').removeClass('btn-primary').addClass('btn-success');
+                },
+                error: function () {
+                    $('#contact-submit', document).text('Wystąpił błąd. Spróbuj ponownie później.').removeClass('btn-primary').addClass('btn-warning');
+                }
+            });
+
+        });
+    };
+
     $(document).ready(function () {
         app.header();
         app.parallax();
+        app.form();
         $("a").on('click', function(event) {
             if (this.hash !== "") {
                 event.preventDefault();
@@ -42,9 +74,11 @@
         });
         $('#loading').fadeOut();
     });
+
     $(window).scroll(function () {
         app.header();
     });
+
     $(window).resize(function () {
         app.header();
     });

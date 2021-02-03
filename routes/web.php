@@ -32,6 +32,9 @@ Route::group(['domain' => env('APP_URL')], function () {
     Route::any('/', function () {
         return view('pages.home.index');
     });
+    Route::post('/contact', function () {
+        return response()->json(true);
+    });
 });
 
 Route::group(['domain' => env('APP_PANEL_URL')], function () {
