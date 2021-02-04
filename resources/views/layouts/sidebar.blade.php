@@ -40,6 +40,13 @@
           </a>
         </li>
 
+        <li class="nav-item @if (request()->path() == 'template') active @endif">
+          <a href="{{ route('template.index') }}">
+            <i class="fas fa-file-invoice"></i>
+            <p>{{ __('Szablon') }}</p>
+          </a>
+        </li>
+
         <li class="nav-item @if (request()->path() == 'signatures') active @endif">
           <a href="{{ route('signatures.index') }}">
             <i class="fas fa-tag"></i>
@@ -47,10 +54,10 @@
           </a>
         </li>
 
-        <li class="nav-item @if (request()->path() == 'template') active @endif">
-          <a href="{{ route('template.index') }}">
-            <i class="fas fa-file-invoice"></i>
-            <p>{{ __('Szablon') }}</p>
+        <li class="nav-item @if (request()->path() == 'reports') active @endif">
+          <a href="{{ route('reports.index') }}">
+            <i class="fas fa-chart-line"></i>
+            <p>{{ __('Raporty') }}</p>
           </a>
         </li>
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\TemplateController;
@@ -56,6 +57,8 @@ Route::group(['domain' => env('APP_PANEL_URL')], function () {
         Route::get('/invoices/{invoice}/download', [InvoiceController::class, 'download'])->name('invoice.download');
 
         Route::resource('signatures', SignatureController::class, ['except' => ['show']]);
+
+        Route::resource('reports', ReportController::class, ['only' => ['index']]);
 
         Route::get('/template', [TemplateController::class, 'index'])->name('template.index');
         Route::get('/template/preview', [TemplateController::class, 'preview'])->name('template.preview');

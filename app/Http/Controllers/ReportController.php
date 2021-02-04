@@ -2,37 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Helpers\TemplateHelper;
-use InvoiceGenerator\Invoice AS InvoiceGenerator;
-use InvoiceGenerator\InvoiceException;
+use App\Classes\DataTable;
 
-class TemplateController extends Controller
+class ReportController extends Controller
 {
-    public function index()
+    public function index(DataTable $dataTable)
     {
-        $columns = [
-            'position_number' => __('Lp.'),
-            'name' => __('Nazwa'),
-            'unit' => __('Jednostka miary'),
-            'quantity' => __('Ilość'),
-            'tax_rate' => __('Stawka VAT'),
-            'tax_amount' => __('Kwota VAT'),
-            'net_price' => __('Cena netto'),
-            'net_amount' => __('Wartość netto'),
-            'gross_price' => __('Cena brutto'),
-            'gross_amount' => __('Wartość brutto'),
+        $dataTable->columns = [
+            ['data' => 'name', 'title' => __('Nazwa')],
         ];
 
-        return view('pages.templates.index', [
-            'columns' => $columns
+        return view('pages.reports.index', [
+            'dataTable' => $dataTable
         ]);
-    }
-
-    public function preview()
-    {
-        try {
-            $generator = new InvoiceGenerator(TemplateHelper::getGeneratorParams());
-            $generator->pdf();
-        } catch (InvoiceException $e) {}
     }
 }
