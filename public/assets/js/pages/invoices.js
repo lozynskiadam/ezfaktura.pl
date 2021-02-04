@@ -45,6 +45,8 @@ let Pages_Invoices = {
           modalBody.on('click', '.act-delete', function(){
             $(this).parents('tr').remove();
           });
+
+          modalBody.on('click', '.addon-gus', {parent: modalBody}, Pages_Invoices.onGUSClick);
         },
       },
       save: {
@@ -64,6 +66,43 @@ let Pages_Invoices = {
   onRowClick: function(e) {
     let id = e.data.id;
     window.location.href = "/invoices/" + id + "/download";
+  },
+
+  onGUSClick: function(e) {
+    let $selector = $(this);
+    let parent = e.data.parent;
+    let waitDialog = dialog({
+      title: 'Proszę czekać...',
+      class: 'bg-warning',
+      size: 'modal-sm',
+      close: false,
+      message: '<div class="text-center"><i class="fa fa-sync-alt fa-spin fa-3x"></i></div>'
+    });
+
+    $.ajax({
+      method: "GET",
+      url: "/gus",
+      data: {
+        nip: $('[name="buyer_nip"]', parent).val()
+      },
+      dataType: 'json',
+      success: function (data) {
+        waitDialog.close();
+        if(data.success) {
+          $('[name="buyer_name"]', parent).val(data.name);
+          $('[name="buyer_address"]', parent).val(data.address);
+          $('[name="buyer_city"]', parent).val(data.city);
+          $('[name="buyer_postcode"]', parent).val(data.postcode);
+        }
+        else {
+          setTimeout(function() { $selector.effect("shake",{times:3, distance: 5}, 500) }, 500);
+        }
+      },
+      error: function () {
+        setTimeout(function() { $selector.effect("shake",{times:3, distance: 5}, 500) }, 500);
+        waitDialog.close();
+      }
+    });
   },
 
 };

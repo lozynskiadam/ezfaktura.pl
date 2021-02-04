@@ -15,9 +15,9 @@ class ApiController extends Controller
         ]);
     }
 
-    public function resetKey()
+    public function reset_key()
     {
-        $user = User::findOrFail(Auth::id());
+        $user = Auth::user();
         $user->api_key = ApiHelper::generateKey();
         $user->save();
 

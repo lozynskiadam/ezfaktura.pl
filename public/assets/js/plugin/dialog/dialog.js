@@ -40,6 +40,7 @@ window.dialog = function (params = {}) {
     message: '',
     size: 'modal-md',
     class: 'bg-primary',
+    close: true,
     loading: '<div class="text-center"><i class="fa fa-sync-alt fa-spin fa-3x"></i></div>',
     load: {
       url: null,
@@ -65,7 +66,10 @@ window.dialog = function (params = {}) {
   };
 
   DialogRef.close = function () {
-    DialogRef.getContainer().modal('hide');
+    // trick to evade problem when dialog is not fully initialized and close() is called
+    if(DialogRef.getContainer().modal('hide').hasClass('show')) {
+      setTimeout(DialogRef.close, 200);
+    }
   };
 
   DialogRef.getContainer = function () {
@@ -94,9 +98,12 @@ window.dialog = function (params = {}) {
     let $content = $('<div/>').addClass('modal-content').appendTo($dialog);
     let $header = $('<div/>').addClass('modal-header').addClass(DialogRef.params.class).appendTo($content);
     let $title = $('<h5/>').addClass('modal-title').appendTo($header);
-    let $close = $('<button/>').addClass('close act-close').html('&times;').appendTo($header);
     let $body = $('<div/>').addClass('modal-body').appendTo($content);
     let $footer = $('<div/>').addClass('modal-footer').appendTo($content);
+
+    if(DialogRef.params.close) {
+      $('<button/>').addClass('close act-close').html('&times;').appendTo($header);
+    }
 
     if (DialogRef.params.draggable) {
       $dialog.draggable({handle: '.modal-header'})

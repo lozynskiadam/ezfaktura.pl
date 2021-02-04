@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class GUS
 {
-    public static function find($NIP)
+    public static function find($nip)
     {
         if(!(env('GUS_API_ENABLED', 0))) {
             return false;
@@ -16,12 +16,12 @@ class GUS
 
         $gusApiRequest = new GusApiRequest;
         $gusApiRequest->user_id = Auth::id();
-        $gusApiRequest->request = $NIP;
+        $gusApiRequest->request = $nip;
 
         try {
             $gus = new GusApi(env('GUS_API_KEY', ''), env('GUS_API_ENVIRONMENT', 'prod'));
             $gus->login();
-            $response = $gus->getByNip($NIP)[0] ?? false;
+            $response = $gus->getByNip($nip)[0] ?? false;
             $gusApiRequest->response = json_encode($response);
             $gusApiRequest->save();
             return $response;

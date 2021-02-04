@@ -48,6 +48,12 @@
   width: 80%;
   max-width: 80%;
 }
+.modal.fade {
+  background: rgba(0, 0, 0, 0.5);
+}
+.modal-backdrop.fade {
+  opacity: 0;
+}
 .form-control {
   border-color: #e0e0e0;
 }
