@@ -63,23 +63,17 @@
 
 </div>
 
-<!-- Core JS Files -->
+<!-- jQuery -->
 <script src="{{ asset('/assets/js/core/jquery.3.2.1.min.js') }}"></script>
-<script src="{{ asset('/assets/js/core/popper.min.js') }}"></script>
-<script src="{{ asset('/assets/js/core/bootstrap.min.js') }}"></script>
-
-<!-- jQuery UI -->
-<script src="{{ asset('/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('/assets/js/plugin/jquery-ui-1.12.1/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js') }}"></script>
-
-<!-- jQuery Scrollbar -->
 <script src="{{ asset('/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
 
-<!-- Datatables -->
-<script src="{{ asset('/assets/js/plugin/datatables/datatables.min.js') }}"></script>
-<script src="{{ asset('/assets/js/plugin/datatables/dataTables.buttons.min.js') }}"></script>
-<link rel="stylesheet" href="{{ asset('/assets/js/plugin/datatables/buttons.dataTables.min.css') }}">
-<script src="{{ asset('/assets/js/renderers.js') }}"></script>
+<!-- Popper -->
+<script src="{{ asset('/assets/js/core/popper.min.js') }}"></script>
+
+<!-- Bootstrap -->
+<script src="{{ asset('/assets/js/core/bootstrap.min.js') }}"></script>
 
 <!-- Bootstrap Datepicker -->
 <script src="{{ asset('/assets/js/plugin/datepicker/bootstrap-datepicker.min.js') }}"></script>
@@ -88,6 +82,12 @@
 
 <!-- Bootstrap Notify -->
 <script src="{{ asset('/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+
+<!-- Datatables -->
+<script src="{{ asset('/assets/js/plugin/datatables/datatables.min.js') }}"></script>
+<script src="{{ asset('/assets/js/plugin/datatables/dataTables.buttons.min.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('/assets/js/plugin/datatables/buttons.dataTables.min.css') }}">
+<script src="{{ asset('/assets/js/renderers.js') }}"></script>
 
 <!-- Sweet Alert -->
 <script src="{{ asset('/assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
