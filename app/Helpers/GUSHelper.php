@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Helpers;
+namespace App\Helpers;
 
 use App\Models\GusApiRequest;
 use GusApi\GusApi;
 use Illuminate\Support\Facades\Auth;
 
-class GUS
+class GUSHelper
 {
     public static function find($nip)
     {

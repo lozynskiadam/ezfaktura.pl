@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Helpers\TemplateHelper;
+use App\Helpers\TemplateHelper;
 use InvoiceGenerator\Invoice AS InvoiceGenerator;
 use InvoiceGenerator\InvoiceException;
 

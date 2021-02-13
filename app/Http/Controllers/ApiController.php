@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Helpers\ApiHelper;
-use App\Models\User;
+use App\Helpers\ApiHelper;
 use Illuminate\Support\Facades\Auth;
 
 class ApiController extends Controller

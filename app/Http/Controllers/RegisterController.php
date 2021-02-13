@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Helpers\ApiHelper;
-use App\Http\Helpers\GUS;
+use App\Helpers\ApiHelper;
+use App\Helpers\GUSHelper;
 use App\Http\Requests\RegisterRequest;
 use App\Models\Notification;
 use App\Models\User;
@@ -31,7 +31,7 @@ class RegisterController extends Controller
 
         Auth::attempt($request->only('email', 'password'));
 
-        if ($report = GUS::find($request->get('nip'))) {
+        if ($report = GUSHelper::find($request->get('nip'))) {
             $user->name = $report->getName();
             $user->address = $report->getStreet() . ' ' . $report->getPropertyNumber() . '/' . $report->getApartmentNumber();
             $user->postcode = $report->getZipCode();
