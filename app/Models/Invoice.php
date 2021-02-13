@@ -46,6 +46,8 @@ class Invoice extends Model
         'annotation',
         'additional',
     ];
+    
+    protected $with = ['signature', 'invoice_type'];
 
     public function user()
     {

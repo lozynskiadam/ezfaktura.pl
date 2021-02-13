@@ -22,6 +22,8 @@ class LoginController extends Controller
             return redirect()->route('home');
         }
 
-        return redirect()->route('login')->withErrors((new MessageBag())->add('LoginError', 'Email or password is incorrect'))->withInput();
+        return redirect()->route('login')
+            ->withErrors((new MessageBag())->add('LoginError', 'Email or password is incorrect'))
+            ->withInput();
     }
 }

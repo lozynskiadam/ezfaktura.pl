@@ -96,8 +96,9 @@ class InvoiceController extends Controller
         $invoice->file_path = $output;
         $invoice->fill((array)$generator);
         $invoice->save();
+        $invoice->load(['invoice_type']);
 
-        return response()->json(['row' => Invoice::where('id', $invoice->id)->with('invoice_type')->firstOrFail()]);
+        return response()->json(['row' => $invoice]);
     }
 
     public function download(DownloadInvoiceRequest $request, Invoice $invoice)

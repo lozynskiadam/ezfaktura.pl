@@ -46,12 +46,12 @@ class SignatureController extends Controller
         $signature = new Signature();
         $signature->user_id = Auth::id();
         $signature->fill($request->validated());
-        $signature->mode = $request->input('mode');
         $signature->save();
 
-        $signature->invoice_types()->attach($request->get('invoice_types'));
+        $signature->invoice_types()->sync($request->get('invoice_types'));
+        $signature->load(['invoice_types']);
 
-        return ['row' => Signature::where('id', $signature->id)->with('invoice_types')->firstOrFail()];
+        return ['row' => $signature];
     }
 
     public function edit(EditDeleteSignatureRequest $request, Signature $signature)
@@ -64,13 +64,11 @@ class SignatureController extends Controller
 
     public function update(StoreUpdateSignatureRequest $request, Signature $signature)
     {
-        $signature->fill($request->validated());
-        $signature->mode = $request->input('mode');
-        $signature->save();
-
+        $signature->fill($request->validated())->save();
         $signature->invoice_types()->sync($request->get('invoice_types'));
+        $signature->load(['invoice_types']);
 
-        return ['row' => Signature::where('id', $signature->id)->with('invoice_types')->firstOrFail()];
+        return ['row' => $signature];
     }
 
     public function destroy(EditDeleteSignatureRequest $request, Signature $signature)

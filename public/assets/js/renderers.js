@@ -2,17 +2,10 @@ const Renderers = {
 
   invoice_type: function(data, type, row, meta) {
     let html = [];
-    if(row.invoice_type) {
+    for(const invoice_type of row.invoice_types || []) {
       html.push('<span class="font-weight-bold px-1" style="white-space: nowrap;">');
-      html.push('<i class="far fa-file-pdf"></i> ' + row.invoice_type.initials);
+      html.push('<i class="far fa-file-pdf"></i> ' + invoice_type.initials);
       html.push('</span>');
-    }
-    if(row.invoice_types) {
-      for(const invoice_type of row.invoice_types) {
-        html.push('<span class="font-weight-bold px-1" style="white-space: nowrap;">');
-        html.push('<i class="far fa-file-pdf"></i> ' + invoice_type.initials);
-        html.push('</span>');
-      }
     }
     return html.join('\r\n');
   },

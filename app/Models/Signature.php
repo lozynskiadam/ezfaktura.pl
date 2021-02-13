@@ -16,6 +16,8 @@ class Signature extends Model
       'description',
     ];
 
+    protected $with = ['invoice_types'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
