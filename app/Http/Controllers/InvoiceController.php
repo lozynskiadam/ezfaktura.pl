@@ -44,6 +44,7 @@ class InvoiceController extends Controller
     {
         return view('pages.invoices.create', [
             'user' => Auth::user(),
+            'signatures' => Auth::user()->signatures()->get(),
             'issue_date' => date('Y-m-d'),
             'sale_date' => date('Y-m-d'),
             'delivery_date' => date('Y-m-d'),
@@ -91,10 +92,11 @@ class InvoiceController extends Controller
         $generator->pdf(['output' => base_path($output)]);
 
         $invoice = new Invoice();
+        $invoice->fill((array)$generator);
         $invoice->user_id = $user->id;
+        $invoice->signature_id = $request->get('signature_id');
         $invoice->invoice_type_id = 1;
         $invoice->file_path = $output;
-        $invoice->fill((array)$generator);
         $invoice->save();
         $invoice->load(['invoice_type']);
 

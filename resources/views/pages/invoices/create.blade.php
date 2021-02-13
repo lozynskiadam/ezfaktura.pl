@@ -13,8 +13,10 @@
             <label>{{ __('Sygnatura') }}</label>
           </td>
           <td>
-            <select class="form-control" name="signature">
-              <option value="default">domyślna</option>
+            <select class="form-control" name="signature_id">
+              @foreach($signatures as $signature)
+                <option value="{{ $signature->id }}">{{ $signature->name }}</option>
+              @endforeach
             </select>
           </td>
         </tr>

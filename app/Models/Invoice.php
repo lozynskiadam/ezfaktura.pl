@@ -47,7 +47,7 @@ class Invoice extends Model
         'additional',
     ];
     
-    protected $with = ['signature', 'invoice_type'];
+    protected $with = ['invoice_type'];
 
     public function user()
     {
