@@ -10,7 +10,7 @@ let Pages_Profile = {
   onUploadLogoClick: function() {
     let file = document.createElement("input");
     file.type = "file";
-    file.accept = "image/x-png";
+    file.accept = "image/x-png,image/jpeg";
     file.addEventListener('change', function () {
       let fd = new FormData();
       let files = file.files;

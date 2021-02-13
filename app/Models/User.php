@@ -18,12 +18,12 @@ class User extends Authenticatable
         'postcode',
         'city',
         'address',
-        'api_key',
         'logo',
     ];
 
     protected $hidden = [
         'password',
+        'api_key',
         'remember_token',
     ];
 
