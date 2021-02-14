@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\DataTable;
+use App\Classes\DataTables\InvoicesTableBuilder;
 use App\Http\Requests\DownloadInvoiceRequest;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Models\Contractor;
@@ -14,29 +14,10 @@ use InvoiceGenerator\InvoiceException;
 
 class InvoiceController extends Controller
 {
-    public function index(DataTable $dataTable)
+    public function index(InvoicesTableBuilder $dataTable)
     {
-        $dataTable->columns = [
-            ['data' => 'invoice_type', 'title' => __('Typ'), 'width' => 60, 'className' => 'text-center', 'render' => 'Renderers.invoice_type'],
-            ['data' => 'issue_date', 'title' => __('Data wystawienia'), 'width' => 130, 'className' => 'text-center'],
-            ['data' => 'signature', 'title' => __('Sygnatura')],
-            ['data' => 'buyer', 'title' => __('Kontrahent'), 'render' => 'Renderers.contractor'],
-            ['data' => 'buyer', 'title' => __('NIP'), 'render' => 'Renderers.tax_id'],
-            ['data' => 'net_total', 'title' => __('Netto'), 'render' => 'Renderers.currency', 'className' => 'text-right', 'type' => 'currency'],
-            ['data' => 'gross_total', 'title' => __('Brutto'), 'render' => 'Renderers.currency', 'className' => 'text-right', 'type' => 'currency'],
-        ];
-        $dataTable->buttons = [
-            [
-                'text' => '<i class="fa fa-plus"></i> ' . __('Wystaw'),
-                'action' => 'Pages_Invoices.onAddClick',
-                'className' => 'btn btn-primary btn-labeled'
-            ]
-        ];
-        $dataTable->createdRow = 'Pages_Invoices.onRowCreate';
-        $dataTable->data = Auth::user()->invoices()->with('invoice_type')->get();
-
         return view('pages.invoices.index', [
-            'dataTable' => $dataTable
+            'dataTable' => $dataTable->make()
         ]);
     }
 

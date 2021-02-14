@@ -2,18 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\DataTable;
+use App\Classes\DataTables\ReportsTableBuilder;
 
 class ReportController extends Controller
 {
-    public function index(DataTable $dataTable)
+    public function index(ReportsTableBuilder $dataTable)
     {
-        $dataTable->columns = [
-            ['data' => 'name', 'title' => __('Nazwa')],
-        ];
-
         return view('pages.reports.index', [
-            'dataTable' => $dataTable
+            'dataTable' => $dataTable->make()
         ]);
     }
 }
