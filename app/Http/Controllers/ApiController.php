@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\ApiHelper;
+use App\Classes\ApiKey;
 use Illuminate\Support\Facades\Auth;
 
 class ApiController extends Controller
@@ -17,7 +17,7 @@ class ApiController extends Controller
     public function reset_key()
     {
         $user = Auth::user();
-        $user->api_key = ApiHelper::generateKey();
+        $user->api_key = ApiKey::generate();
         $user->save();
 
         return response()->json(['key' => $user->api_key]);

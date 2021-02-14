@@ -35,7 +35,7 @@ class SignatureController extends Controller
         $signature->invoice_types()->sync($request->get('invoice_types'));
         $signature->load(['invoice_types']);
 
-        return ['row' => $signature];
+        return response()->json(['row' => $signature]);
     }
 
     public function edit(EditDeleteSignatureRequest $request, Signature $signature)
@@ -52,13 +52,14 @@ class SignatureController extends Controller
         $signature->invoice_types()->sync($request->get('invoice_types'));
         $signature->load(['invoice_types']);
 
-        return ['row' => $signature];
+        return response()->json(['row' => $signature]);
     }
 
     public function destroy(EditDeleteSignatureRequest $request, Signature $signature)
     {
         $signature->delete();
-        return true;
+
+        return response()->json(['success' => true]);
     }
 
 }

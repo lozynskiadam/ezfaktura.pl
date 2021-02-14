@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Classes;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class ApiHelper
+class ApiKey
 {
-    public static function generateKey()
+    public static function generate()
     {
         while (true) {
             $key = [];

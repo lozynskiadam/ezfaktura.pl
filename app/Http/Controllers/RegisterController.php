@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\ApiHelper;
+use App\Classes\ApiKey;
 use App\Helpers\GUSHelper;
 use App\Http\Requests\RegisterRequest;
 use App\Models\Notification;
@@ -26,7 +26,7 @@ class RegisterController extends Controller
         $user->nip = $request->get('nip');
         $user->email = $request->get('email');
         $user->password = Hash::make($request->get('password'));
-        $user->api_key = ApiHelper::generateKey();
+        $user->api_key = ApiKey::generate();
         $user->save();
 
         Auth::attempt($request->only('email', 'password'));
