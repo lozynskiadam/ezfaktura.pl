@@ -20,7 +20,7 @@ class SignatureController extends Controller
 
     public function create()
     {
-        return view('pages.signatures.edit', [
+        return view('pages.signatures.dialogs.edit', [
             'invoice_types' => InvoiceType::all()
         ]);
     }
@@ -40,7 +40,7 @@ class SignatureController extends Controller
 
     public function edit(EditDeleteSignatureRequest $request, Signature $signature)
     {
-        return view('pages.signatures.edit', [
+        return view('pages.signatures.dialogs.edit', [
             'signature' => $signature,
             'invoice_types' => InvoiceType::all()
         ]);

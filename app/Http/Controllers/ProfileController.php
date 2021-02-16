@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\DeleteProfileRequest;
 use App\Http\Requests\UpdateLogoRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use Illuminate\Support\Facades\Auth;
@@ -53,5 +54,12 @@ class ProfileController extends Controller
         $user->save();
 
         return response()->json(['logo' => $user->logo]);
+    }
+
+    public function delete_profile(DeleteProfileRequest $request)
+    {
+        Auth::user()->delete();
+
+        return response()->json(['success' => true]);
     }
 }

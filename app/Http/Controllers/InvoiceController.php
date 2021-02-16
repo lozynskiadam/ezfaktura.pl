@@ -23,7 +23,7 @@ class InvoiceController extends Controller
 
     public function create()
     {
-        return view('pages.invoices.create', [
+        return view('pages.invoices.dialogs.create', [
             'user' => Auth::user(),
             'signatures' => Auth::user()->signatures()->get(),
             'issue_date' => date('Y-m-d'),

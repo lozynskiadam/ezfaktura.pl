@@ -35,29 +35,8 @@ let Pages_Profile = {
   onChangePasswordClick: function () {
     dialog({
       title: 'Zmień hasło',
-      message: function() {
-        let html = [];
-        html.push('<form>');
-        html.push('<div class="form-group row">');
-        html.push('  <label for="current_password" class="col-form-label col-md-2">Aktualne hasło</label>');
-        html.push('  <div class="col-md-10">');
-        html.push('    <input type="password" id="current_password" class="form-control" name="current_password"/>');
-        html.push('  </div>');
-        html.push('</div>');
-        html.push('<div class="form-group row">');
-        html.push('  <label for="new_password" class="col-form-label col-md-2">Nowe hasło</label>');
-        html.push('  <div class="col-md-10">');
-        html.push('    <input type="password" id="new_password" class="form-control" name="new_password"/>');
-        html.push('  </div>');
-        html.push('</div>');
-        html.push('<div class="form-group row">');
-        html.push('  <label for="new_password_confirmation" class="col-form-label col-md-2">Powtórz hasło</label>');
-        html.push('  <div class="col-md-10">');
-        html.push('    <input type="password" id="new_password_confirmation" class="form-control" name="new_password_confirmation"/>');
-        html.push('  </div>');
-        html.push('</div>');
-        html.push('</form>');
-        return html.join('\r\n');
+      load: {
+        url: "/profile/changepassword"
       },
       save: {
         url: "/profile/changepassword",
@@ -101,8 +80,37 @@ let Pages_Profile = {
   onDeleteAccountClick: function () {
     dialog({
       title: 'Usuń konto',
+      message: function() {
+        let html = [];
+        html.push('<form>');
+        html.push('<div class="form-group row">');
+        html.push('  <label for="current_password" class="col-form-label col-md-2">Hasło</label>');
+        html.push('  <div class="col-md-10">');
+        html.push('    <input type="password" id="current_password" class="form-control" name="current_password"/>');
+        html.push('  </div>');
+        html.push('</div>');
+        html.push('</form>');
+        return html.join('\r\n');
+      },
       class: 'bg-danger',
-      message: '...'
+      save: {
+        url: "/profile/delete",
+        callback: function() {
+          swal("Twoje konto zostało usunięte!", 'Za chwilę zostaniesz przekierowany na stronę logowania.', {
+            icon: "success",
+            buttons: {},
+          }).then(function(){
+            window.location.href = "/";
+          });
+          setTimeout(function(){
+            window.location.href = "/";
+          }, 5000);
+        }
+      },
+      buttons: [
+        { label: 'Anuluj', class: 'btn btn-light act-close' },
+        { label: 'Usuń', class: 'btn btn-danger act-save' }
+      ],
     });
   },
 

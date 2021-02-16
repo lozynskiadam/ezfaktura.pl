@@ -14,5 +14,7 @@ interface DataTableBuilderInterface
 
     public function setCreatedRowCallback(): ?string;
 
+    public function setLanguage(): array;
+
     public function make(): DataTable;
 }
