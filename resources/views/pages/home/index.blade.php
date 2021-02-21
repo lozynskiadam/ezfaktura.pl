@@ -52,9 +52,6 @@
             <a href="#features" class="nav-link">{{ __('Możliwości') }}</a>
           </li>
           <li class="nav-item">
-            <a href="#media" class="nav-link">{{ __('Media') }}</a>
-          </li>
-          <li class="nav-item">
             <a href="#project" class="nav-link">{{ __('Projekt') }}</a>
           </li>
           <li class="nav-item">
@@ -82,21 +79,17 @@
           </div>
         </div>
         <div class="col-lg-6 d-none d-lg-block">
-          <img src="/assets/img/screen.png"/>
+          <img src="/assets/img/screen.png" style="user-select: none;"/>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="features" class="section-dark sep-dl">
+<div id="features">
+<section class="section-dark sep-dl">
   <div class="container">
-    <div class="row md-m-25px-b m-45px-b justify-content-center text-center">
-      <div class="col-lg-8">
-        <h3 class="h1 after-primary underline pb-3 mb-3">{{ __('Możliwości') }}</h3>
-      </div>
-    </div>
-    <div class="row my-5">
+    <div class="row">
       <div class="col-sm-4">
         <div class="feature feature-1 text-center">
           <i class="fas fa-university text-secondary m-3"></i>
@@ -147,25 +140,63 @@
   </div>
 </section>
 
-<section id="media" class="section sep-ld">
+<section class="section sep-ld">
   <div class="container">
-    <div class="row section-heading justify-content-center text-center">
-      <div class="col-lg-8 col-xl-6">
-        <h3 class="h1 after-primary underline pb-3 mb-3">{{ __('Media') }}</h3>
+
+    <div class="row">
+      <div class="col-md-6 pt-1 text-center">
+        <img src="{{ asset('assets/img/gif-1.gif') }}" style="max-width: 100%; pointer-events: none; user-select: none;"/>
+      </div>
+      <div class="col-md-6">
+        <h2 class="font-w-700 dark-color mb-1">{{ __('Personalizuj szablony') }}<span class="text-primary">!</span></h2>
+
+        <table class="table">
+          <tr>
+            <td class="border-0 px-0 py-3" style="width: 35px;">
+              <i class="fa fa-angle-double-right fa-2x text-primary pt-1"></i>
+            </td>
+            <td class="border-0 py-3">
+              <strong>{{ __('Design') }}</strong><br/>
+              {{ __('Wybieraj spośród wielu predefiniowanych skórek.') }}
+            </td>
+          </tr>
+          <tr>
+            <td class="px-0 py-3" style="width: 35px;">
+              <i class="fa fa-angle-double-right fa-2x text-primary pt-1"></i>
+            </td>
+            <td class="py-3">
+              <strong>{{ __('Kolorystyka') }}</strong><br/>
+              {{ __('Zdefiniuj paletę kolorów, które zostaną użyte na Twoim szablonie.') }}
+            </td>
+          </tr>
+          <tr>
+            <td class="px-0 py-3" style="width: 35px;">
+              <i class="fa fa-angle-double-right fa-2x text-primary pt-1"></i>
+            </td>
+            <td class="py-3">
+              <strong>{{ __('Logo') }}</strong><br/>
+              {{ __('Dodaj logo swojej firmy, które pokaże się na wystawionych fakturach.') }}
+            </td>
+          </tr>
+          <tr>
+            <td class="px-0 py-3" style="width: 35px;">
+              <i class="fa fa-angle-double-right fa-2x text-primary pt-1"></i>
+            </td>
+            <td class="py-3">
+              <strong>{{ __('Pozycje') }}</strong><br/>
+              {{ __('Wybierz interesujące Cie kolumny i ustaw je w dogodnej dla siebie kolejności.') }}
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
+
   </div>
 </section>
+</div>
 
 <section id="project" class="section-dark">
   <div class="container">
-    <div class="row section-heading justify-content-center text-center">
-      <div class="col-lg-8 col-xl-6">
-        <h3 class="h1 after-primary underline pb-3 mb-3">{{ __('Projekt') }}</h3>
-        <div
-          class="lead">{{ __('ezFaktura to jednoosobowa i niekomercyjna aplikacja utworzona wyłącznie w celach pokazowych. Mimo to wciąż jest w pełni funkcjonalnym produktem zawierającym wszystkie wyżej wymienione moduły.') }}</div>
-      </div>
-    </div>
 
     <div class="row">
       <div class="col-md-12 offset-lg-4 col-lg-4 my-5">
@@ -173,17 +204,19 @@
           <div class="avatar">
             <img src="{{ asset('assets/img/logo-default.png') }}"/>
           </div>
-          <div class="mx-2 mx-xl-3 shadow rounded-3 position-relative mt-n4 bg-white p-4 pt-6 mx-4 text-center">
+          <div class="shadow rounded-3 position-relative bg-white  text-center p-4 pt-6 mt-n4">
             <h6 class="font-w-700 dark-color mb-1" style="font-size: 1.2rem;">Adam Łożyński</h6>
             <small>{{ __('Developer') }}</small>
             <div class="pt-2">
-              <a class="icon icon-sm icon-primary rounded-circle me-1" href="https://facebook.com/nemnes"><i
-                  class="fab fa-facebook-f"></i></a>
-              <a class="icon icon-sm icon-primary rounded-circle me-1"
-                 href="https://www.linkedin.com/in/adam-%C5%82o%C5%BCy%C5%84ski-6336361b8/"><i
-                  class="fab fa-linkedin-in"></i></a>
-              <a class="icon icon-sm icon-primary rounded-circle me-1" href="https://github.com/lozynskiadam"><i
-                  class="fab fa-github"></i></a>
+              <a class="icon icon-sm icon-primary rounded-circle me-1" href="https://facebook.com/nemnes">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a class="icon icon-sm icon-primary rounded-circle me-1" href="https://www.linkedin.com/in/adam-%C5%82o%C5%BCy%C5%84ski-6336361b8/">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a class="icon icon-sm icon-primary rounded-circle me-1" href="https://github.com/lozynskiadam">
+                <i class="fab fa-github"></i>
+              </a>
             </div>
           </div>
         </div>
