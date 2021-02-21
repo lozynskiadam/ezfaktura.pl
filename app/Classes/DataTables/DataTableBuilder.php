@@ -2,65 +2,59 @@
 
 namespace App\Classes\DataTables;
 
-abstract class DataTableBuilder implements DataTableBuilderInterface
+class DataTableBuilder implements DataTableBuilderInterface
 {
-    public function setDom(): ?string
+    protected $dataTable;
+
+    public function __construct()
     {
-        return 'Bfrt<"row"<"col-md-6"l><"col-md-6"p>>';
+        $this->dataTable = new DataTable();
     }
 
-    public function setColumns(): array
+    public function setDom(string $dom): DataTableBuilderInterface
     {
-        return [];
+        $this->dataTable->dom = $dom;
+        return $this;
     }
 
-    public function setButtons(): array
+    public function setColumns(array $columns): DataTableBuilderInterface
     {
-        return [];
+        $this->dataTable->columns = $columns;
+        return $this;
     }
 
-    public function setData(): array
+    public function setButtons(array $buttons): DataTableBuilderInterface
     {
-        return [];
+        $this->dataTable->buttons = $buttons;
+        return $this;
     }
 
-    public function setDrawCallback(): ?string
+    public function setData(array $data): DataTableBuilderInterface
     {
-        return null;
+        $this->dataTable->data = $data;
+        return $this;
     }
 
-    public function setCreatedRowCallback(): ?string
+    public function setDrawCallback(string $callback): DataTableBuilderInterface
     {
-        return null;
+        $this->dataTable->drawCallback = $callback;
+        return $this;
     }
 
-    public function setLanguage(): array
+    public function setCreatedRowCallback(string $callback): DataTableBuilderInterface
     {
-        $language = [];
-        $language['emptyTable'] = __("Brak danych w tabeli");
-        $language['search'] = __("Szukaj:");
-        $language['info'] = __("_START_ - _END_ z _TOTAL_ wyników");
-        $language['infoEmpty'] = __("0 - 0 z 0 wyników");
-        $language['infoFiltered'] = "";
-        $language['zeroRecords'] = __("Nie znaleziono pasujących wyników");
-        $language['lengthMenu'] = __("_MENU_ wieszy na stronie");
-        $language['paginate']['first'] = __("Pierwsza");
-        $language['paginate']['last'] = __("Ostatnia");
-        $language['paginate']['next'] = __("Następna");
-        $language['paginate']['previous'] = __("Poprzednia");
-        return $language;
+        $this->dataTable->createdRow = $callback;
+        return $this;
+    }
+
+    public function setLanguage(array $language): DataTableBuilderInterface
+    {
+        $this->dataTable->language = $language;
+        return $this;
     }
 
     public function make(): DataTable
     {
-        $dataTable = new DataTable();
-        $dataTable->dom = $this->setDom();
-        $dataTable->columns = $this->setColumns();
-        $dataTable->buttons = $this->setButtons();
-        $dataTable->data = $this->setData();
-        $dataTable->drawCallback = $this->setDrawCallback();
-        $dataTable->createdRow = $this->setCreatedRowCallback();
-        $dataTable->language = $this->setLanguage();
-        return $dataTable;
+        return $this->dataTable;
     }
 }

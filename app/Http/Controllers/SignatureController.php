@@ -14,7 +14,9 @@ class SignatureController extends Controller
     public function index(SignaturesTableBuilder $dataTable)
     {
         return view('pages.signatures.index', [
-            'dataTable' => $dataTable->make()
+            'dataTable' => $dataTable
+                ->setData(Auth::user()->signatures()->with('invoice_types')->get()->toArray())
+                ->make()
         ]);
     }
 

@@ -17,7 +17,9 @@ class InvoiceController extends Controller
     public function index(InvoicesTableBuilder $dataTable)
     {
         return view('pages.invoices.index', [
-            'dataTable' => $dataTable->make()
+            'dataTable' => $dataTable
+                ->setData(Auth::user()->invoices()->with('invoice_type')->get()->toArray())
+                ->make()
         ]);
     }
 

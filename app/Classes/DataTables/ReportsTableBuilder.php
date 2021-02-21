@@ -4,10 +4,12 @@ namespace App\Classes\DataTables;
 
 class ReportsTableBuilder extends DataTableBuilder
 {
-    public function setColumns(): array
+    public function __construct()
     {
-        return [
+        parent::__construct();
+
+        $this->setColumns([
             ['data' => 'name', 'title' => __('Nazwa')],
-        ];
+        ]);
     }
 }

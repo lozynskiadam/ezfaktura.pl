@@ -4,17 +4,19 @@ namespace App\Classes\DataTables;
 
 interface DataTableBuilderInterface
 {
-    public function setColumns(): array;
+    public function setDom(string $dom): DataTableBuilderInterface;
 
-    public function setButtons(): array;
+    public function setColumns(array $columns): DataTableBuilderInterface;
 
-    public function setData(): array;
+    public function setButtons(array $buttons): DataTableBuilderInterface;
 
-    public function setDrawCallback(): ?string;
+    public function setData(array $data): DataTableBuilderInterface;
 
-    public function setCreatedRowCallback(): ?string;
+    public function setDrawCallback(string $callback): DataTableBuilderInterface;
 
-    public function setLanguage(): array;
+    public function setCreatedRowCallback(string $callback): DataTableBuilderInterface;
+
+    public function setLanguage(array $language): DataTableBuilderInterface;
 
     public function make(): DataTable;
 }
