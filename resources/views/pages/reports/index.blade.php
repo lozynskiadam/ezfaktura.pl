@@ -1,5 +1,10 @@
 @extends('layouts.master')
 
+@section('scripts')
+  @parent
+  <script src="/assets/js/pages/reports.js"></script>
+@stop
+
 @section('content')
   <x-header :title="__('Raporty')" :description="__('Lista możliwych do wygenerowania raportów')"/>
 

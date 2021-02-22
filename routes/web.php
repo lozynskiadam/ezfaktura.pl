@@ -13,6 +13,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\TemplateController;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +57,8 @@ Route::group(['domain' => env('APP_PANEL_URL')], function () {
         Route::resource('invoices', InvoiceController::class, ['except' => ['edit', 'update']]);
         Route::get('/invoices/{invoice}/download', [InvoiceController::class, 'download'])->name('invoice.download');
         Route::resource('signatures', SignatureController::class, ['except' => ['show']]);
-        Route::resource('reports', ReportController::class, ['only' => ['index']]);
+        Route::get('/reports', [ReportController::class, 'index']);
+        Route::get('/reports/{report}/generate', [ReportController::class, 'generate']);
         Route::get('/template', [TemplateController::class, 'index'])->name('template.index');
         Route::get('/template/preview', [TemplateController::class, 'preview'])->name('template.preview');
         Route::get('/api', [ApiController::class, 'index'])->name('api');
