@@ -14,16 +14,16 @@ class SearchController extends Controller
         return view('pages.search.index', [
             'invoices' => Auth::user()
                 ->invoices()
-                ->where('signature','LIKE', $q)
-                ->orWhere('buyer','LIKE', $q)
-                ->orWhere('positions','LIKE', $q)
+                ->whereRaw('LOWER(`signature`) LIKE LOWER(?) ', $q)
+                ->orWhereRaw('LOWER(`buyer`) LIKE LOWER(?) ', $q)
+                ->orWhereRaw('LOWER(`positions`) LIKE LOWER(?) ', $q)
                 ->with('invoice_type')
                 ->get(),
             'signatures' => Auth::user()
                 ->signatures()
-                ->where('name','LIKE', $q)
-                ->orWhere('syntax','LIKE', $q)
-                ->orWhere('description','LIKE', $q)
+                ->whereRaw('LOWER(`name`) LIKE LOWER(?) ', $q)
+                ->orWhereRaw('LOWER(`syntax`) LIKE LOWER(?) ', $q)
+                ->orWhereRaw('LOWER(`description`) LIKE LOWER(?) ', $q)
                 ->get()
         ]);
     }

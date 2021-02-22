@@ -13,12 +13,12 @@
         <a class="nav-link active show" data-toggle="tab" href="#tab-key">
           <i class="fa fa-key mr-1"></i> {{ __('Klucz API') }}
         </a>
-        <a class="nav-link" data-toggle="tab" href="#tab-docs">
-          <i class="fa fa-book mr-1"></i> {{ __('Dokumentacja') }}
-        </a>
-        <a class="nav-link" data-toggle="tab" href="#tab-logs">
-          <i class="fa fa-history mr-1"></i> {{ __('Logi') }}
-        </a>
+{{--        <a class="nav-link" data-toggle="tab" href="#tab-docs">--}}
+{{--          <i class="fa fa-book mr-1"></i> {{ __('Dokumentacja') }}--}}
+{{--        </a>--}}
+{{--        <a class="nav-link" data-toggle="tab" href="#tab-logs">--}}
+{{--          <i class="fa fa-history mr-1"></i> {{ __('Logi') }}--}}
+{{--        </a>--}}
       </div>
     </div>
   </div>
