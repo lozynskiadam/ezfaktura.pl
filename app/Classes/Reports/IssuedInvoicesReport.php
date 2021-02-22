@@ -12,34 +12,33 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
-use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class IssuedInvoicesPeriodicReport implements FromCollection, WithTitle, WithHeadings, ShouldAutoSize, WithMapping, WithEvents, WithColumnFormatting
+class IssuedInvoicesReport implements FromCollection, WithTitle, WithMapping, WithHeadings, ShouldAutoSize, WithEvents, WithColumnFormatting
 {
     public function title(): string
     {
-        return 'Raport';
+        return __('Raport wystawionych faktur');
     }
 
     public function headings(): array
     {
         return [
-            'Data Wystawienia',
-            'Wartość Netto',
-            'Wartość Brutto',
-            'Waluta',
-            'Metoda Płatności',
+            __('Data Wystawienia'),
+            __('Kontrahent'),
+            __('Wartość Netto'),
+            __('Wartość Brutto'),
+            __('Metoda Płatności'),
         ];
     }
 
     public function collection()
     {
-        return Auth::user()->invoices()->get([
+        return Auth::user()->invoices()->orderBy('issue_date')->get([
             'issue_date',
+            'buyer',
             'net_total',
             'gross_total',
-            'currency',
             'payment_method',
         ]);
     }
@@ -48,9 +47,9 @@ class IssuedInvoicesPeriodicReport implements FromCollection, WithTitle, WithHea
     {
         return [
             $row->issue_date,
+            $row->buyer['name'],
             $row->net_total,
             $row->gross_total,
-            $row->currency,
             $row->payment_method,
         ];
     }
@@ -65,10 +64,6 @@ class IssuedInvoicesPeriodicReport implements FromCollection, WithTitle, WithHea
                         'bold' => true,
                         'color' => ['rgb' => '1269db']
                     ],
-//                    'fill' => [
-//                        'fillType' => Fill::FILL_SOLID,
-//                        'color' => ['rgb' => 'ffffff']
-//                    ],
                 ]);
                 $event->sheet->getStyle('A')->applyFromArray([
                     'alignment' => array(
@@ -81,7 +76,6 @@ class IssuedInvoicesPeriodicReport implements FromCollection, WithTitle, WithHea
                     )
                 ]);
             },
-
         ];
     }
 
