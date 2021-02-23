@@ -43,7 +43,7 @@
                 data: {
                     name: $('#contact-name', document).val(),
                     email: $('#contact-email', document).val(),
-                    message: $('#contact-message', document).val(),
+                    content: $('#contact-message', document).val(),
                 },
                 dataType: 'json',
                 success: function () {

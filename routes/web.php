@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\GUSController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -13,7 +14,6 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\TemplateController;
 use Illuminate\Support\Facades\Route;
-use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,18 +26,9 @@ use Maatwebsite\Excel\Facades\Excel;
 |
 */
 
-Route::get('/language/{locale}', function ($locale) {
-    session(['locale' => $locale]);
-    return redirect()->route('home');
-});
-
 Route::group(['domain' => env('APP_URL')], function () {
-    Route::any('/', function () {
-        return view('pages.home.index');
-    });
-    Route::post('/contact', function () {
-        return response()->json(true);
-    });
+    Route::any('/', [HomeController::class, 'index'])->name('home');
+    Route::post('/contact', [HomeController::class, 'contact']);
 });
 
 Route::group(['domain' => env('APP_PANEL_URL')], function () {

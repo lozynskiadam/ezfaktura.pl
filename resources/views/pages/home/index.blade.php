@@ -36,8 +36,8 @@
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <a class="navbar-brand" href="#home">
-        <img class="logo-dark" src="{{ asset('assets/img/logo-dark.png') }}" title="" alt="">
-        <img class="logo-light" src="{{ asset('assets/img/logo-light.png') }}" title="" alt="">
+        <img class="logo-color" src="{{ asset('assets/img/logo-color.png') }}" title="" alt="">
+        <img class="logo-white" src="{{ asset('assets/img/logo-white.png') }}" title="" alt="">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
               aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,20 +46,20 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav m-auto">
           <li class="nav-item">
-            <a href="#home" class="nav-link active">{{ __('Start') }}</a>
+            <a href="#home" class="nav-link active">{{ __('translations.home.menu.home') }}</a>
           </li>
           <li class="nav-item">
-            <a href="#features" class="nav-link">{{ __('Możliwości') }}</a>
+            <a href="#features" class="nav-link">{{ __('translations.home.menu.features') }}</a>
           </li>
           <li class="nav-item">
-            <a href="#project" class="nav-link">{{ __('Projekt') }}</a>
+            <a href="#project" class="nav-link">{{ __('translations.home.menu.project') }}</a>
           </li>
           <li class="nav-item">
-            <a href="#contact" class="nav-link">{{ __('Kontakt') }}</a>
+            <a href="#contact" class="nav-link">{{ __('translations.home.menu.contact') }}</a>
           </li>
         </ul>
         <div class="extra-menu d-none d-lg-block pl-4">
-          <a href="{{ env('APP_PANEL_URL') }}" class="btn btn-login">{{ __('Logowanie') }}</a>
+          <a href="{{ env('APP_PANEL_URL') }}" class="btn btn-login">{{ __('translations.home.menu.login') }}</a>
         </div>
       </div>
     </div>
@@ -71,11 +71,10 @@
     <div class="container position-relative">
       <div class="row min-vh-100 align-items-center py-10">
         <div class="col-lg-6 col-xl-5 col-sm-12 py-8 mr-auto">
-          <h1 class="display-4 text-white mb-3">{{ __('Już łatwiej się nie da...') }}</h1>
-          <p
-            class="lead text-white-50">{{ __('Załóż bezpłatne konto i przekonaj się o możliwościach naszej aplikacji już teraz!') }}</p>
+          <h1 class="display-4 text-white mb-3">{{ __('translations.home.start.header') }}</h1>
+          <p class="lead text-white-50">{{ __('translations.home.start.subheader') }}</p>
           <div class="pt-3">
-            <a class="btn btn-light btn-lg" href="{{ env('APP_PANEL_URL') }}">{{ __('Przejdź do aplikacji') }}</a>
+            <a class="btn btn-light btn-lg" href="{{ env('APP_PANEL_URL') }}">{{ __('translations.home.start.enter_application') }}</a>
           </div>
         </div>
         <div class="col-lg-6 d-none d-lg-block">
@@ -90,49 +89,46 @@
 <section class="section-dark sep-dl">
   <div class="container">
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-md-4 col-sm-6">
         <div class="feature feature-1 text-center">
           <i class="fas fa-university text-secondary m-3"></i>
-          <h5>{{ __('INTEGRACJA Z GUSEM') }}</h5>
-          <p>{{ __('Dzięki integracji z urzędem centralnym administracji rządowej aktualne dane kontrahentów pobierzesz automatycznie — wystarczy NIP.') }}</p>
+          <h5>{{ __('translations.home.features.gus.title') }}</h5>
+          <p>{{ __('translations.home.features.gus.description') }}</p>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-4 col-sm-6">
         <div class="feature feature-1 text-center">
           <i class="fa fa-file-invoice-dollar text-secondary m-3"></i>
-          <h5>{{ __('KONFIGUROWALNE SZABLONY') }}</h5>
-          <p>{{ __('Aplikacja wyposażona jest w moduł personalizacji szablonów faktur, dzięki czemu wystawiany dokument wyglądać będzie dokładnie tak jak chcesz.') }}</p>
+          <h5>{{ __('translations.home.features.templates.title') }}</h5>
+          <p>{{ __('translations.home.features.templates.description') }}</p>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-4 col-sm-6">
         <div class="feature feature-1 text-center">
           <i class="fa fa-chart-line text-secondary m-3"></i>
-          <h5>{{ __('SZCZEGÓŁOWE RAPORTY') }}</h5>
-          <p>{{ __('Aplikacja oferuje możliwość błyskawicznego wygenerowania szeregu różnych zestawień, podsumowań oraz raportów finansowych.') }}</p>
+          <h5>{{ __('translations.home.features.reports.title') }}</h5>
+          <p>{{ __('translations.home.features.reports.description') }}</p>
         </div>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-4">
+      <div class="col-md-4 col-sm-6">
         <div class="feature feature-1 text-center">
           <i class="fa fa-book-open text-secondary m-3"></i>
-          <h5>{{ __('BIAŁA KSIĘGA') }}</h5>
-          <p>{{ __('Integracja z białą księgą pozwala na automatyczną weryfikację rachunków bankowych oraz statusu VAT Twoich kontrahentów.') }}</p>
+          <h5>{{ __('translations.home.features.white_list.title') }}</h5>
+          <p>{{ __('translations.home.features.white_list.description') }}</p>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-4 col-sm-6">
         <div class="feature feature-1 text-center">
           <i class="fa fa-sliders-h text-secondary m-3"></i>
-          <h5>{{ __('PEŁNA PARAMETRYZACJA') }}</h5>
-          <p>{{ __('Aby doznania z użytkowania aplikacji były jak najlepsze zapewniamy szeroką gamę parametrów konfiguracyjnych i użytkowych.') }}</p>
+          <h5>{{ __('translations.home.features.parameters.title') }}</h5>
+          <p>{{ __('translations.home.features.parameters.description') }}</p>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-4 col-sm-6">
         <div class="feature feature-1 text-center">
           <i class="fa fa-mobile-alt text-secondary m-3"></i>
-          <h5>{{ __('DZIAŁA NA KAŻDYM URZĄDZENIU') }}</h5>
-          <p>{{ __('Naszą aplikację uruchomisz zarówno na komputerze stacjonarnym, jak i każdym urządzeniu obsługującym przeglądarkę internetową.') }}</p>
+          <h5>{{ __('translations.home.features.devices.title') }}</h5>
+          <p>{{ __('translations.home.features.devices.description') }}</p>
         </div>
       </div>
     </div>
@@ -148,7 +144,7 @@
         <img src="{{ asset('assets/img/gif-1.gif') }}" style="max-width: 100%; pointer-events: none; user-select: none;"/>
       </div>
       <div class="col-md-6">
-        <h2 class="font-w-700 dark-color mb-1">{{ __('Personalizuj szablony') }}<span class="text-primary">!</span></h2>
+        <h2 class="font-w-700 dark-color mb-1">{{ __('translations.home.templates.title') }}<span class="text-primary">!</span></h2>
 
         <table class="table">
           <tr>
@@ -156,8 +152,8 @@
               <i class="fa fa-angle-double-right fa-2x text-primary pt-1"></i>
             </td>
             <td class="border-0 py-3">
-              <strong>{{ __('Design') }}</strong><br/>
-              {{ __('Wybieraj spośród wielu predefiniowanych skórek.') }}
+              <strong>{{ __('translations.home.templates.design.title') }}</strong><br/>
+              {{ __('translations.home.templates.design.description') }}
             </td>
           </tr>
           <tr>
@@ -165,8 +161,8 @@
               <i class="fa fa-angle-double-right fa-2x text-primary pt-1"></i>
             </td>
             <td class="py-3">
-              <strong>{{ __('Kolorystyka') }}</strong><br/>
-              {{ __('Zdefiniuj paletę kolorów, które zostaną użyte na Twoim szablonie.') }}
+              <strong>{{ __('translations.home.templates.colors.title') }}</strong><br/>
+              {{ __('translations.home.templates.colors.description') }}
             </td>
           </tr>
           <tr>
@@ -174,8 +170,8 @@
               <i class="fa fa-angle-double-right fa-2x text-primary pt-1"></i>
             </td>
             <td class="py-3">
-              <strong>{{ __('Logo') }}</strong><br/>
-              {{ __('Dodaj logo swojej firmy, które pokaże się na wystawionych fakturach.') }}
+              <strong>{{ __('translations.home.templates.logo.title') }}</strong><br/>
+              {{ __('translations.home.templates.logo.description') }}
             </td>
           </tr>
           <tr>
@@ -183,8 +179,8 @@
               <i class="fa fa-angle-double-right fa-2x text-primary pt-1"></i>
             </td>
             <td class="py-3">
-              <strong>{{ __('Pozycje') }}</strong><br/>
-              {{ __('Wybierz interesujące Cie kolumny i ustaw je w dogodnej dla siebie kolejności.') }}
+              <strong>{{ __('translations.home.templates.positions.title') }}</strong><br/>
+              {{ __('translations.home.templates.positions.description') }}
             </td>
           </tr>
         </table>
@@ -206,7 +202,7 @@
           </div>
           <div class="shadow rounded-3 position-relative bg-white  text-center p-4 pt-6 mt-n4">
             <h6 class="font-w-700 dark-color mb-1" style="font-size: 1.2rem;">Adam Łożyński</h6>
-            <small>{{ __('Developer') }}</small>
+            <small>Developer</small>
             <div class="pt-2">
               <a class="icon icon-sm icon-primary rounded-circle me-1" href="https://facebook.com/nemnes">
                 <i class="fab fa-facebook-f"></i>
@@ -231,31 +227,31 @@
     <div class="row justify-content-center align-items-center">
 
       <div class="col-md-6">
-        <h3 class="h1 after-white underline pb-3 mb-3 text-white text-center">{{ __('Pytania?') }}</h3>
+        <h3 class="h1 after-white underline pb-3 mb-3 text-white text-center">{{ __('translations.home.contact.title') }}</h3>
         <div
-          class="lead text-white-50">{{ __('Skorzystaj z formularza kontaktowego i wyślij nam wiadomość. Odpowiedzi postaramy się udzielić najszybciej jak będzie to możliwe') }}</div>
+          class="lead text-white-50">{{ __('translations.home.contact.description') }}</div>
       </div>
       <div class="col-md-4">
 
         <div class="p-4">
           <form id="contact-form" action="" method="post">
             <div class="form-group mb-3">
-              <label for="contact-name">{{ __('IMIĘ LUB NAZWA FIRMY') }}</label>
+              <label for="contact-name">{{ __('translations.home.contact.form.name') }}</label>
               <input id="contact-name" type="text" name="name" class="form-control" required>
               <span class="invalid-feedback"></span>
             </div>
             <div class="form-group mb-3">
-              <label for="contact-email">{{ __('ADRES EMAIL') }}</label>
+              <label for="contact-email">{{ __('translations.home.contact.form.email') }}</label>
               <input id="contact-email" type="email" name="email" class="form-control" required>
               <span class="invalid-feedback"></span>
             </div>
             <div class="form-group mb-3">
-              <label for="message">{{ __('TWOJA WIADOMOŚĆ') }}</label>
-              <textarea id="contact-message" name="message" rows="4" class="form-control" required></textarea>
+              <label for="message">{{ __('translations.home.contact.form.message') }}</label>
+              <textarea id="contact-message" name="content" rows="4" class="form-control" required></textarea>
               <span class="invalid-feedback"></span>
             </div>
             <div class="form-action">
-              <button id="contact-submit" class="btn btn-primary" type="submit" name="send">{{ __('Wyślij wiadomość') }}</button>
+              <button id="contact-submit" class="btn btn-primary" type="submit" name="send">{{ __('translations.home.contact.form.send') }}</button>
             </div>
           </form>
         </div>
@@ -275,24 +271,24 @@
           </div>
         </div>
         <div class="col-lg-3 col-sm-6 my-3">
-          <h6>{{ __('Aplikacja') }}</h6>
+          <h6>{{ __('translations.home.footer.application') }}</h6>
           <ul class="list-unstyled">
-            <li><a href="#home">{{ __('Start') }}</a></li>
-            <li><a href="#features">{{ __('Możliwości') }}</a></li>
-            <li><a href="#project">{{ __('Projekt') }}</a></li>
-            <li><a href="#contact">{{ __('Kontakt') }}</a></li>
+            <li><a href="#home">{{ __('translations.home.menu.home') }}</a></li>
+            <li><a href="#features">{{ __('translations.home.menu.features') }}</a></li>
+            <li><a href="#project">{{ __('translations.home.menu.project') }}</a></li>
+            <li><a href="#contact">{{ __('translations.home.menu.contact') }}</a></li>
           </ul>
         </div>
         <div class="col-lg-3 col-sm-6 my-3">
-          <h6>{{ __('Użyteczne') }}</h6>
+          <h6>{{ __('translations.home.footer.useful') }}</h6>
           <ul class="list-unstyled">
-            <li><a href="#">{{ __('Warunki użytkowania') }}</a></li>
-            <li><a href="#">{{ __('Polityka prywatności') }}</a></li>
-            <li><a href="#">{{ __('Pliki cookie') }}</a></li>
+            <li><a href="#">{{ __('translations.home.footer.terms_of_use') }}</a></li>
+            <li><a href="#">{{ __('translations.home.footer.privacy_policy') }}</a></li>
+            <li><a href="#">{{ __('translations.home.footer.cookies') }}</a></li>
           </ul>
         </div>
         <div class="col-lg-3 col-sm-6 my-3">
-          <h6>{{ __('Kontakt') }}</h6>
+          <h6>{{ __('translations.home.footer.contact') }}</h6>
           <address>
             <p class="mb-2">
               <a class="text-secondary border-bottom border-secondary" href="mailto:support@ezfaktura.pl">support@ezfaktura.pl</a>

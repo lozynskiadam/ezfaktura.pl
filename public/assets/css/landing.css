@@ -14,15 +14,12 @@
     transition: all 0.2s;
 }
 
-.logo-dark, .logo-light {
+.logo-color, .logo-white {
     display: none;
 }
 
-.navbar-dark .logo-light {
-    display: block;
-}
-
-.navbar-light .logo-dark {
+.navbar-dark .logo-white,
+.navbar-light .logo-color {
     display: block;
 }
 
@@ -388,4 +385,9 @@ label {
     max-width: 100%;
     vertical-align: middle;
     background: #f1f6fd;
+}
+
+#contact-form label,
+.feature h5 {
+    text-transform: uppercase;
 }
