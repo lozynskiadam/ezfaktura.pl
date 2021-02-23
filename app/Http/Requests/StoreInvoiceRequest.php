@@ -40,7 +40,7 @@ class StoreInvoiceRequest extends FormRequest
             'positions.*.unit' => 'required|string|max:255',
             'positions.*.price' => ['required', 'numeric', 'gt:0', new MaxDecimalPlaces(2)],
             'positions.*.tax_rate' => 'required|numeric|integer',
-            'positions.*.discount' => 'numeric'
+            'positions.*.discount' => 'sometimes|numeric'
         ];
     }
 

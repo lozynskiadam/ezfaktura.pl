@@ -16,6 +16,8 @@ class InvoicesTableBuilder extends DataTableBuilder
             ['data' => 'buyer', 'title' => __('NIP'), 'render' => 'Renderers.tax_id'],
             ['data' => 'net_total', 'title' => __('Netto'), 'render' => 'Renderers.currency', 'className' => 'text-right', 'type' => 'currency'],
             ['data' => 'gross_total', 'title' => __('Brutto'), 'render' => 'Renderers.currency', 'className' => 'text-right', 'type' => 'currency'],
+            ['data' => 'is_paid', 'className' => 'text-center', 'render' => 'Renderers.is_paid'],
+            ['data' => 'is_sent', 'className' => 'text-center', 'render' => 'Renderers.is_sent'],
         ]);
         $this->setButtons([
             ['text' => '<i class="fa fa-plus"></i> ' . __('Wystaw'), 'action' => 'Pages_Invoices.onAddClick', 'className' => 'btn btn-primary btn-labeled']

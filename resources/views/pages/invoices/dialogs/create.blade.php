@@ -1,4 +1,12 @@
 <form>
+  @if(!count($signatures))
+    <div class="alert alert-warning">
+      <strong>{{ __('Uwaga!') }}</strong>
+      {{ __('Aktualnie nie masz dodanej żadnej sygnatury.') }}
+      <a href="{{ route('signatures.index') }}">{{ __('Dodaj sygnaturę') }}</a>
+    </div>
+  @endif
+
   <div class="row">
     <div class="col-md-6 pr-2">
       <table class="table dataTable dataTable-modal">

@@ -42,6 +42,8 @@ class CreateInvoicesTable extends Migration
             $table->string('gross_total_in_words');
             $table->text('annotation')->nullable();
             $table->json('additional')->nullable();
+            $table->boolean('is_paid')->default(0);
+            $table->boolean('is_sent')->default(0);
             $table->string('file_path', 200);
             $table->timestamps();
             $table->softDeletes();
