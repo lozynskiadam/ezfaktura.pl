@@ -18,17 +18,17 @@ class IssuedInvoicesReport implements FromCollection, WithTitle, WithMapping, Wi
 {
     public function title(): string
     {
-        return __('Raport wystawionych faktur');
+        return __('translations.reports.issued_invoices_report');
     }
 
     public function headings(): array
     {
         return [
-            __('Data Wystawienia'),
-            __('Kontrahent'),
-            __('Wartość Netto'),
-            __('Wartość Brutto'),
-            __('Metoda Płatności'),
+            __('translations.reports.issued_invoices_report.issue_date'),
+            __('translations.reports.issued_invoices_report.contractor'),
+            __('translations.reports.issued_invoices_report.net_amount'),
+            __('translations.reports.issued_invoices_report.gross_amount'),
+            __('translations.reports.issued_invoices_report.payment_method'),
         ];
     }
 

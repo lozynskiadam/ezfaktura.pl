@@ -117,6 +117,9 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
+    'max_decimal_places' => 'Up to :places decimal places.',
+    'current_password' => 'Invalid password.',
+    'belongs_to_user' => 'This object not exists.',
 
     /*
     |--------------------------------------------------------------------------
@@ -148,4 +151,12 @@ return [
 
     'attributes' => [],
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Specific Custom Language Lines
+    |--------------------------------------------------------------------------
+    */
+    'signature.name.regex' => 'ID must contain only lower case letters, numbers and dashes',
+    'signature.syntax.regex' => 'Field must contain {counter}',
 ];

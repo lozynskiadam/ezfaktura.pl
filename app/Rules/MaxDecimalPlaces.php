@@ -32,7 +32,7 @@ class MaxDecimalPlaces implements Rule
      */
     public function message()
     {
-        return __('Up to :places decimal places.', [':places' => $this->decimal_places]);
+        return __('validation.max_decimal_places', ['places' => $this->decimal_places]);
     }
 
 }

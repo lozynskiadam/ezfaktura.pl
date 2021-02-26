@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class TemplateHelper
@@ -9,10 +10,10 @@ class TemplateHelper
     public static function getGeneratorParams()
     {
         $user = Auth::user();
-        $params = [
+        return [
             'payment_due_date' => date('Y-m-d'),
-            'payment_method' => 'Przelew',
-            'signature' => 'FV/0/0/1',
+            'payment_method' => __('translations.templates.preview.payment_method'),
+            'signature' => 'FV/' .Carbon::now()->format('Y/m'). '/00001',
             'currency' => 'PLN',
             'seller' => [
                 'name' => $user->name,
@@ -22,16 +23,22 @@ class TemplateHelper
                 'tax_id' => $user->nip,
             ],
             'buyer' => [
-                'name' => __('Nazwa kontrahenta'),
-                'address' => __('Adres'),
-                'city' => __('Miasto'),
-                'zip_code' => '00-000',
-                'tax_id' => '0000000000',
+                'name' => __('translations.templates.preview.buyer.name'),
+                'address' => __('translations.templates.preview.buyer.address'),
+                'city' => __('translations.templates.preview.buyer.city'),
+                'zip_code' => __('translations.templates.preview.buyer.zip_code'),
+                'tax_id' => __('translations.templates.preview.buyer.tax_id'),
             ],
             'positions' => [
-                '1' => ['name' => __('Przykładowa usługa'), 'quantity' => 1, 'unit' => 'hour', 'price' => 1000.00, 'tax_rate' => 23, 'discount' => 0]
+                '1' => [
+                    'name' => __('translations.templates.preview.position.name'),
+                    'quantity' => 40,
+                    'unit' => __('translations.templates.preview.position.unit'),
+                    'price' => 100.00,
+                    'tax_rate' => 23,
+                    'discount' => 0
+                ]
             ]
         ];
-        return $params;
     }
 }

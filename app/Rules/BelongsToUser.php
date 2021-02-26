@@ -33,7 +33,7 @@ class BelongsToUser implements Rule
      */
     public function message()
     {
-        return __('This object not exists.');
+        return __('validation.belongs_to_user');
     }
 
 }

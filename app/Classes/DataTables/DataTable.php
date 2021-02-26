@@ -34,18 +34,18 @@ class DataTable
         $this->drawCallback = null;
         $this->createdRow = null;
         $this->language = [
-            'emptyTable' =>  __("Brak danych w tabeli"),
-            'search' =>  __("Szukaj:"),
-            'info' =>  __("_START_ - _END_ z _TOTAL_ wyników"),
-            'infoEmpty' =>  __("0 - 0 z 0 wyników"),
-            'infoFiltered' =>  "",
-            'zeroRecords' =>  __("Nie znaleziono pasujących wyników"),
-            'lengthMenu' =>  __("_MENU_ wieszy na stronie"),
+            'emptyTable' =>  __('translations.datatable.emptyTable'),
+            'search' =>  __('translations.datatable.search'),
+            'info' =>  __('translations.datatable.info'),
+            'infoEmpty' =>  __('translations.datatable.infoEmpty'),
+            'infoFiltered' => __('translations.datatable.infoFiltered'),
+            'zeroRecords' =>  __('translations.datatable.zeroRecords'),
+            'lengthMenu' =>  __('translations.datatable.lengthMenu'),
             'paginate' => [
-                'first' => __("Pierwsza"),
-                'last' => __("Ostatnia"),
-                'next' => __("Następna"),
-                'previous' => __("Poprzednia"),
+                'first' => __('translations.datatable.paginate.first'),
+                'last' => __('translations.datatable.paginate.last'),
+                'next' => __('translations.datatable.paginate.next'),
+                'previous' => __('translations.datatable.paginate.previous'),
             ]
         ];
     }

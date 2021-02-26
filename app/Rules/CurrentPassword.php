@@ -27,7 +27,7 @@ class CurrentPassword implements Rule
      */
     public function message()
     {
-        return __('Invalid password');
+        return __('validation.current_password');
     }
 
 }

@@ -15,37 +15,15 @@ let Pages_Invoices = {
         url: "/invoices/create",
         callback: function(dialogRef) {
           let modalBody = dialogRef.getModalBody();
-          $('[name="issue_date"], [name="sale_date"], [name="delivery_date"], [name="payment_due_date"]', modalBody).datepicker({
+          $('[name="issue_date"], [name="sale_date"], [name="payment_due_date"]', modalBody).datepicker({
             format: 'yyyy-mm-dd',
             autoclose: true,
             language: 'pl'
           });
-
-          let $defaultRow = $('.default-row', modalBody);
-          let rowIndex = 1;
-          let $row = $defaultRow.clone().removeClass('default-row');
-          $row.strtr({
-            '%NAME%': 'positions[' +rowIndex+ ']',
-            '%BTN_CLASS%': 'act-add',
-            '%BTN_ICON%': 'fa fa-plus',
-          });
-          rowIndex++;
-          $defaultRow.parent().append($row);
-
-          modalBody.on('click', '.act-add', function() {
-            let $row = $defaultRow.clone().removeClass('default-row');
-            $row.strtr({
-              '%NAME%': 'positions[' +rowIndex+ ']',
-              '%BTN_CLASS%': 'act-delete text-danger',
-              '%BTN_ICON%': 'fa fa-times',
-            });
-            rowIndex++;
-            $defaultRow.parents('tbody').append($row);
-          });
-          modalBody.on('click', '.act-delete', function(){
-            $(this).parents('tr').remove();
-          });
-
+          Pages_Invoices.PositionRowIndex = 1;
+          Pages_Invoices.addPosition({data: {parent: modalBody}});
+          modalBody.on('click', '.act-add', {parent: modalBody}, Pages_Invoices.addPosition);
+          modalBody.on('click', '.act-delete', {parent: modalBody}, Pages_Invoices.removePosition);
           modalBody.on('click', '.addon-gus', {parent: modalBody}, Pages_Invoices.onGUSClick);
         },
       },
@@ -61,6 +39,22 @@ let Pages_Invoices = {
         { label: 'Wystaw', class: 'btn btn-primary act-save' }
       ],
     });
+  },
+
+  addPosition: function(e) {
+    let $defaultRow = $('.default-row', e.data.parent);
+    let $row = $defaultRow.clone().removeClass('default-row');
+    $row.strtr({
+      '%NAME%': 'positions[' +Pages_Invoices.PositionRowIndex+ ']',
+      '%BTN_CLASS%': Pages_Invoices.PositionRowIndex > 1 ? 'act-delete text-danger' : 'act-add',
+      '%BTN_ICON%': Pages_Invoices.PositionRowIndex > 1 ? 'fa fa-times' : 'fa fa-plus',
+    });
+    $defaultRow.parents('tbody').append($row);
+    Pages_Invoices.PositionRowIndex++;
+  },
+
+  removePosition: function() {
+    $(this).parents('tr').remove();
   },
 
   onRowClick: function(e) {

@@ -6,7 +6,7 @@
 @stop
 
 @section('content')
-  <x-header :title="__('Lista faktur')" :description="__('Spis faktur wystawionych na twoim koncie')"/>
+  <x-header :title="__('translations.invoices.header')" :description="__('translations.invoices.subheader')"/>
 
   <div class="page-inner mt--5">
     <div class="row mt--2">

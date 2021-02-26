@@ -6,7 +6,7 @@
 @stop
 
 @section('content')
-  <x-header :title="__('Sygnatury')" :description="__('Lista sygnatur fakturowych')"/>
+  <x-header :title="__('translations.signatures.header')" :description="__('translations.signatures.subheader')"/>
 
   <div class="page-inner mt--5">
     <div class="row mt--2">

@@ -62,9 +62,9 @@ const App = {
       });
     });
 
-    $('#SearchForm', document).on('submit', function(e){
+    $('#search-form', document).on('submit', function(e){
     	e.preventDefault();
-    	let $search = $('#Search', document);
+    	let $search = $('#search', document);
     	let q = $search.val();
     	if(!q) {
     	  return;
@@ -82,7 +82,7 @@ const App = {
 		});
 
     setTimeout(function () {
-      $("#RequestMessage", document).fadeTo(500, 0).slideUp(500, function () {
+      $("#request-message", document).fadeTo(500, 0).slideUp(500, function () {
         $(this).remove();
       });
     }, 2000);

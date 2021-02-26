@@ -3,10 +3,10 @@
     <div class="sidebar-content">
       <div class="user">
         <div class="avatar-sm float-left mr-2">
-          <img src="{{ Auth::user()->logo }}" alt="..." class="avatar-img rounded-circle">
+          <img src="{{ Auth::user()->logo }}" alt="..." class="avatar-img rounded">
         </div>
         <div class="info">
-          <a data-toggle="collapse" href="#ProfileCollapse">
+          <a data-toggle="collapse" href="#profile-collapse">
             <span>
               <span class="user-name">{{ Auth::user()->name }}</span>
               <span class="user-level">{{ Auth::user()->email }}</span>
@@ -15,16 +15,16 @@
           </a>
           <div class="clearfix"></div>
 
-          <div class="collapse in @if (in_array(request()->path(), ['profile'])) show @endif" id="ProfileCollapse">
+          <div class="collapse in @if (in_array(request()->path(), ['profile'])) show @endif" id="profile-collapse">
             <ul class="nav">
               <li class="@if (request()->path() == 'profile') active @endif">
               <a href="{{ route('profile.index') }}">
-                <span class="link-collapse">{{ __('Edycja profilu') }}</span>
+                <span class="link-collapse">{{ __('translations.menu.profile') }}</span>
               </a>
               </li>
               <li>
                 <a href="{{ route('logout') }}">
-                  <span class="link-collapse">{{ __('Wyloguj') }}</span>
+                  <span class="link-collapse">{{ __('translations.menu.logout') }}</span>
                 </a>
               </li>
             </ul>
@@ -36,35 +36,35 @@
         <li class="nav-item @if (in_array(request()->path(), ['/', 'invoices'])) active @endif">
           <a href="{{ route('invoices.index') }}">
             <i class="far fa-copy"></i>
-            <p>{{ __('Lista faktur') }}</p>
+            <p>{{ __('translations.menu.invoices_list') }}</p>
           </a>
         </li>
 
         <li class="nav-item @if (request()->path() == 'template') active @endif">
           <a href="{{ route('template.index') }}">
             <i class="fas fa-file-invoice"></i>
-            <p>{{ __('Szablon') }}</p>
+            <p>{{ __('translations.menu.template') }}</p>
           </a>
         </li>
 
         <li class="nav-item @if (request()->path() == 'signatures') active @endif">
           <a href="{{ route('signatures.index') }}">
             <i class="fas fa-tag"></i>
-            <p>{{ __('Sygnatury') }}</p>
+            <p>{{ __('translations.menu.signatures') }}</p>
           </a>
         </li>
 
         <li class="nav-item @if (request()->path() == 'reports') active @endif">
           <a href="{{ route('reports.index') }}">
             <i class="fas fa-chart-line"></i>
-            <p>{{ __('Raporty') }}</p>
+            <p>{{ __('translations.menu.reports') }}</p>
           </a>
         </li>
 
         <li class="nav-item @if (request()->path() == 'api') active @endif">
           <a href="{{ route('api') }}">
             <i class="fab fa-cloudversify"></i>
-            <p>{{ __('API') }}</p>
+            <p>{{ __('translations.menu.api') }}</p>
           </a>
         </li>
 

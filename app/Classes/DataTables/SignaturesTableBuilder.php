@@ -9,13 +9,33 @@ class SignaturesTableBuilder extends DataTableBuilder
         parent::__construct();
 
         $this->setColumns([
-            ['data' => 'name', 'title' => __('ID'), 'width' => 100],
-            ['data' => 'description', 'title' => __('Opis')],
-            ['data' => 'syntax', 'title' => __('Składnia')],
-            ['data' => 'invoice_type', 'title' => __('Typy faktur'), 'width' => 150, 'className' => 'text-center', 'render' => 'Renderers.invoice_type'],
+            [
+                'data' => 'name',
+                'title' => __('translations.signatures.list.column.name'),
+                'width' => 100
+            ],
+            [
+                'data' => 'description',
+                'title' => __('translations.signatures.list.column.description')
+            ],
+            [
+                'data' => 'syntax',
+                'title' => __('translations.signatures.list.column.syntax')
+            ],
+            [
+                'data' => 'invoice_type',
+                'title' => __('translations.signatures.list.column.invoice_types'),
+                'className' => 'text-center',
+                'render' => 'Renderers.invoice_type',
+                'width' => 150
+            ],
         ]);
         $this->setButtons([
-            ['text' => '<i class="fa fa-plus"></i> ' . __('Dodaj'), 'action' => 'Pages_Signatures.onAddClick', 'className' => 'btn btn-primary btn-labeled']
+            [
+                'text' => '<i class="fa fa-plus"></i> ' . __('translations.signatures.list.button.add'),
+                'action' => 'Pages_Signatures.onAddClick',
+                'className' => 'btn btn-primary btn-labeled'
+            ]
         ]);
         $this->setCreatedRowCallback('Pages_Signatures.onRowCreate');
     }

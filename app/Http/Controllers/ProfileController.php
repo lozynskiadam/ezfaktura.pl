@@ -17,10 +17,6 @@ class ProfileController extends Controller
     {
         return view('pages.profile.index', [
             'user' => Auth::user(),
-            'BooleanList' => [__('Nie'), __('Tak')],
-            'CurrencyList' => ['PLN', 'GBP', 'USD'],
-            'PaymentMethodList' => ['Przelew', 'Gotówka', 'Karta', 'Barter'],
-            'DiscountTypeList' => ['Od ceny', 'Od wartości'],
         ]);
     }
 
@@ -30,7 +26,7 @@ class ProfileController extends Controller
         $user->fill($request->validated());
         $user->save();
 
-        return redirect()->back()->with('message', __('Informacje zostały zaktualizowane pomyślnie.'));
+        return redirect()->back()->with('message', __('translations.profile.update.success'));
     }
 
     public function change_password(ChangePasswordRequest $request)

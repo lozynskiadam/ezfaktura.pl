@@ -18,15 +18,15 @@ class MonthlyTurnoverReport implements FromArray, WithTitle, WithHeadings, Shoul
 {
     public function title(): string
     {
-        return __('Miesięczne zestawienie kwot');
+        return __('translations.reports.monthly_turnover_report');
     }
 
     public function headings(): array
     {
         return [
-            __('Miesiąc'),
-            __('Netto'),
-            __('Brutto'),
+            __('translations.reports.monthly_turnover_report.month'),
+            __('translations.reports.monthly_turnover_report.net_amount'),
+            __('translations.reports.monthly_turnover_report.gross_amount'),
         ];
     }
 

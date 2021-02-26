@@ -28,6 +28,8 @@ class StoreInvoiceRequest extends FormRequest
     {
         return [
             'signature_id' => ['required', new BelongsToUser(Signature::class)],
+            'issue_date' => 'required|date_format:Y-m-d',
+            'sale_date' => 'required|date_format:Y-m-d',
             'payment_due_date' => 'required|date_format:Y-m-d',
             'payment_method' => 'required|max:255',
             'buyer_name' => 'required|max:255',

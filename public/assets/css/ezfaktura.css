@@ -191,7 +191,7 @@ div.user div.info span.user-name {
 .notif-box .notif-center a .notif-icon i {
   font-size: 22px !important;
 }
-#ApiKey {
+#api-key {
   font-family: 'Courier New', monospace;
 }
 .nav-search .btn-search {
@@ -347,9 +347,6 @@ a.dropdown-lang:hover {
   height: 2.25rem;
   border-width: 0 !important;
 }
-.avatar-nav .rounded {
-  border-radius: 4px !important;
-}
 .avatar-nav .avatar-title {
   font-size: 15px;
 }
@@ -395,35 +392,6 @@ a.dropdown-lang:hover {
 }
 
 
-div.parameters-header {
-  padding: 10px;
-  font-weight: 600;
-  background: #fafafa;
-  border: 1px solid #eaeaea;
-  border-bottom: 2px solid #cccccc !important;
-}
-div.parameter {
-  display: flex;
-  background: #ffffff;
-}
-div.parameter:hover {
-  background: rgba(21, 114, 232, 0.15);
-}
-div.parameter div.label {
-  width: 75%;
-  padding: 8px;
-  border: 1px solid #eeeeee;
-}
-div.parameter div.option {
-  width: 25%;
-  min-width: 120px;
-}
-div.parameter div.option input,
-div.parameter div.option select {
-  border-radius: 0 !important;
-  height: 100% !important;
-}
-
 .preview-pdf {
   width: 100%;
   height: calc(100vh - 230px);
@@ -431,25 +399,25 @@ div.parameter div.option select {
   background: #ededf0;
 }
 
-#ProfileCollapse {
+#profile-collapse {
   margin: 0 -3px;
 }
-#ProfileCollapse ul.nav li a {
+#profile-collapse ul.nav li a {
   padding: 0 10px;
   border-radius: 5px;
 }
-#ProfileCollapse ul.nav li:hover a {
+#profile-collapse ul.nav li:hover a {
   background: rgba(199, 199, 199, 0.2);
 }
-#ProfileCollapse ul.nav li:hover a span.link-collapse {
+#profile-collapse ul.nav li:hover a span.link-collapse {
   font-weight: bold;
 }
-#ProfileCollapse ul.nav li.active a {
+#profile-collapse ul.nav li.active a {
   border-radius: 5px;
   background: #1572E8 !important;
   box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1), 4px 4px 15px -5px rgba(21, 114, 232, 0.4) !important;
 }
-#ProfileCollapse ul.nav li.active a span.link-collapse {
+#profile-collapse ul.nav li.active a span.link-collapse {
   color: #ffffff;
   font-weight: bold;
 }
@@ -463,4 +431,59 @@ div.parameter div.option select {
   top: 6px;
   font-size: 14px;
   font-weight: bold;
+}
+
+/* switcher */
+.switcher {
+  display: inline-block;
+}
+.switcher input {
+  display: none;
+}
+.switcher label {
+  display: block;
+  margin: 0;
+  width: 46px;
+  height: 28px;
+  position: relative;
+}
+.switcher input:checked + label::before {
+  background: #348fe2;
+  border: 2px solid #348fe2;
+}
+.switcher label::before {
+  content: '';
+  display: block;
+  width: 46px;
+  height: 28px;
+  background: #d5dbe0;
+  border: 1px solid #d5dbe0;
+  -webkit-border-radius: 46px;
+  border-radius: 46px;
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -ms-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  transition: all .2s linear;
+}
+.switcher input:checked + label::after {
+  left: 20px;
+}
+.switcher label::after {
+  content: '';
+  height: 24px;
+  width: 24px;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  background: #fff;
+  -webkit-border-radius: 24px;
+  border-radius: 24px;
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.15);
+  box-shadow: 0 1px 3px rgba(0,0,0,.15);
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -ms-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  transition: all .2s linear;
 }

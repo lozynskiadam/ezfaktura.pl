@@ -7,6 +7,7 @@ use App\Http\Requests\DownloadInvoiceRequest;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Models\Contractor;
 use App\Models\Invoice;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use InvoiceGenerator\Invoice AS InvoiceGenerator;
@@ -18,7 +19,12 @@ class InvoiceController extends Controller
     {
         return view('pages.invoices.index', [
             'dataTable' => $dataTable
-                ->setData(Auth::user()->invoices()->with('invoice_type')->get()->toArray())
+                ->setData(Auth::user()
+                    ->invoices()
+                    ->with('invoice_type')
+                    ->get()
+                    ->translate('invoice_type.initials')
+                    ->toArray())
                 ->make()
         ]);
     }
@@ -28,9 +34,21 @@ class InvoiceController extends Controller
         return view('pages.invoices.dialogs.create', [
             'user' => Auth::user(),
             'signatures' => Auth::user()->signatures()->get(),
-            'issue_date' => date('Y-m-d'),
-            'sale_date' => date('Y-m-d'),
-            'delivery_date' => date('Y-m-d'),
+            'issue_date' => Carbon::now()->format('Y-m-d'),
+            'sale_date' => Carbon::now()->format('Y-m-d'),
+            'payment_due_date' => Carbon::now()->addDays(7)->format('Y-m-d'),
+            'payment_methods' => [
+                __('translations.invoices.payment_method.transfer'),
+                __('translations.invoices.payment_method.cash'),
+                __('translations.invoices.payment_method.barter'),
+                __('translations.invoices.payment_method.credit_card')
+            ],
+            'units_of_measure' => [
+                __('translations.invoices.unit_of_measure.piece.short'),
+                __('translations.invoices.unit_of_measure.kilogram.short'),
+                __('translations.invoices.unit_of_measure.hour.short'),
+            ],
+            'vat_rates' => ['23', '8', '5', '0'],
         ]);
     }
 
@@ -82,6 +100,7 @@ class InvoiceController extends Controller
         $invoice->file_path = $output;
         $invoice->save();
         $invoice->load(['invoice_type']);
+        $invoice->invoice_type->initials = __($invoice->invoice_type->initials);
 
         return response()->json(['row' => $invoice]);
     }

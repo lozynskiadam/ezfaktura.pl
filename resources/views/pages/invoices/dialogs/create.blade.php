@@ -1,9 +1,9 @@
 <form>
   @if(!count($signatures))
     <div class="alert alert-warning">
-      <strong>{{ __('Uwaga!') }}</strong>
-      {{ __('Aktualnie nie masz dodanej żadnej sygnatury.') }}
-      <a href="{{ route('signatures.index') }}">{{ __('Dodaj sygnaturę') }}</a>
+      <strong>{{ __('translations.invoices.no_signature_warning.title') }}</strong>
+      {{ __('translations.invoices.no_signature_warning.content') }}
+      <a href="{{ route('signatures.index') }}">{{ __('translations.invoices.no_signature_warning.button') }}</a>
     </div>
   @endif
 
@@ -12,13 +12,17 @@
       <table class="table dataTable dataTable-modal">
         <thead>
         <tr>
-          <th colspan="2">{{ __('Informacje') }}</th>
+          <th colspan="2">{{ __('translations.invoices.information') }}</th>
         </tr>
         </thead>
         <tbody>
         <tr class="form-group">
           <td>
-            <label>{{ __('Sygnatura') }}</label>
+            @if(!count($signatures))
+              <label class="text-danger"><i class="fa fa-exclamation-triangle"></i> {{ __('translations.invoices.signature') }}</label>
+            @else
+              <label>{{ __('translations.invoices.signature') }}</label>
+            @endif
           </td>
           <td>
             <select class="form-control" name="signature_id">
@@ -30,7 +34,7 @@
         </tr>
         <tr class="form-group">
           <td>
-            <label>{{ __('Data wystawienia') }}</label>
+            <label>{{ __('translations.invoices.issue_date') }}</label>
           </td>
           <td>
             <x-input name="issue_date" value="{{ $issue_date }}"/>
@@ -38,7 +42,7 @@
         </tr>
         <tr class="form-group">
           <td>
-            <label>{{ __('Data sprzedaży') }}</label>
+            <label>{{ __('translations.invoices.sale_date') }}</label>
           </td>
           <td>
             <x-input name="sale_date" value="{{ $sale_date }}"/>
@@ -46,26 +50,33 @@
         </tr>
         <tr class="form-group">
           <td>
-            <label>{{ __('Data dostawy') }}</label>
+            <label>{{ __('translations.invoices.payment_due_date') }}</label>
           </td>
           <td>
-            <x-input name="delivery_date" value="{{ $delivery_date }}"/>
-          </td>
-        </tr>
-        <tr class="form-group">
-          <td>
-            <label>{{ __('Termin płatności') }}</label>
-          </td>
-          <td>
-            <x-input name="payment_due_date"/>
+            <x-input name="payment_due_date" value="{{ $payment_due_date }}"/>
           </td>
         </tr>
         <tr class="form-group">
           <td>
-            <label>{{ __('Metoda płatności') }}</label>
+            <label>{{ __('translations.invoices.payment_method') }}</label>
           </td>
           <td>
-            <x-input name="payment_method"/>
+            <select class="form-control" name="payment_method">
+              @foreach($payment_methods as $payment_method)
+                <option value="{{ $payment_method }}">{{ $payment_method }}</option>
+              @endforeach
+            </select>
+          </td>
+        </tr>
+        <tr class="form-group">
+          <td>
+            <label>{{ __('translations.invoices.use_discount') }}</label>
+          </td>
+          <td>
+            <select class="form-control" id="use_discount">
+              <option value="0">{{ __('translations.common.no') }}</option>
+              <option value="1">{{ __('translations.common.yes') }}</option>
+            </select>
           </td>
         </tr>
         </tbody>
@@ -75,24 +86,24 @@
       <table class="table dataTable dataTable-modal">
         <thead>
         <tr>
-          <th colspan="2">{{ __('Nabywca') }}</th>
+          <th colspan="2">{{ __('translations.invoices.buyer') }}</th>
         </tr>
         </thead>
         <tbody>
         <tr class="form-group">
           <td>
-            <label>{{ __('NIP') }}</label>
+            <label>{{ __('translations.invoices.buyer.tax_id') }}</label>
           </td>
           <td style="position: relative;">
             <x-input name="buyer_nip" maxlength="10"/>
-            <a href="#" class="addon-gus" data-toggle="tooltip" title="{{ __('Uzupełnij pole NIP po czym kliknij ten przycisk aby pobrać dane zarejestrowanie w GUSie') }}">
+            <a href="#" class="addon-gus" data-toggle="tooltip" title="{{ __('translations.invoices.gus_tooltip') }}">
               <i class="fa fa-sign-in-alt fa-rotate-90"></i>GUS
             </a>
           </td>
         </tr>
         <tr class="form-group">
           <td>
-            <label>{{ __('Nazwa') }}</label>
+            <label>{{ __('translations.invoices.buyer.name') }}</label>
           </td>
           <td>
             <x-input name="buyer_name"/>
@@ -100,7 +111,7 @@
         </tr>
         <tr class="form-group">
           <td>
-            <label>{{ __('Adres') }}</label>
+            <label>{{ __('translations.invoices.buyer.address') }}</label>
           </td>
           <td>
             <x-input name="buyer_address"/>
@@ -108,7 +119,7 @@
         </tr>
         <tr class="form-group">
           <td>
-            <label>{{ __('Miasto') }}</label>
+            <label>{{ __('translations.invoices.buyer.city') }}</label>
           </td>
           <td>
             <x-input name="buyer_city"/>
@@ -116,7 +127,7 @@
         </tr>
         <tr class="form-group">
           <td>
-            <label>{{ __('Kod pocztowy') }}</label>
+            <label>{{ __('translations.invoices.buyer.post_code') }}</label>
           </td>
           <td>
             <x-input name="buyer_postcode"/>
@@ -130,12 +141,12 @@
   <table class="table dataTable dataTable-modal">
     <thead>
     <tr>
-      <th>{{ __('Nazwa') }}</th>
-      <th style="width: 40px;">{{ __('Ilość') }}</th>
-      <th style="width: 55px;">{{ __('JM') }}</th>
-      <th style="width: 100px;">{{ __('Cena jedn.') }}</th>
-      <th style="width: 45px;">{{ __('VAT') }}</th>
-      <th style="width: 60px;">{{ __('Rabat') }}</th>
+      <th>{{ __('translations.invoices.positions.name') }}</th>
+      <th style="width: 40px;">{{ __('translations.invoices.positions.quantity') }}</th>
+      <th style="width: 55px;">{{ __('translations.invoices.positions.uom') }}</th>
+      <th style="width: 100px;">{{ __('translations.invoices.positions.unit_price') }}</th>
+      <th style="width: 45px;">{{ __('translations.invoices.positions.vat') }}</th>
+      <th style="width: 60px;">{{ __('translations.invoices.positions.discount') }}</th>
       <th style="width: 5px;"></th>
     </tr>
     </thead>
@@ -149,9 +160,9 @@
       </td>
       <td class="form-group">
         <select class="form-control" name="%NAME%[unit]">
-          <option value="szt">szt</option>
-          <option value="kg">kg</option>
-          <option value="godz">godz</option>
+          @foreach($units_of_measure as $unit_of_measure)
+            <option value="{{ $unit_of_measure }}">{{ $unit_of_measure }}</option>
+          @endforeach
         </select>
       </td>
       <td class="form-group">
@@ -159,11 +170,9 @@
       </td>
       <td class="form-group">
         <select class="form-control" name="%NAME%[tax_rate]">
-          <option value="23">23%</option>
-          <option value="8">8%</option>
-          <option value="5">5%</option>
-          <option value="0">0%</option>
-          <option value="0">zw</option>
+          @foreach($vat_rates as $vat_rate)
+            <option value="{{ $vat_rate }}">{{ $vat_rate }}%</option>
+          @endforeach
         </select>
       </td>
       <td class="form-group">

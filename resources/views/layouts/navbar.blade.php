@@ -2,18 +2,17 @@
 
   <div class="container-fluid">
     <div class="collapse position-relative" id="search-nav">
-      <form id="SearchForm" class="navbar-left navbar-form nav-search mr-md-2">
+      <form id="search-form" class="navbar-left navbar-form nav-search mr-md-2">
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="btn btn-search pr-1">
               <i class="fa fa-search search-icon"></i>
             </span>
           </div>
-          <input id="Search" type="text" placeholder="{{ __('Szukaj ...') }}" class="form-control">
+          <input id="search" type="text" placeholder="{{ __('translations.search.placeholder') }} ..." class="form-control">
         </div>
       </form>
     </div>
-
 
     <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
       <li class="nav-item toggle-nav-search hidden-caret">
@@ -67,8 +66,8 @@
 {{--                <a class="dropdown-lang" href="{{ URL::to('language/pl') }}"><img src="/assets/img/flags/pl.png"/> PL</a>--}}
 {{--              </div>--}}
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{{ route('profile.index') }}">{{ __('Edycja profilu') }}</a>
-              <a class="dropdown-item" href="{{ route('logout') }}">{{ __('Wyloguj') }}</a>
+              <a class="dropdown-item" href="{{ route('profile.index') }}">{{ __('translations.menu.profile') }}</a>
+              <a class="dropdown-item" href="{{ route('logout') }}">{{ __('translations.menu.logout') }}</a>
             </li>
           </div>
         </ul>

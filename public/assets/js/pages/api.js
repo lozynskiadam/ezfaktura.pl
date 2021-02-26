@@ -6,7 +6,7 @@ let Pages_Api = {
   },
 
   onToggleKeyClick: function() {
-    let $ApiKey = $('#ApiKey', document);
+    let $ApiKey = $('#api-key', document);
     if($ApiKey.attr('type') === 'text') {
       $ApiKey.attr('type', 'password');
       $(this).html('<i class="fa fa-eye"></i>');
@@ -23,7 +23,7 @@ let Pages_Api = {
       url: "/api/resetkey",
       dataType: 'json',
       success: function (data) {
-        $('#ApiKey', document).val(data.key);
+        $('#api-key', document).val(data.key);
         swal("Gotowe!", "Twój klucz API został zresetowany", {
           icon: "success",
           buttons: {

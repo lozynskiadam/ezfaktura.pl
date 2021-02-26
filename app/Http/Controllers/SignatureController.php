@@ -15,7 +15,12 @@ class SignatureController extends Controller
     {
         return view('pages.signatures.index', [
             'dataTable' => $dataTable
-                ->setData(Auth::user()->signatures()->with('invoice_types')->get()->toArray())
+                ->setData(Auth::user()
+                    ->signatures()
+                    ->with('invoice_types')
+                    ->get()
+                    ->translate('invoice_types.initials')
+                    ->toArray())
                 ->make()
         ]);
     }
@@ -23,7 +28,7 @@ class SignatureController extends Controller
     public function create()
     {
         return view('pages.signatures.dialogs.edit', [
-            'invoice_types' => InvoiceType::all()
+            'invoice_types' => InvoiceType::all()->translate(['initials', 'name'])
         ]);
     }
 
@@ -36,6 +41,7 @@ class SignatureController extends Controller
 
         $signature->invoice_types()->sync($request->get('invoice_types'));
         $signature->load(['invoice_types']);
+        $signature->invoice_types->translate('initials');
 
         return response()->json(['row' => $signature]);
     }
@@ -44,15 +50,17 @@ class SignatureController extends Controller
     {
         return view('pages.signatures.dialogs.edit', [
             'signature' => $signature,
-            'invoice_types' => InvoiceType::all()
+            'invoice_types' => InvoiceType::all()->translate(['initials', 'name'])
         ]);
     }
 
     public function update(StoreUpdateSignatureRequest $request, Signature $signature)
     {
-        $signature->fill($request->validated())->save();
+        $signature->fill($request->validated());
+        $signature->save();
         $signature->invoice_types()->sync($request->get('invoice_types'));
         $signature->load(['invoice_types']);
+        $signature->invoice_types->translate('initials');
 
         return response()->json(['row' => $signature]);
     }

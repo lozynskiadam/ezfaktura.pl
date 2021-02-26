@@ -11,12 +11,19 @@ class ReportsTableBuilder extends DataTableBuilder
         parent::__construct();
 
         $this->setColumns([
-            ['data' => 'code', 'title' => __('Kod'), 'width' => 100],
-            ['data' => 'name', 'title' => __('Nazwa')],
+            [
+                'data' => 'code',
+                'title' => __('translations.reports.list.column.code'),
+                'width' => 100
+            ],
+            [
+                'data' => 'name',
+                'title' => __('translations.reports.list.column.name')
+            ],
         ]);
 
         $this->setCreatedRowCallback('Pages_Reports.onRowCreate');
 
-        $this->setData(Report::all()->toArray());
+        $this->setData(Report::all()->translate('name')->toArray());
     }
 }

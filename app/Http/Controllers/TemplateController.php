@@ -11,16 +11,16 @@ class TemplateController extends Controller
     public function index()
     {
         $columns = [
-            'position_number' => __('Lp.'),
-            'name' => __('Nazwa'),
-            'unit' => __('Jednostka miary'),
-            'quantity' => __('Ilość'),
-            'tax_rate' => __('Stawka VAT'),
-            'tax_amount' => __('Kwota VAT'),
-            'net_price' => __('Cena netto'),
-            'net_amount' => __('Wartość netto'),
-            'gross_price' => __('Cena brutto'),
-            'gross_amount' => __('Wartość brutto'),
+            'position_number' => __('translations.templates.columns.position_number'),
+            'name' => __('translations.templates.columns.name'),
+            'unit' => __('translations.templates.columns.unit'),
+            'quantity' => __('translations.templates.columns.quantity'),
+            'tax_rate' => __('translations.templates.columns.tax_rate'),
+            'tax_amount' => __('translations.templates.columns.tax_amount'),
+            'net_price' => __('translations.templates.columns.net_price'),
+            'net_amount' => __('translations.templates.columns.net_amount'),
+            'gross_price' => __('translations.templates.columns.gross_price'),
+            'gross_amount' => __('translations.templates.columns.gross_amount'),
         ];
 
         return view('pages.templates.index', [

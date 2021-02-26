@@ -37,5 +37,5 @@
 <hr class="widget-separator"/>
 
 <div class="text-center">
-  {{ __('znaleziono') }} <strong>{{ count($invoices) + count($signatures) }}</strong> {{ __('pasujących wyników') }}
+  {{ __('translations.search.found') }} <strong>{{ $results }}</strong> {{ trans_choice('translations.search.matching_results', $results) }}
 </div>

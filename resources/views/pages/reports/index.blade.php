@@ -6,7 +6,7 @@
 @stop
 
 @section('content')
-  <x-header :title="__('Raporty')" :description="__('Lista możliwych do wygenerowania raportów')"/>
+  <x-header :title="__('translations.reports.header')" :description="__('translations.reports.subheader')"/>
 
   <div class="page-inner mt--5">
     <div class="row mt--2">

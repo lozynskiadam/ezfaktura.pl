@@ -5,7 +5,7 @@
   </a>
   <ul class="dropdown-menu notif-box animated slideIn" aria-labelledby="bell">
     <li>
-      <div class="dropdown-title">{{ __('Lista powiadomień') }}</div>
+      <div class="dropdown-title">{{ __('translations.notifications.list') }}</div>
     </li>
     <li>
       <div class="notif-scroll scrollbar-outer">

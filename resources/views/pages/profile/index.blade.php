@@ -11,10 +11,7 @@
     <div class="nav-scroller">
       <div class="nav nav-tabs nav-line nav-color-primary">
         <a class="nav-link active show" data-toggle="tab" href="#tab-main">
-          <i class="fa fa-edit mr-1"></i> {{ __('Informacje ogólne') }}
-        </a>
-        <a class="nav-link" data-toggle="tab" href="#tab-params">
-          <i class="fa fa-wrench mr-1"></i> {{ __('Parametry') }}
+          <i class="fa fa-edit mr-1"></i> {{ __('translations.profile.main.title') }}
         </a>
       </div>
     </div>
@@ -23,13 +20,10 @@
   <div class="page-inner">
     <div class="tab-content">
       @if(session()->has('message'))
-        <div id="RequestMessage" class="alert alert-primary">{{ session()->get('message') }}</div>
+        <div id="request-message" class="alert alert-primary">{{ session()->get('message') }}</div>
       @endif
       <div class="tab-pane fade active show" id="tab-main" role="tabpanel">
         @include('pages.profile.tabs.main')
-      </div>
-      <div class="tab-pane fade" id="tab-params" role="tabpanel">
-        @include('pages.profile.tabs.params')
       </div>
     </div>
   </div>

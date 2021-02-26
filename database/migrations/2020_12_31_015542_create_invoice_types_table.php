@@ -15,9 +15,9 @@ class CreateInvoiceTypesTable extends Migration
     {
         Schema::create('invoice_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50);
-            $table->string('short_name', 25);
-            $table->string('initials', 10);
+            $table->string('name', 100);
+            $table->string('short_name', 100);
+            $table->string('initials', 100);
         });
     }
 
