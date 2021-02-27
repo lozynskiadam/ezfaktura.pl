@@ -13,6 +13,7 @@ class Contractor extends Model
         'nip',
         'name',
         'postcode',
+        'address',
         'city',
     ];
 

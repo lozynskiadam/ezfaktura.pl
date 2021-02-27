@@ -27,29 +27,29 @@ class StoreInvoiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'signature_id' => ['required', new BelongsToUser(Signature::class)],
-            'issue_date' => 'required|date_format:Y-m-d',
-            'sale_date' => 'required|date_format:Y-m-d',
-            'payment_due_date' => 'required|date_format:Y-m-d',
-            'payment_method' => 'required|max:255',
-            'buyer_name' => 'required|max:255',
-            'buyer_address' => 'required|max:255',
-            'buyer_city' => 'required|max:255',
-            'buyer_postcode' => 'required|max:10',
-            'buyer_nip' => 'required|digits:10',
-            'positions.*.name' => 'required|max:255',
-            'positions.*.quantity' => ['required', 'numeric', 'gt:0', new MaxDecimalPlaces(4)],
-            'positions.*.unit' => 'required|string|max:255',
-            'positions.*.price' => ['required', 'numeric', 'gt:0', new MaxDecimalPlaces(2)],
-            'positions.*.tax_rate' => 'required|numeric|integer',
-            'positions.*.discount' => 'sometimes|numeric'
+            'buyer.name' => 'required|max:255',
+            'buyer.address' => 'required|max:255',
+            'buyer.city' => 'required|max:255',
+            'buyer.postcode' => 'required|max:10',
+            'buyer.nip' => 'required|digits:10',
+            'invoice.signature_id' => ['required', new BelongsToUser(Signature::class)],
+            'invoice.issue_date' => 'required|date_format:Y-m-d',
+            'invoice.sale_date' => 'required|date_format:Y-m-d',
+            'invoice.payment_due_date' => 'required|date_format:Y-m-d',
+            'invoice.payment_method' => 'required|max:255',
+            'invoice.positions.*.name' => 'required|max:255',
+            'invoice.positions.*.quantity' => ['required', 'numeric', 'gt:0', new MaxDecimalPlaces(4)],
+            'invoice.positions.*.unit' => 'required|string|max:255',
+            'invoice.positions.*.price' => ['required', 'numeric', 'gt:0', new MaxDecimalPlaces(2)],
+            'invoice.positions.*.tax_rate' => 'required|numeric|integer',
+            'invoice.positions.*.discount' => 'sometimes|numeric'
         ];
     }
 
     public function messages()
     {
         return [
-            'positions.*.*.*' => '',
+            'invoice.positions.*.*.*' => '',
         ];
     }
 }

@@ -59,7 +59,7 @@ let Pages_Invoices = {
     let $defaultRow = $('.default-row', e.data.parent);
     let $row = $defaultRow.clone().removeClass('default-row');
     $row.strtr({
-      '%NAME%': 'positions[' +Pages_Invoices.PositionRowIndex+ ']',
+      '%NAME%': 'invoice[positions][' +Pages_Invoices.PositionRowIndex+ ']',
       '%BTN_CLASS%': Pages_Invoices.PositionRowIndex > 1 ? 'act-delete text-danger' : 'act-add',
       '%BTN_ICON%': Pages_Invoices.PositionRowIndex > 1 ? 'fa fa-times' : 'fa fa-plus',
     });

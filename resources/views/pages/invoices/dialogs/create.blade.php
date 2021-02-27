@@ -25,7 +25,7 @@
             @endif
           </td>
           <td>
-            <select class="form-control" name="signature_id">
+            <select class="form-control" name="invoice[signature_id]">
               @foreach($signatures as $signature)
                 <option value="{{ $signature->id }}">{{ $signature->name }}</option>
               @endforeach
@@ -37,7 +37,7 @@
             <label>{{ __('translations.invoices.issue_date') }}</label>
           </td>
           <td>
-            <x-input name="issue_date" value="{{ $issue_date }}"/>
+            <x-input name="invoice[issue_date]" value="{{ $issue_date }}"/>
           </td>
         </tr>
         <tr class="form-group">
@@ -45,7 +45,7 @@
             <label>{{ __('translations.invoices.sale_date') }}</label>
           </td>
           <td>
-            <x-input name="sale_date" value="{{ $sale_date }}"/>
+            <x-input name="invoice[sale_date]" value="{{ $sale_date }}"/>
           </td>
         </tr>
         <tr class="form-group">
@@ -53,7 +53,7 @@
             <label>{{ __('translations.invoices.payment_due_date') }}</label>
           </td>
           <td>
-            <x-input name="payment_due_date" value="{{ $payment_due_date }}"/>
+            <x-input name="invoice[payment_due_date]" value="{{ $payment_due_date }}"/>
           </td>
         </tr>
         <tr class="form-group">
@@ -61,7 +61,7 @@
             <label>{{ __('translations.invoices.payment_method') }}</label>
           </td>
           <td>
-            <select class="form-control" name="payment_method">
+            <select class="form-control" name="invoice[payment_method]">
               @foreach($payment_methods as $payment_method)
                 <option value="{{ $payment_method }}">{{ $payment_method }}</option>
               @endforeach
@@ -95,7 +95,7 @@
             <label>{{ __('translations.invoices.buyer.tax_id') }}</label>
           </td>
           <td style="position: relative;">
-            <x-input name="buyer_nip" maxlength="10"/>
+            <x-input name="buyer[nip]" maxlength="10"/>
             <a href="#" class="addon-gus" data-toggle="tooltip" title="{{ __('translations.invoices.gus_tooltip') }}">
               <i class="fa fa-sign-in-alt fa-rotate-90"></i>GUS
             </a>
@@ -106,7 +106,7 @@
             <label>{{ __('translations.invoices.buyer.name') }}</label>
           </td>
           <td>
-            <x-input name="buyer_name"/>
+            <x-input name="buyer[name]"/>
           </td>
         </tr>
         <tr class="form-group">
@@ -114,7 +114,7 @@
             <label>{{ __('translations.invoices.buyer.address') }}</label>
           </td>
           <td>
-            <x-input name="buyer_address"/>
+            <x-input name="buyer[address]"/>
           </td>
         </tr>
         <tr class="form-group">
@@ -122,7 +122,7 @@
             <label>{{ __('translations.invoices.buyer.city') }}</label>
           </td>
           <td>
-            <x-input name="buyer_city"/>
+            <x-input name="buyer[city]"/>
           </td>
         </tr>
         <tr class="form-group">
@@ -130,7 +130,7 @@
             <label>{{ __('translations.invoices.buyer.post_code') }}</label>
           </td>
           <td>
-            <x-input name="buyer_postcode"/>
+            <x-input name="buyer[postcode]"/>
           </td>
         </tr>
         </tbody>
