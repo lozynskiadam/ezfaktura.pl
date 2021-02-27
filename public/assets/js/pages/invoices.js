@@ -22,9 +22,11 @@ let Pages_Invoices = {
           });
           Pages_Invoices.PositionRowIndex = 1;
           Pages_Invoices.addPosition({data: {parent: modalBody}});
+          Pages_Invoices.toggleDiscount({data: {parent: modalBody}});
           modalBody.on('click', '.act-add', {parent: modalBody}, Pages_Invoices.addPosition);
           modalBody.on('click', '.act-delete', {parent: modalBody}, Pages_Invoices.removePosition);
           modalBody.on('click', '.addon-gus', {parent: modalBody}, Pages_Invoices.onGUSClick);
+          modalBody.on('change', '#use-discount', {parent: modalBody}, Pages_Invoices.toggleDiscount);
         },
       },
       save: {
@@ -39,6 +41,18 @@ let Pages_Invoices = {
         { label: 'Wystaw', class: 'btn btn-primary act-save' }
       ],
     });
+  },
+
+  toggleDiscount: function(e) {
+    let parent = e.data.parent;
+    if($('#use-discount', parent).val() === '1') {
+      $('.row-discount input', parent).removeAttr('disabled');
+      $('.row-discount', parent).show();
+    }
+    else {
+      $('.row-discount input', parent).attr('disabled', 'disabled');
+      $('.row-discount', parent).hide();
+    }
   },
 
   addPosition: function(e) {
@@ -59,19 +73,88 @@ let Pages_Invoices = {
 
   onRowClick: function(e) {
     let id = e.data.id;
-    window.location.href = "/invoices/" + id + "/download";
+    let signature = e.data.signature;
+    dialog({
+      title: signature,
+      load: {
+        url: '/invoices/' + id,
+        callback: function(dialogRef) {
+          let modalBody = dialogRef.getModalBody();
+          modalBody.on('click', '.act-set-paid', {id: id, dialog: dialogRef}, Pages_Invoices.onSetPaidClick);
+          modalBody.on('click', '.act-set-sent', {id: id, dialog: dialogRef}, Pages_Invoices.onSetSentClick);
+          modalBody.on('click', '.act-delete', {id: id, dialog: dialogRef}, Pages_Invoices.onDeleteClick);
+        }
+      }
+    });
+  },
+
+  onSetPaidClick: function(e) {
+    let id = e.data.id;
+    let parentDialog = e.data.dialog;
+    let waitDialog = App.waitDialog();
+
+    $.ajax({
+      method: "POST",
+      url: '/invoices/' + id + '/setpaid',
+      dataType: 'json',
+      success: function (data) {
+        App.updateDataTableRowById('InvoiceList', id, {is_paid: '1'});
+        waitDialog.close();
+        parentDialog.restart();
+      },
+      error: function () {
+        waitDialog.close();
+        parentDialog.restart();
+      }
+    });
+  },
+
+  onSetSentClick: function(e) {
+    let id = e.data.id;
+    let waitDialog = App.waitDialog();
+    let parentDialog = e.data.dialog;
+
+    $.ajax({
+      method: "POST",
+      url: '/invoices/' + id + '/setsent',
+      dataType: 'json',
+      success: function (data) {
+        App.updateDataTableRowById('InvoiceList', id, {is_sent: '1'});
+        waitDialog.close();
+        parentDialog.restart();
+      },
+      error: function () {
+        waitDialog.close();
+        parentDialog.restart();
+      }
+    });
+  },
+
+  onDeleteClick: function(e) {
+    let id = e.data.id;
+    let parentDialog = e.data.dialog;
+    let waitDialog = App.waitDialog();
+
+    $.ajax({
+      method: "DELETE",
+      url: '/invoices/' + id,
+      dataType: 'json',
+      success: function (data) {
+        App.removeDataTableRowById('InvoiceList', id);
+        waitDialog.close();
+        parentDialog.close();
+      },
+      error: function () {
+        waitDialog.close();
+        parentDialog.close();
+      }
+    });
   },
 
   onGUSClick: function(e) {
     let $selector = $(this);
     let parent = e.data.parent;
-    let waitDialog = dialog({
-      title: 'Proszę czekać...',
-      class: 'bg-warning',
-      size: 'modal-sm',
-      close: false,
-      message: '<div class="text-center"><i class="fa fa-sync-alt fa-spin fa-3x"></i></div>'
-    });
+    let waitDialog = App.waitDialog();
 
     $.ajax({
       method: "GET",

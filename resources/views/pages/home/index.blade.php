@@ -78,7 +78,7 @@
           </div>
         </div>
         <div class="col-lg-6 d-none d-lg-block">
-          <img src="/assets/img/screen.png" style="user-select: none;"/>
+          <img draggable="false" src="/assets/img/screen.png"/>
         </div>
       </div>
     </div>

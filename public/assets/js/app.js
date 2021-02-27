@@ -20,6 +20,37 @@ const App = {
     return window.dataTables.find((table) => table.id === id).table;
   },
 
+  updateDataTableRowById : function (table, id, data) {
+    App.getDataTable(table).rows().every( function (rowIdx) {
+      if(this.data()['id'] == id) {
+        data = $.extend(true, this.data(), data);
+        App.getDataTable(table).row(rowIdx).data(data).draw(true);
+        return true;
+      }
+    });
+    return false;
+  },
+
+  removeDataTableRowById : function (table, id) {
+    App.getDataTable(table).rows().every( function (rowIdx) {
+      if(this.data()['id'] == id) {
+        App.getDataTable(table).row(rowIdx).remove().draw(true);
+        return true;
+      }
+    });
+    return false;
+  },
+
+  waitDialog: function() {
+    return dialog({
+      title: 'Proszę czekać...',
+      class: 'bg-warning',
+      size: 'modal-sm',
+      close: false,
+      message: '<div class="text-center"><i class="fa fa-sync-alt fa-spin fa-3x"></i></div>'
+    });
+  },
+
   init: function () {
     $.ajaxSetup({
       headers: {

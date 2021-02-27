@@ -23,6 +23,33 @@
   border-radius: 3px 0 0 3px;
   width: 40px;
 }
+.btn.btn-dark {
+  background: #4b535c;
+}
+.btn.btn-success {
+  background: #22d076 !important;
+  border-color: #22d076;
+}
+.btn.btn-success:focus,
+.btn.btn-success:hover {
+  background: #44d07d !important;
+  border-color: #22d076;
+}
+.btn.btn-success,
+.btn.btn-success:focus,
+.btn.btn-success:hover {
+  color: #fff;
+}
+.btn.form-control {
+  border-bottom: 4px solid #00000033 !important;
+}
+.btn.form-control i {
+  font-size: 14px;
+  color: #fff;
+  opacity: 1;
+  width: 15px;
+  margin-top: 1px;
+}
 .opacity-0 {
   opacity: 0 !important;
 }

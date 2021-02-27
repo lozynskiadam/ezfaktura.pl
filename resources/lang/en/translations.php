@@ -177,6 +177,12 @@ return [
     'invoices.unit_of_measure.piece.short' => 'szt',
     'invoices.unit_of_measure.kilogram.short' => 'kg',
     'invoices.unit_of_measure.hour.short' => 'godz',
+    'invoices.show.download' => 'Pobierz',
+    'invoices.show.mark_as_paid' => 'Oznacz jako opłacona',
+    'invoices.show.paid' => 'Opłacona',
+    'invoices.show.mark_as_sent' => 'Oznacz jako wysłana',
+    'invoices.show.sent' => 'Wysłana',
+    'invoices.show.delete' => 'Usuń',
 
     // signatures
     'signatures.header' => 'Sygnatury',

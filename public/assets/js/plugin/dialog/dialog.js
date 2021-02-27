@@ -92,6 +92,12 @@ window.dialog = function (params = {}) {
     return $('.modal-footer', this.object);
   };
 
+  DialogRef.restart = function () {
+    let params = DialogRef.params;
+    DialogRef.close();
+    return dialog(params);
+  };
+
   DialogRef.object = (function () {
     let $container = $('<div/>').addClass('modal fade').attr('role', 'dialog').attr('tabindex', '-1').attr('id', DialogRef.params.id);
     let $dialog = $('<div/>').addClass('modal-dialog').addClass(DialogRef.params.size).appendTo($container);

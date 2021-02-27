@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Classes\DataTables\InvoicesTableBuilder;
-use App\Http\Requests\DownloadInvoiceRequest;
+use App\Http\Requests\DownloadPreviewInvoiceRequest;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Models\Contractor;
 use App\Models\Invoice;
@@ -12,6 +12,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use InvoiceGenerator\Invoice AS InvoiceGenerator;
 use InvoiceGenerator\InvoiceException;
+use Request;
 
 class InvoiceController extends Controller
 {
@@ -105,11 +106,49 @@ class InvoiceController extends Controller
         return response()->json(['row' => $invoice]);
     }
 
-    public function download(DownloadInvoiceRequest $request, Invoice $invoice)
+    public function show(Request $request, Invoice $invoice)
+    {
+        return view('pages.invoices.dialogs.show', [
+            'user' => Auth::user(),
+            'invoice' => $invoice,
+        ]);
+    }
+
+    public function download(DownloadPreviewInvoiceRequest $request, Invoice $invoice)
     {
         $filePath = base_path($invoice->file_path);
         $headers = ['Content-Type: application/pdf'];
         $fileName = time() . '.pdf';
         return response()->download($filePath, $fileName, $headers);
+    }
+
+    public function preview(DownloadPreviewInvoiceRequest $request, Invoice $invoice)
+    {
+        $filePath = base_path($invoice->file_path);
+        $headers = ['Content-Type: application/pdf'];
+        return response()->file($filePath, $headers);
+    }
+
+    public function set_paid(DownloadPreviewInvoiceRequest $request, Invoice $invoice)
+    {
+        $invoice->is_paid = 1;
+        $invoice->save();
+
+        return response()->json(['success' => true]);
+    }
+
+    public function set_sent(DownloadPreviewInvoiceRequest $request, Invoice $invoice)
+    {
+        $invoice->is_sent = 1;
+        $invoice->save();
+
+        return response()->json(['success' => true]);
+    }
+
+    public function destroy(DownloadPreviewInvoiceRequest $request, Invoice $invoice)
+    {
+        $invoice->delete();
+
+        return response()->json(['success' => true]);
     }
 }

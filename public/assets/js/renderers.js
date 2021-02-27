@@ -32,7 +32,7 @@ const Renderers = {
 
   is_paid: function(data, type, row, meta) {
     if(data) {
-      return '<i class="fa fa-dollar-sign dt-icon text-success"></i>';
+      return '<i class="fa fa-dollar-sign dt-icon text-primary"></i>';
     }
     return '<i class="fa fa-dollar-sign dt-icon text-muted"></i>';
   },

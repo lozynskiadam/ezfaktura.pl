@@ -73,7 +73,7 @@
             <label>{{ __('translations.invoices.use_discount') }}</label>
           </td>
           <td>
-            <select class="form-control" id="use_discount">
+            <select id="use-discount" class="form-control">
               <option value="0">{{ __('translations.common.no') }}</option>
               <option value="1">{{ __('translations.common.yes') }}</option>
             </select>
@@ -146,7 +146,7 @@
       <th style="width: 55px;">{{ __('translations.invoices.positions.uom') }}</th>
       <th style="width: 100px;">{{ __('translations.invoices.positions.unit_price') }}</th>
       <th style="width: 45px;">{{ __('translations.invoices.positions.vat') }}</th>
-      <th style="width: 60px;">{{ __('translations.invoices.positions.discount') }}</th>
+      <th style="width: 60px;" class="row-discount">{{ __('translations.invoices.positions.discount') }}</th>
       <th style="width: 5px;"></th>
     </tr>
     </thead>
@@ -175,7 +175,7 @@
           @endforeach
         </select>
       </td>
-      <td class="form-group">
+      <td class="form-group row-discount">
         <x-input name="%NAME%[discount]"/>
       </td>
       <td class="text-center">

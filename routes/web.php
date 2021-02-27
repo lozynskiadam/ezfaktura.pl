@@ -47,6 +47,9 @@ Route::group(['domain' => env('APP_PANEL_URL')], function () {
         Route::post('/profile/delete', [ProfileController::class, 'delete_profile'])->name('profile.delete_profile');
         Route::resource('invoices', InvoiceController::class, ['except' => ['edit', 'update']]);
         Route::get('/invoices/{invoice}/download', [InvoiceController::class, 'download'])->name('invoice.download');
+        Route::get('/invoices/{invoice}/preview', [InvoiceController::class, 'preview'])->name('invoice.preview');
+        Route::post('/invoices/{invoice}/setpaid', [InvoiceController::class, 'set_paid']);
+        Route::post('/invoices/{invoice}/setsent', [InvoiceController::class, 'set_sent']);
         Route::resource('signatures', SignatureController::class, ['except' => ['show']]);
         Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
         Route::get('/reports/{report}/generate', [ReportController::class, 'generate']);
