@@ -8,11 +8,13 @@ use App\Http\Requests\StoreInvoiceRequest;
 use App\Models\Invoice;
 use App\Services\ContractorService;
 use App\Services\InvoiceService;
+use App\Services\SignatureService;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Request;
+use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Throwable;
 
 class InvoiceController extends Controller
@@ -65,7 +67,8 @@ class InvoiceController extends Controller
 
         $user = Auth::user();
         $contractor = (new ContractorService)->updateOrCreateContractor($user->id, $request->get('buyer'));
-        $invoice = (new InvoiceService)->createInvoice($user->id, $contractor->id, $request->get('invoice'));
+        $signature_entry = (new SignatureService)->addEntry($request->get('signature_id'), $request->get('issue_date'));
+        $invoice = (new InvoiceService)->createInvoice($user->id, $contractor->id, $signature_entry->id, $request->get('invoice'));
 
         DB::commit();
 
@@ -73,11 +76,14 @@ class InvoiceController extends Controller
         return response()->json(['row' => $invoice]);
     }
 
-    public function show(Request $request, Invoice $invoice)
+    public function show(Request $request, Invoice $invoice, InvoiceService $service)
     {
         return view('pages.invoices.dialogs.show', [
             'user' => Auth::user(),
             'invoice' => $invoice,
+            'can_set_paid' => $service->canSetPaid($invoice),
+            'can_set_sent' => $service->canSetSent($invoice),
+            'can_delete' => $service->canDelete($invoice),
         ]);
     }
 
@@ -96,24 +102,33 @@ class InvoiceController extends Controller
         return response()->file($filePath, $headers);
     }
 
-    public function set_paid(DownloadPreviewInvoiceRequest $request, Invoice $invoice)
+    public function set_paid(DownloadPreviewInvoiceRequest $request, Invoice $invoice, InvoiceService $service)
     {
+        if(!$service->canSetPaid($invoice)) {
+            return abort(500, __('translations.invoices.exception.can_not_set_paid'));
+        }
         $invoice->is_paid = 1;
         $invoice->save();
 
         return response()->json(['success' => true]);
     }
 
-    public function set_sent(DownloadPreviewInvoiceRequest $request, Invoice $invoice)
+    public function set_sent(DownloadPreviewInvoiceRequest $request, Invoice $invoice, InvoiceService $service)
     {
+        if(!$service->canSetSent($invoice)) {
+            return abort(500, __('translations.invoices.exception.can_not_set_sent'));
+        }
         $invoice->is_sent = 1;
         $invoice->save();
 
         return response()->json(['success' => true]);
     }
 
-    public function destroy(DownloadPreviewInvoiceRequest $request, Invoice $invoice)
+    public function destroy(DownloadPreviewInvoiceRequest $request, Invoice $invoice, InvoiceService $service)
     {
+        if(!$service->canDelete($invoice)) {
+            return abort(500, __('translations.invoices.exception.can_not_delete'));
+        }
         $invoice->delete();
 
         return response()->json(['success' => true]);

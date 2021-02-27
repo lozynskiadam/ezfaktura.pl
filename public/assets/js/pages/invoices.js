@@ -15,7 +15,7 @@ let Pages_Invoices = {
         url: "/invoices/create",
         callback: function(dialogRef) {
           let modalBody = dialogRef.getModalBody();
-          $('[name="issue_date"], [name="sale_date"], [name="payment_due_date"]', modalBody).datepicker({
+          $('[name="invoice[issue_date]"], [name="invoice[sale_date]"], [name="invoice[payment_due_date]"]', modalBody).datepicker({
             format: 'yyyy-mm-dd',
             autoclose: true,
             language: 'pl'
@@ -91,7 +91,7 @@ let Pages_Invoices = {
   onSetPaidClick: function(e) {
     let id = e.data.id;
     let parentDialog = e.data.dialog;
-    let waitDialog = App.waitDialog();
+    $(this).attr('disabled', 'disabled').html('<i class="fa fa-sync-alt fa-spin"></i>');
 
     $.ajax({
       method: "POST",
@@ -99,20 +99,23 @@ let Pages_Invoices = {
       dataType: 'json',
       success: function (data) {
         App.updateDataTableRowById('InvoiceList', id, {is_paid: '1'});
-        waitDialog.close();
         parentDialog.restart();
       },
-      error: function () {
-        waitDialog.close();
-        parentDialog.restart();
+      error: function (jqXHR, textStatus, errorThrown) {
+        dialog({
+          title: errorThrown,
+          message: jqXHR.responseJSON.message,
+          class: 'bg-danger',
+        });
+        parentDialog.close();
       }
     });
   },
 
   onSetSentClick: function(e) {
     let id = e.data.id;
-    let waitDialog = App.waitDialog();
     let parentDialog = e.data.dialog;
+    $(this).attr('disabled', 'disabled').html('<i class="fa fa-sync-alt fa-spin"></i>');
 
     $.ajax({
       method: "POST",
@@ -120,12 +123,15 @@ let Pages_Invoices = {
       dataType: 'json',
       success: function (data) {
         App.updateDataTableRowById('InvoiceList', id, {is_sent: '1'});
-        waitDialog.close();
         parentDialog.restart();
       },
-      error: function () {
-        waitDialog.close();
-        parentDialog.restart();
+      error: function (jqXHR, textStatus, errorThrown) {
+        dialog({
+          title: errorThrown,
+          message: jqXHR.responseJSON.message,
+          class: 'bg-danger'
+        });
+        parentDialog.close();
       }
     });
   },
@@ -133,7 +139,7 @@ let Pages_Invoices = {
   onDeleteClick: function(e) {
     let id = e.data.id;
     let parentDialog = e.data.dialog;
-    let waitDialog = App.waitDialog();
+    $(this).attr('disabled', 'disabled').html('<i class="fa fa-sync-alt fa-spin"></i>');
 
     $.ajax({
       method: "DELETE",
@@ -141,11 +147,14 @@ let Pages_Invoices = {
       dataType: 'json',
       success: function (data) {
         App.removeDataTableRowById('InvoiceList', id);
-        waitDialog.close();
         parentDialog.close();
       },
-      error: function () {
-        waitDialog.close();
+      error: function (jqXHR, textStatus, errorThrown) {
+        dialog({
+          title: errorThrown,
+          message: jqXHR.responseJSON.message,
+          class: 'bg-danger'
+        });
         parentDialog.close();
       }
     });

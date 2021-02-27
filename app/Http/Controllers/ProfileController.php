@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dictionaries\CoreDictionary;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\DeleteProfileRequest;
 use App\Http\Requests\UpdateLogoRequest;
@@ -43,7 +44,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        if(file_exists(public_path($user->logo))) {
+        if(($user->logo !== CoreDictionary::DEFAULT_LOGO_PATH) && file_exists(public_path($user->logo))) {
             unlink(public_path($user->logo));
         }
 

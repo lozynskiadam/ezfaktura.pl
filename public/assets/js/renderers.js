@@ -44,4 +44,12 @@ const Renderers = {
     return '<i class="fa fa-envelope dt-icon text-muted"></i>';
   },
 
+  signature_syntax: function(data, type, row, meta) {
+    data = data.split('/').join('<span class="mx-1 opacity-3">/</span>');
+    data = data.split('{counter}').join('<span class="text-info dt-hover">licznik</span>');
+    data = data.split('{year}').join('<span class="text-info dt-hover">rok</span>');
+    data = data.split('{month}').join('<span class="text-info dt-hover">miesiąc</span>');
+    return data;
+  },
+
 };

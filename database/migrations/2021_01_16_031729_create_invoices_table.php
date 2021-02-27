@@ -17,7 +17,6 @@ class CreateInvoicesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('invoice_type_id')->references('id')->on('invoice_types')->onDelete('cascade');
-            $table->foreignId('signature_id')->nullable()->references('id')->on('signatures')->onDelete('cascade');
             $table->string('signature')->nullable();
             $table->date('issue_date');
             $table->date('sale_date')->nullable();

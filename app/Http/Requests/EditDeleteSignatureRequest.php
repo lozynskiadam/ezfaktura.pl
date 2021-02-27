@@ -14,10 +14,9 @@ class EditDeleteSignatureRequest extends FormRequest
      */
     public function authorize()
     {
-        if (Auth::user()->signatures()->find($this->route('signature'))->first()) {
+        if (Auth::user()->signatures()->find($this->signature->id)->exists()) {
             return true;
         }
-
         return false;
     }
 

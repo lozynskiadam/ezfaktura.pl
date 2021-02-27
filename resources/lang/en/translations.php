@@ -183,6 +183,9 @@ return [
     'invoices.show.mark_as_sent' => 'Oznacz jako wysłana',
     'invoices.show.sent' => 'Wysłana',
     'invoices.show.delete' => 'Usuń',
+    'invoices.exception.can_not_delete' => 'Ta faktura nie może zostać usunięta.',
+    'invoices.exception.can_not_set_paid' => 'Ta faktura nie może zostać opłacona.',
+    'invoices.exception.can_not_set_sent' => 'Ta faktura nie może zostać wysłana.',
 
     // signatures
     'signatures.header' => 'Sygnatury',

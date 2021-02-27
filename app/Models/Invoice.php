@@ -54,9 +54,9 @@ class Invoice extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function signature()
+    public function signature_entry()
     {
-        return $this->belongsTo(Signature::class);
+        return $this->belongsTo(SignatureEntry::class);
     }
 
     public function invoice_type()

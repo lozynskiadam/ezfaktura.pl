@@ -158,7 +158,8 @@ table.dataTable > tbody > tr > td i.dt-icon.text-muted {
   color: #000000;
   opacity: 0.4;
 }
-table.dataTable > tbody > tr:hover > td i.dt-icon {
+table.dataTable.table-row-callback > tbody > tr:hover > td i.dt-icon,
+table.dataTable.table-row-callback > tbody > tr:hover > td .dt-hover {
   color: #ffffff !important;
 }
 table.dataTables_filter {

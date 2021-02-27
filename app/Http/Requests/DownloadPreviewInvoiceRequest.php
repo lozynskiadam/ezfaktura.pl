@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class DownloadPreviewInvoiceRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class DownloadPreviewInvoiceRequest extends FormRequest
      */
     public function authorize()
     {
-        if(\Auth::user()->invoices()->where('id', $this->invoice->id)->first()) {
+        if (Auth::user()->invoices()->find($this->invoice->id)->exists()) {
             return true;
         }
         return false;

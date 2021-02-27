@@ -20,14 +20,15 @@ class SignaturesTableBuilder extends DataTableBuilder
             ],
             [
                 'data' => 'syntax',
-                'title' => __('translations.signatures.list.column.syntax')
+                'title' => __('translations.signatures.list.column.syntax'),
+                'render' => 'Renderers.signature_syntax',
             ],
             [
                 'data' => 'invoice_type',
                 'title' => __('translations.signatures.list.column.invoice_types'),
                 'className' => 'text-center',
                 'render' => 'Renderers.invoice_type',
-                'width' => 150
+                'width' => 125
             ],
         ]);
         $this->setButtons([

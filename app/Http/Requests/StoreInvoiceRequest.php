@@ -27,12 +27,12 @@ class StoreInvoiceRequest extends FormRequest
     public function rules()
     {
         return [
+            'signature_id' => ['required', new BelongsToUser(Signature::class)],
             'buyer.name' => 'required|max:255',
             'buyer.address' => 'required|max:255',
             'buyer.city' => 'required|max:255',
             'buyer.postcode' => 'required|max:10',
             'buyer.nip' => 'required|digits:10',
-            'invoice.signature_id' => ['required', new BelongsToUser(Signature::class)],
             'invoice.issue_date' => 'required|date_format:Y-m-d',
             'invoice.sale_date' => 'required|date_format:Y-m-d',
             'invoice.payment_due_date' => 'required|date_format:Y-m-d',
