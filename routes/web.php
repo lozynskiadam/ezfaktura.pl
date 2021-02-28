@@ -52,7 +52,8 @@ Route::group(['domain' => env('APP_PANEL_URL')], function () {
         Route::post('/invoices/{invoice}/setsent', [InvoiceController::class, 'set_sent']);
         Route::resource('signatures', SignatureController::class, ['except' => ['show']]);
         Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
-        Route::get('/reports/{report}/generate', [ReportController::class, 'generate']);
+        Route::get('/reports/{report}', [ReportController::class, 'show']);
+        Route::post('/reports/{report}/generate', [ReportController::class, 'generate']);
         Route::get('/template', [TemplateController::class, 'index'])->name('template.index');
         Route::get('/template/preview', [TemplateController::class, 'preview'])->name('template.preview');
         Route::get('/api', [ApiController::class, 'index'])->name('api');

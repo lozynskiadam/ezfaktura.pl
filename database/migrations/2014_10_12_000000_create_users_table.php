@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('postcode', 10)->default('');
             $table->string('city', 255)->default('');
             $table->string('address', 255)->default('');
-            $table->string('logo')->default(CoreDictionary::DEFAULT_LOGO_PATH);
+            $table->string('logo')->default(CoreDictionary::DEFAULT_USER_LOGO_PATH);
             $table->rememberToken();
             $table->timestamps();
         });

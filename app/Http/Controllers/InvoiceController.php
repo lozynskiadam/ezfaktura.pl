@@ -129,7 +129,13 @@ class InvoiceController extends Controller
         if(!$service->canDelete($invoice)) {
             return abort(500, __('translations.invoices.exception.can_not_delete'));
         }
+
+        DB::beginTransaction();
+
+        $invoice->signature_entry()->first()->delete();
         $invoice->delete();
+
+        DB::commit();
 
         return response()->json(['success' => true]);
     }

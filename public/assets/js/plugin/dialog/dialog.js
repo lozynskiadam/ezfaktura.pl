@@ -47,13 +47,17 @@ window.dialog = function (params = {}) {
       method: 'GET',
       data: {},
       dataType: 'html',
-      callback: null
+      callback: null,
+      xhrFields: null,
+      beforeSend: null
     },
     save: {
       url: null,
       method: 'POST',
       dataType: 'json',
-      callback: null
+      callback: null,
+      xhrFields: null,
+      beforeSend: null
     },
     draggable: true,
     buttons: []
@@ -144,13 +148,15 @@ window.dialog = function (params = {}) {
         url: DialogRef.params.load.url,
         data: DialogRef.params.load.data,
         dataType: DialogRef.params.load.dataType,
-        success: function (data) {
+        success: function (data, status, xhr) {
           $body.html(data);
           $footer.removeClass('d-none');
           if ($.isFunction(DialogRef.params.load.callback)) {
-            DialogRef.params.load.callback(DialogRef, data);
+            DialogRef.params.load.callback(DialogRef, data, status, xhr);
           }
         },
+        xhrFields: DialogRef.params.load.xhrFields,
+        beforeSend: DialogRef.params.load.beforeSend,
         error: onError
       });
     }
@@ -170,12 +176,14 @@ window.dialog = function (params = {}) {
         data: $('form', DialogRef.getModalBody()).serialize(),
         url: DialogRef.params.save.url,
         dataType: DialogRef.params.save.dataType,
-        success: function (data) {
+        success: function (data, status, xhr) {
           if ($.isFunction(DialogRef.params.save.callback)) {
-            DialogRef.params.save.callback(DialogRef, data);
+            DialogRef.params.save.callback(DialogRef, data, status, xhr);
           }
           DialogRef.close();
         },
+        xhrFields: DialogRef.params.save.xhrFields,
+        beforeSend: DialogRef.params.save.beforeSend,
         error: onError
       });
     });

@@ -44,7 +44,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        if(($user->logo !== CoreDictionary::DEFAULT_LOGO_PATH) && file_exists(public_path($user->logo))) {
+        if(($user->logo !== CoreDictionary::DEFAULT_USER_LOGO_PATH) && file_exists(public_path($user->logo))) {
             unlink(public_path($user->logo));
         }
 
