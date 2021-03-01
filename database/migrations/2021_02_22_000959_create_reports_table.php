@@ -16,9 +16,9 @@ class CreateReportsTable extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->boolean('is_active')->default(0);
-            $table->string('name', 255);
+            $table->string('name');
             $table->string('code', 20);
-            $table->string('class_name', 255);
+            $table->string('class_name');
         });
     }
 

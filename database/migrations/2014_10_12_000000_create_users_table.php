@@ -17,14 +17,14 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('api_key', 36)->unique();
-            $table->string('email', 255)->unique();
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('nip', 10);
-            $table->string('name', 255)->default('');
+            $table->string('name')->default('');
             $table->string('postcode', 10)->default('');
-            $table->string('city', 255)->default('');
-            $table->string('address', 255)->default('');
+            $table->string('city')->default('');
+            $table->string('address')->default('');
             $table->string('logo')->default(CoreDictionary::DEFAULT_USER_LOGO_PATH);
             $table->rememberToken();
             $table->timestamps();

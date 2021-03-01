@@ -17,10 +17,10 @@ class CreateContractorsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('nip', 10);
-            $table->string('name', 255)->default('');
+            $table->string('name')->default('');
             $table->string('postcode', 10)->default('');
-            $table->string('city', 255)->default('');
-            $table->string('address', 255)->default('');
+            $table->string('city')->default('');
+            $table->string('address')->default('');
             $table->timestamps();
             $table->softDeletes();
         });

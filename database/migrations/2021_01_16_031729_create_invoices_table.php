@@ -43,7 +43,7 @@ class CreateInvoicesTable extends Migration
             $table->json('additional')->nullable();
             $table->boolean('is_paid')->default(0);
             $table->boolean('is_sent')->default(0);
-            $table->string('file_path', 200);
+            $table->string('file_path');
             $table->timestamps();
             $table->softDeletes();
         });
