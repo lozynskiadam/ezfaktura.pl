@@ -38,11 +38,11 @@
             <i class="fa fa-lock mr-1"></i> {{ __('translations.profile.main.change_password') }}
           </button>
         </div>
-        <div class="form-group">
-          <button class="btn btn-primary form-control btn-round act-export-data">
-            <i class="fa fa-file-download mr-1"></i> {{ __('translations.profile.main.export_data') }}
-          </button>
-        </div>
+{{--        <div class="form-group">--}}
+{{--          <button class="btn btn-primary form-control btn-round act-export-data">--}}
+{{--            <i class="fa fa-file-download mr-1"></i> {{ __('translations.profile.main.export_data') }}--}}
+{{--          </button>--}}
+{{--        </div>--}}
         <div class="form-group">
           <button class="btn btn-danger form-control btn-round act-delete-account">
             <i class="fa fa-times mr-1"></i> {{ __('translations.profile.main.delete_account') }}

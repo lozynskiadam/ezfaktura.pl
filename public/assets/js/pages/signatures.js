@@ -18,7 +18,7 @@ let Pages_Signatures = {
       save: {
         url: "/signatures",
         callback: function(dialogRef, data) {
-          App.getDataTable('SignatureList').row.add(data.row).draw()
+          App.getDataTable('SignatureList').row.add(data.row).draw();
         }
       },
       buttons: [
@@ -52,9 +52,14 @@ let Pages_Signatures = {
   },
 
   onDialogShow: function(dialogRef, data) {
-    $('[name="name"]', dialogRef.getModalBody()).on('blur change update keyup', function() {
+    let modalBody = dialogRef.getModalBody();
+    modalBody.on('blur change update keyup', '[name="name"]', function() {
       $(this).val($(this).val().split(' ').join('-').replace( /[^a-zA-Z0-9-]/g , "").toLowerCase());
     }).trigger('blur');
+    modalBody.on('click', '.act-placeholder', function(){
+      let syntax = $('#syntax', modalBody).val();
+      $('#syntax', modalBody).val(syntax + $(this).text()).focus();
+    });
   },
 
   onDeleteClick: function(dialogRef, btn, data) {

@@ -8,7 +8,7 @@
         <div class="info">
           <a data-toggle="collapse" href="#profile-collapse">
             <span>
-              <span class="user-name">{{ Auth::user()->name }}</span>
+              <span class="user-name">{{ Auth::user()->name ?: Auth::user()->nip }}</span>
               <span class="user-level">{{ Auth::user()->email }}</span>
               <span class="caret"></span>
             </span>

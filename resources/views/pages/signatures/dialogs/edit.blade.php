@@ -8,15 +8,17 @@
   </div>
   <div class="form-group row">
     <label for="syntax" class="col-form-label col-md-2">{{ __('translations.signatures.syntax') }}</label>
-    <div class="col-md-10" data-toggle="tooltip" title="
-      <div class='text-left'>
-        <B>{counter} - {{ __('translations.signatures.syntax.counter') }}</B><br/>
-        {month} - {{ __('translations.signatures.syntax.month') }}<br/>
-        {year} - {{ __('translations.signatures.syntax.year') }}
-      </div>
-      " data-placement="bottom">
+    <div class="col-md-10">
       <input type="text" class="form-control" id="syntax" name="syntax" value="{{ $signature->syntax ?? '' }}"
              autocomplete="off" placeholder="FV/{year}/{month}/{counter}">
+    </div>
+    <div class="col-md-10 offset-md-2">
+      <div class="px-2 py-1 text-info b" style="background: #f5f5f5; border: 1px inset #fafafa80; margin-top: -3px; border-radius: 3px;">
+        <a class="act-placeholder mr-1" href="#" data-toggle="tooltip" data-placement="bottom" title="{{ __('translations.signatures.syntax.counter') }}">{counter}</a>
+        <a class="act-placeholder mr-1" href="#" data-toggle="tooltip" data-placement="bottom" title="{{ __('translations.signatures.syntax.month') }}">{year}</a>
+        <a class="act-placeholder mr-1" href="#" data-toggle="tooltip" data-placement="bottom" title="{{ __('translations.signatures.syntax.year') }}">{month}</a>
+      </div>
+      <div class="validation-block"></div>
     </div>
   </div>
   <div class="form-group row">

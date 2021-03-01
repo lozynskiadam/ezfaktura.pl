@@ -35,11 +35,11 @@ class StoreUpdateSignatureRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|regex:/^[a-z0-9-]*$/',
-            'syntax' => 'required|regex:/{counter}/',
-            'description' => 'required',
+            'name' => 'required|max:35|regex:/^[a-z0-9-]*$/',
+            'syntax' => 'required|max:50|regex:/{counter}/',
+            'description' => 'required|max:255',
             'mode' => 'required|in:monthly,yearly',
-            'invoice_types' => 'required'
+            'invoice_types' => 'required|exists:invoice_types,id'
         ];
     }
 
