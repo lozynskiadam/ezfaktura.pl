@@ -15,6 +15,7 @@ class TemplateController extends Controller
             'name' => __('translations.templates.columns.name'),
             'unit' => __('translations.templates.columns.unit'),
             'quantity' => __('translations.templates.columns.quantity'),
+            'discount' => __('translations.templates.columns.discount'),
             'tax_rate' => __('translations.templates.columns.tax_rate'),
             'tax_amount' => __('translations.templates.columns.tax_amount'),
             'net_price' => __('translations.templates.columns.net_price'),

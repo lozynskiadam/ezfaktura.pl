@@ -12,14 +12,14 @@
     </label>
   </div>
 
-  <div class="col-4 col-sm-3 col-md-2 col-lg-2 col-xl-2">
-    <label class="imagecheck mb-4">
-      <input name="imagecheck" type="radio" value="custom-1" class="imagecheck-input">
-      <figure class="imagecheck-figure">
-        <img src="{{ asset('/assets/img/invoice-templates/custom-1.png') }}" class="imagecheck-image">
-      </figure>
-    </label>
-  </div>
+{{--  <div class="col-4 col-sm-3 col-md-2 col-lg-2 col-xl-2">--}}
+{{--    <label class="imagecheck mb-4">--}}
+{{--      <input name="imagecheck" type="radio" value="custom-1" class="imagecheck-input">--}}
+{{--      <figure class="imagecheck-figure">--}}
+{{--        <img src="{{ asset('/assets/img/invoice-templates/custom-1.png') }}" class="imagecheck-image">--}}
+{{--      </figure>--}}
+{{--    </label>--}}
+{{--  </div>--}}
 
 </div>
 

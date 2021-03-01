@@ -216,6 +216,7 @@ return [
     'templates.columns.name' => 'Nazwa',
     'templates.columns.unit' => 'Jednostka miary',
     'templates.columns.quantity' => 'Ilość',
+    'templates.columns.discount' => 'Rabat',
     'templates.columns.tax_rate' => 'Stawka VAT',
     'templates.columns.tax_amount' => 'Kwota VAT',
     'templates.columns.net_price' => 'Cena netto',
