@@ -169,16 +169,16 @@ let Pages_Invoices = {
       method: "GET",
       url: "/gus",
       data: {
-        nip: $('[name="buyer_nip"]', parent).val()
+        nip: $('[name="buyer[nip]"]', parent).val()
       },
       dataType: 'json',
       success: function (data) {
         waitDialog.close();
         if(data.success) {
-          $('[name="buyer_name"]', parent).val(data.name);
-          $('[name="buyer_address"]', parent).val(data.address);
-          $('[name="buyer_city"]', parent).val(data.city);
-          $('[name="buyer_postcode"]', parent).val(data.postcode);
+          $('[name="buyer[name]"]', parent).val(data.name);
+          $('[name="buyer[address]"]', parent).val(data.address);
+          $('[name="buyer[city]"]', parent).val(data.city);
+          $('[name="buyer[postcode]"]', parent).val(data.postcode);
         }
         else {
           setTimeout(function() { $selector.effect("shake",{times:3, distance: 5}, 500) }, 500);
