@@ -223,7 +223,7 @@ div.user div.info span.user-name {
 .notif-box .notif-center a .notif-icon i {
   font-size: 22px !important;
 }
-#api-key {
+#api-token {
   font-family: 'Courier New', monospace;
 }
 .nav-search .btn-search {

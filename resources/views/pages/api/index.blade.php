@@ -10,8 +10,8 @@
   <div class="page-navs bg-white">
     <div class="nav-scroller">
       <div class="nav nav-tabs nav-line nav-color-primary">
-        <a class="nav-link active show" data-toggle="tab" href="#tab-key">
-          <i class="fa fa-key mr-1"></i> {{ __('translations.api.key.title') }}
+        <a class="nav-link active show" data-toggle="tab" href="#tab-token">
+          <i class="fa fa-key mr-1"></i> {{ __('translations.api.token.title') }}
         </a>
       </div>
     </div>
@@ -22,8 +22,8 @@
       @if(session()->has('message'))
         <div id="request-message" class="alert alert-primary">{{ session()->get('message') }}</div>
       @endif
-      <div class="tab-pane fade active show" id="tab-key" role="tabpanel">
-        @include('pages.api.tabs.key')
+      <div class="tab-pane fade active show" id="tab-token" role="tabpanel">
+        @include('pages.api.tabs.token')
       </div>
     </div>
   </div>

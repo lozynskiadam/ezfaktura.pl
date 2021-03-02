@@ -258,11 +258,11 @@ return [
     'reports.monthly_turnover_report.paid_gross_amount' => 'Opłacono (brutto)',
 
     // api
-    'api.key.title' => 'Klucz API',
-    'api.key.warning_1' => 'Klucz API to unikalny identyfikator używany do uwierzytelniania użytkownika. Przejęcie klucza przez nieuprawnione osoby może prowadzić do wykonania serii operacji z Twojego konta, a co za tym idzie do wycieku lub całkowitej utraty danych zarówno Twoich jak i Twoich kontrahentów',
-    'api.key.warning_2' => 'Jeżeli podejrzewasz, że niepowołana osoba uzyskała dostęp do klucza niezwłocznie go zresetuj!',
-    'api.key.your_key' => 'Twój klucz do API',
-    'api.key.reset_key' => 'Zresetuj klucz',
+    'api.token.title' => 'Klucz API',
+    'api.token.warning_1' => 'Klucz API to unikalny identyfikator używany do uwierzytelniania użytkownika. Przejęcie klucza przez nieuprawnione osoby może prowadzić do wykonania serii operacji z Twojego konta, a co za tym idzie do wycieku lub całkowitej utraty danych zarówno Twoich jak i Twoich kontrahentów',
+    'api.token.warning_2' => 'Jeżeli podejrzewasz, że niepowołana osoba uzyskała dostęp do klucza niezwłocznie go zresetuj!',
+    'api.token.your_token' => 'Twój klucz do API',
+    'api.token.reset_token' => 'Zresetuj klucz',
 
     // notifications
     'notifications.list' => 'Lista powiadomień',

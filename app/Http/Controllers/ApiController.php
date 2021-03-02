@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\ApiKey;
+use App\Services\ApiService;
 use Illuminate\Support\Facades\Auth;
 
 class ApiController extends Controller
@@ -10,16 +10,16 @@ class ApiController extends Controller
     public function index()
     {
         return view('pages.api.index', [
-            'key' => Auth::user()->api_key
+            'token' => Auth::user()->api_token
         ]);
     }
 
-    public function reset_key()
+    public function reset_token()
     {
         $user = Auth::user();
-        $user->api_key = ApiKey::generate();
+        $user->api_token = ApiService::generateApiToken();
         $user->save();
 
-        return response()->json(['key' => $user->api_key]);
+        return response()->json(['key' => $user->api_token]);
     }
 }

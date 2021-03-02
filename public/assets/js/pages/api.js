@@ -1,29 +1,29 @@
 let Pages_Api = {
 
   init: function() {
-    $('.act-toggle-key', document).on('click', Pages_Api.onToggleKeyClick);
-    $('.act-reset-key', document).on('click', Pages_Api.onResetKeyClick);
+    $('.act-toggle-token', document).on('click', Pages_Api.onToggleTokenClick);
+    $('.act-reset-token', document).on('click', Pages_Api.onResetTokenClick);
   },
 
-  onToggleKeyClick: function() {
-    let $ApiKey = $('#api-key', document);
-    if($ApiKey.attr('type') === 'text') {
-      $ApiKey.attr('type', 'password');
+  onToggleTokenClick: function() {
+    let $ApiToken = $('#api-token', document);
+    if($ApiToken.attr('type') === 'text') {
+      $ApiToken.attr('type', 'password');
       $(this).html('<i class="fa fa-eye"></i>');
     }
     else {
-      $ApiKey.attr('type', 'text');
+      $ApiToken.attr('type', 'text');
       $(this).html('<i class="fa fa-eye-slash"></i>');
     }
   },
 
-  onResetKeyClick: function() {
+  onResetTokenClick: function() {
     $.ajax({
       method: "POST",
-      url: "/api/resetkey",
+      url: "/api/resettoken",
       dataType: 'json',
       success: function (data) {
-        $('#api-key', document).val(data.key);
+        $('#api-token', document).val(data.key);
         swal("Gotowe!", "Twój klucz API został zresetowany", {
           icon: "success",
           buttons: {
