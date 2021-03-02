@@ -31,23 +31,6 @@ class RegisterController extends Controller
 
         Auth::attempt($request->only('email', 'password'));
 
-        if ($report = GUSHelper::find($request->get('nip'))) {
-            $user->name = $report->getName();
-            $user->address = $report->getStreet() . ' ' . $report->getPropertyNumber() . '/' . $report->getApartmentNumber();
-            $user->postcode = $report->getZipCode();
-            $user->city = $report->getCity();
-            $user->save();
-        }
-
-        $notification = new Notification();
-        $notification->user_id = Auth::id();
-        $notification->title = __('translations.notifications.welcome.title', ['app' => env('APP_NAME')]);
-        $notification->message = __('translations.notifications.welcome.message');
-        $notification->date = date('Y-m-d H:i:s');
-        $notification->icon = 'fa fa-hands-helping';
-        $notification->class = 'primary';
-        $notification->save();
-
         return redirect()->route('home');
     }
 }
