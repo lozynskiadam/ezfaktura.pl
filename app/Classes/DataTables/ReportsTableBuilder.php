@@ -24,6 +24,6 @@ class ReportsTableBuilder extends DataTableBuilder
 
         $this->setCreatedRowCallback('Pages_Reports.onRowCreate');
 
-        $this->setData(Report::all()->translate('name')->toArray());
+        $this->setData(Report::all()->toArray());
     }
 }

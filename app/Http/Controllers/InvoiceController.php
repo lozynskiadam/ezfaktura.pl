@@ -27,7 +27,6 @@ class InvoiceController extends Controller
                     ->invoices()
                     ->with('invoice_type')
                     ->get()
-                    ->translate('invoice_type.initials')
                     ->toArray())
                 ->make()
         ]);
@@ -72,7 +71,6 @@ class InvoiceController extends Controller
 
         DB::commit();
 
-        $invoice->invoice_type->initials = __($invoice->invoice_type->initials);
         return response()->json(['row' => $invoice]);
     }
 

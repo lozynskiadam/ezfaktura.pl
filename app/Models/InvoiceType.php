@@ -19,4 +19,13 @@ class InvoiceType extends Model
         return $this->belongsToMany(Signature::class, 'signature_invoice_type');
     }
 
+    public function getInitialsAttribute($attr)
+    {
+        return __($attr);
+    }
+
+    public function getNameAttribute($attr)
+    {
+        return __($attr);
+    }
 }

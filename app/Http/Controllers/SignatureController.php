@@ -19,7 +19,6 @@ class SignatureController extends Controller
                     ->signatures()
                     ->with('invoice_types')
                     ->get()
-                    ->translate('invoice_types.initials')
                     ->toArray())
                 ->make()
         ]);
@@ -28,7 +27,7 @@ class SignatureController extends Controller
     public function create()
     {
         return view('pages.signatures.dialogs.edit', [
-            'invoice_types' => InvoiceType::all()->translate(['initials', 'name'])
+            'invoice_types' => InvoiceType::all()
         ]);
     }
 
@@ -41,7 +40,6 @@ class SignatureController extends Controller
 
         $signature->invoice_types()->sync($request->get('invoice_types'));
         $signature->load(['invoice_types']);
-        $signature->invoice_types->translate('initials');
 
         return response()->json(['row' => $signature]);
     }
@@ -50,7 +48,7 @@ class SignatureController extends Controller
     {
         return view('pages.signatures.dialogs.edit', [
             'signature' => $signature,
-            'invoice_types' => InvoiceType::all()->translate(['initials', 'name'])
+            'invoice_types' => InvoiceType::all()
         ]);
     }
 
@@ -60,7 +58,6 @@ class SignatureController extends Controller
         $signature->save();
         $signature->invoice_types()->sync($request->get('invoice_types'));
         $signature->load(['invoice_types']);
-        $signature->invoice_types->translate('initials');
 
         return response()->json(['row' => $signature]);
     }
