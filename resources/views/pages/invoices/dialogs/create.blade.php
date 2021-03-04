@@ -7,7 +7,11 @@
     </div>
   @endif
 
-  <div class="row">
+  @if(count($signatures) === 1)
+    <input type="hidden" name="signature_id" value="{{ $signatures->first()->id }}"/>
+  @endif
+
+  <div class=" row">
     <div class="col-md-6 pr-2">
       <table class="table dataTable dataTable-modal">
         <thead>
@@ -16,22 +20,25 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="form-group">
-          <td>
-            @if(!count($signatures))
-              <label class="text-danger"><i class="fa fa-exclamation-triangle"></i> {{ __('translations.invoices.signature') }}</label>
-            @else
-              <label>{{ __('translations.invoices.signature') }}</label>
-            @endif
-          </td>
-          <td>
-            <select class="form-control" name="signature_id">
-              @foreach($signatures as $signature)
-                <option value="{{ $signature->id }}">{{ $signature->name }}</option>
-              @endforeach
-            </select>
-          </td>
-        </tr>
+        @if(count($signatures) > 1)
+          <tr class="form-group">
+            <td>
+              @if(!count($signatures))
+                <label class="text-danger"><i
+                    class="fa fa-exclamation-triangle"></i> {{ __('translations.invoices.signature') }}</label>
+              @else
+                <label>{{ __('translations.invoices.signature') }}</label>
+              @endif
+            </td>
+            <td>
+              <select class="form-control" name="signature_id">
+                @foreach($signatures as $signature)
+                  <option value="{{ $signature->id }}">{{ $signature->name }}</option>
+                @endforeach
+              </select>
+            </td>
+          </tr>
+        @endif
         <tr class="form-group">
           <td>
             <label>{{ __('translations.invoices.issue_date') }}</label>
@@ -138,9 +145,10 @@
     </div>
   </div>
 
-  <table class="table dataTable dataTable-modal">
+  <table id="positions" class="table dataTable dataTable-modal">
     <thead>
     <tr>
+      <th style="width: 15px;"></th>
       <th>{{ __('translations.invoices.positions.name') }}</th>
       <th style="width: 40px;">{{ __('translations.invoices.positions.quantity') }}</th>
       <th style="width: 55px;">{{ __('translations.invoices.positions.uom') }}</th>
@@ -152,6 +160,9 @@
     </thead>
 
     <tr class="default-row">
+      <td class="form-group text-center">
+        %ORDINAL%
+      </td>
       <td class="form-group">
         <x-input name="%NAME%[name]"/>
       </td>

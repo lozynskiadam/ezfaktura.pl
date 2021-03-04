@@ -56,19 +56,41 @@ let Pages_Invoices = {
   },
 
   addPosition: function(e) {
-    let $defaultRow = $('.default-row', e.data.parent);
+    let $defaultRow = $('#positions .default-row', e.data.parent);
     let $row = $defaultRow.clone().removeClass('default-row');
     $row.strtr({
+      '%ORDINAL%': Pages_Invoices.PositionRowIndex,
       '%NAME%': 'invoice[positions][' +Pages_Invoices.PositionRowIndex+ ']',
       '%BTN_CLASS%': Pages_Invoices.PositionRowIndex > 1 ? 'act-delete text-danger' : 'act-add',
       '%BTN_ICON%': Pages_Invoices.PositionRowIndex > 1 ? 'fa fa-times' : 'fa fa-plus',
     });
     $defaultRow.parents('tbody').append($row);
     Pages_Invoices.PositionRowIndex++;
+    Pages_Invoices.reorderPositions(e);
   },
 
-  removePosition: function() {
+  removePosition: function(e) {
     $(this).parents('tr').remove();
+    Pages_Invoices.PositionRowIndex--;
+    Pages_Invoices.reorderPositions(e);
+  },
+
+  reorderPositions: function(e) {
+    let $table = $('#positions', e.data.parent);
+    $('tbody tr:not(.default-row)', $table).each(function(i) {
+      let $row = $(this);
+      let oldIndex = $('td:nth-child(1)', $row).text().trim();
+      let newIndex = i+1;
+      $('td:nth-child(1)', $row).html(newIndex);
+      $('input, select', $row).each(function(){
+        if($(this).attr('id')) {
+          $(this).attr('id', $(this).attr('id').split('[' +oldIndex+ ']').join('[' +newIndex+ ']'));
+        }
+        if($(this).attr('name')) {
+          $(this).attr('name', $(this).attr('name').split('[' +oldIndex+ ']').join('[' +newIndex+ ']'));
+        }
+      });
+    });
   },
 
   onRowClick: function(e) {
