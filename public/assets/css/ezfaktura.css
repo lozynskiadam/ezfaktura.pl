@@ -487,8 +487,15 @@ a.dropdown-lang:hover {
   position: relative;
 }
 .switcher input:checked + label::before {
-  background: #348fe2;
-  border: 2px solid #348fe2;
+  background: #1572e8;
+  border: 2px solid #1572e8;
+}
+.switcher input:disabled + label::before {
+  background: #efefef;
+  border: 2px solid #e8e8e8;
+}
+.switcher input:disabled + label::after {
+  background: #d2d2d2;
 }
 .switcher label::before {
   content: '';
@@ -525,4 +532,55 @@ a.dropdown-lang:hover {
   -ms-transition: all .2s linear;
   -o-transition: all .2s linear;
   transition: all .2s linear;
+}
+
+/* modules */
+.module-box {
+  display: flex;
+  align-items: stretch;
+  padding: .95rem 1.25rem;
+  margin-bottom: 15px;
+  background-color: #ffffff;
+  border-left: 4px solid #D5DBE0;
+  box-shadow: 1px 1px 10px 0 rgba(18, 38, 63, 0.2);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.module-box:hover {
+  box-shadow: 1px 1px 10px 0 rgba(18, 38, 63, 0.3);
+}
+.module-box.active {
+  display: flex;
+  align-items: stretch;
+  border-left: 4px solid #1572e8;
+  opacity: 1;
+}
+.module-box div.module-icon {
+  float: left;
+  text-align: center;
+  width: 66px;
+  color: #D5DBE0;
+  margin-right: 15px;
+}
+.module-box div.module-icon i{
+  font-size: 3em;
+}
+.module-box.active div.module-icon {
+  color: #1572e8 !important
+}
+.module-box div.module-content {
+  width: 100%;
+}
+.module-box div.module-content strong {
+  display: block;
+  font-size: 16px;
+  line-height: 20px;
+}
+.module-box div.module-content small {
+  color: #21252980;
+}
+.module-box div.switcher {
+  float: right;
+  margin-top: 6px;
+  pointer-events: none;
 }

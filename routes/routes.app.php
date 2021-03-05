@@ -5,6 +5,7 @@ use App\Http\Controllers\GUSController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
@@ -56,4 +57,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/notifications/list', [NotificationController::class, 'list']);
     Route::get('/search', [SearchController::class, 'search'])->name('search');
     Route::get('/gus', [GUSController::class, 'search'])->name('gus');
+    Route::get('/modules', [ModuleController::class, 'index'])->name('modules.index');
 });
