@@ -100,6 +100,10 @@
 
 @yield('scripts')
 
+@if(env('APP_DEBUG'))
+  @include('layouts.debug')
+@endif
+
 <script>
   $(document).ready(function () {
     App.init();
