@@ -102,6 +102,13 @@ return [
     'menu.signatures' => 'Sygnatury',
     'menu.reports' => 'Raporty',
     'menu.api' => 'API',
+    'menu.modules' => 'Dodaj moduły',
+
+    // modules
+    'modules.templates' => 'Szablony',
+    'modules.signatures' => 'Sygnatury',
+    'modules.reports' => 'Raporty',
+    'modules.api' => 'API',
 
     // profile
     'profile.update.success' => 'Informacje zostały zaktualizowane pomyślnie.',

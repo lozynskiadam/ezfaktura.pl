@@ -2,53 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ToggleModuleRequest;
+use App\Models\Module;
+use Illuminate\Support\Facades\Session;
+
 class ModuleController extends Controller
 {
     public function index()
     {
         return view('pages.modules.index', [
-            'modules' => [
-                (object)[
-                    'id' => 1,
-                    'name' => 'Fakturowanie',
-                    'icon' => 'fa fa-file-pdf',
-                    'description' => 'Free',
-                    'basic' => true,
-                    'active' => true,
-                ],
-                (object)[
-                    'id' => 2,
-                    'name' => 'Szablony faktur',
-                    'icon' => 'fas fa-file-invoice',
-                    'description' => 'Free',
-                    'basic' => false,
-                    'active' => false,
-                ],
-                (object)[
-                    'id' => 3,
-                    'name' => 'Sygnatury',
-                    'icon' => 'fa fa-tag',
-                    'description' => 'Free',
-                    'basic' => false,
-                    'active' => false,
-                ],
-                (object)[
-                    'id' => 4,
-                    'name' => 'Raporty',
-                    'icon' => 'fas fa-chart-line',
-                    'description' => 'Free',
-                    'basic' => false,
-                    'active' => false,
-                ],
-                (object)[
-                    'id' => 5,
-                    'name' => 'API',
-                    'icon' => 'fab fa-cloudversify',
-                    'description' => 'Free',
-                    'basic' => false,
-                    'active' => false,
-                ],
-            ]
+            'modules' => Module::all(),
         ]);
+    }
+
+    public function toggle(ToggleModuleRequest $request, Module $module)
+    {
+        $user = \Auth::user();
+        if($request->get('active')) {
+            if(!$user->modules()->find($module)) {
+                $user->modules()->attach($module);
+            }
+        }
+        else {
+            $user->modules()->detach($module);
+        }
+        Session::put('modules', $user->modules()->pluck('modules.id'));
+        return response()->json(['success' => true]);
     }
 }

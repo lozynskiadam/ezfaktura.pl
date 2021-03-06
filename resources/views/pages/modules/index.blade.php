@@ -13,7 +13,7 @@
 
       @foreach($modules as $module)
       <div class="col-md-4">
-        <div class="module-box @if($module->active) active @endif">
+        <div class="module-box @if(Auth::user()->hasModule($module->id)) active @endif">
           <div class="module-icon">
             <i class="{{ $module->icon }}"></i>
           </div>
@@ -23,14 +23,13 @@
           </div>
           @if(!$module->basic)
             <div class="switcher">
-              <input type="checkbox" id="module_{{ $module->id }}" value="{{ $module->id }}" @if($module->active) checked @endif>
+              <input type="checkbox" id="module_{{ $module->id }}" value="{{ $module->id }}" @if(Auth::user()->hasModule($module->id)) checked @endif>
               <label for="module_{{ $module->id }}"></label>
             </div>
           @endif
         </div>
       </div>
       @endforeach
-
 
     </div>
   </div>

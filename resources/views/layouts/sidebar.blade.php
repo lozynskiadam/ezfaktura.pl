@@ -40,34 +40,53 @@
           </a>
         </li>
 
+        @if(Auth::user()->hasModule(\App\Dictionaries\ModuleDictionary::TEMPLATES))
         <li class="nav-item @if (request()->path() == 'template') active @endif">
           <a href="{{ route('template.index') }}">
             <i class="fas fa-file-invoice"></i>
             <p>{{ __('translations.menu.template') }}</p>
           </a>
         </li>
+        @endif
 
+        @if(Auth::user()->hasModule(\App\Dictionaries\ModuleDictionary::SIGNATURES))
         <li class="nav-item @if (request()->path() == 'signatures') active @endif">
           <a href="{{ route('signatures.index') }}">
             <i class="fas fa-tag"></i>
             <p>{{ __('translations.menu.signatures') }}</p>
           </a>
         </li>
+        @endif
 
+        @if(Auth::user()->hasModule(\App\Dictionaries\ModuleDictionary::REPORTS))
         <li class="nav-item @if (request()->path() == 'reports') active @endif">
           <a href="{{ route('reports.index') }}">
             <i class="fas fa-chart-line"></i>
             <p>{{ __('translations.menu.reports') }}</p>
           </a>
         </li>
+        @endif
 
+        @if(Auth::user()->hasModule(\App\Dictionaries\ModuleDictionary::API))
         <li class="nav-item @if (request()->path() == 'api') active @endif">
           <a href="{{ route('api') }}">
             <i class="fab fa-cloudversify"></i>
             <p>{{ __('translations.menu.api') }}</p>
           </a>
         </li>
+        @endif
 
+      </ul>
+
+      <hr/>
+
+      <ul class="nav nav-primary">
+        <li class="nav-item @if (request()->path() == 'modules') active @endif">
+          <a href="{{ route('modules.index') }}">
+            <i class="fas fa-plus-square"></i>
+            <p>{{ __('translations.menu.modules') }}</p>
+          </a>
+        </li>
       </ul>
     </div>
   </div>

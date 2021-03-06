@@ -486,9 +486,12 @@ a.dropdown-lang:hover {
   height: 28px;
   position: relative;
 }
+.switcher input + label::before {
+  box-shadow: inset 0 0 5px 3px #3332;
+}
 .switcher input:checked + label::before {
-  background: #1572e8;
-  border: 2px solid #1572e8;
+  background: #2d89ff;
+  border: 2px solid #2a7ee9;
 }
 .switcher input:disabled + label::before {
   background: #efefef;
@@ -543,6 +546,10 @@ a.dropdown-lang:hover {
   background-color: #ffffff;
   border-left: 4px solid #D5DBE0;
   box-shadow: 1px 1px 10px 0 rgba(18, 38, 63, 0.2);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -561,6 +568,7 @@ a.dropdown-lang:hover {
   width: 66px;
   color: #D5DBE0;
   margin-right: 15px;
+  transition: all 0.2s;
 }
 .module-box div.module-icon i{
   font-size: 3em;

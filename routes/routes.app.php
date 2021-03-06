@@ -58,4 +58,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/search', [SearchController::class, 'search'])->name('search');
     Route::get('/gus', [GUSController::class, 'search'])->name('gus');
     Route::get('/modules', [ModuleController::class, 'index'])->name('modules.index');
+    Route::post('/modules/{module}/toggle', [ModuleController::class, 'toggle']);
 });

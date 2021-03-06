@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             InvoiceTypeSeeder::class,
-            ReportSeeder::class
+            ReportSeeder::class,
+            ModuleSeeder::class
         ]);
     }
 }
