@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class GusApiRequest extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
       'request',
       'response',

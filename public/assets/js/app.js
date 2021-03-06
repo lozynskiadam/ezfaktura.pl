@@ -84,7 +84,7 @@ const App = {
         message: 'Aktualnie nie posiadasz żadnych aktywnych operacji'
       }, {
         // settings
-        type: 'info',
+        type: 'primary',
         placement: {
           from: 'bottom',
           align: 'right'

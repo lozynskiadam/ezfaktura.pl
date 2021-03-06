@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class InvoiceType extends Model
 {
-    use HasFactory;
-
     public function invoices()
     {
         return $this->hasMany(Invoice::class);

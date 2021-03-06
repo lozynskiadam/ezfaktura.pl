@@ -45,7 +45,8 @@ class MonthlyTurnoverReport extends BaseReport implements FromArray, WithTitle, 
             FROM invoices
             WHERE user_id = :user_id AND
                   issue_date >= :date_from AND
-                  issue_date <= :date_to
+                  issue_date <= :date_to AND
+                  deleted_at IS NULL
             GROUP BY DATE_FORMAT(issue_date, '%Y-%m')
             ORDER BY DATE_FORMAT(issue_date, '%Y-%m') ASC
         ", [

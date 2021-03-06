@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-
 use App\Classes\Reports\IssuedInvoicesReport;
 use App\Classes\Reports\MonthlyTurnoverReport;
 use App\Dictionaries\ReportDictionary;

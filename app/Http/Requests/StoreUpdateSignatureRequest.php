@@ -37,7 +37,7 @@ class StoreUpdateSignatureRequest extends FormRequest
         return [
             'name' => 'required|max:35|regex:/^[a-z0-9-]*$/',
             'syntax' => 'required|max:50|regex:/{counter}/',
-            'description' => 'required|max:255',
+            'description' => 'max:255',
             'mode' => 'required|in:monthly,yearly',
             'invoice_types' => 'required|exists:invoice_types,id'
         ];
