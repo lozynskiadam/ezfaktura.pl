@@ -7,9 +7,8 @@ use App\Models\User;
 
 class ContractorService
 {
-    public function updateOrCreateContractor($user_id, $data) : Contractor
+    public function updateOrCreateContractor(User $user, $data) : Contractor
     {
-        $user = User::findOrFail($user_id);
         if(isset($data['id'])) {
             $contractor = $user->contractors()->findOrFail($data['id']);
         }

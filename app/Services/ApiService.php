@@ -7,14 +7,18 @@ use Illuminate\Support\Str;
 
 class ApiService
 {
-    public static function generateApiToken()
+    public function generateToken()
     {
-        while (true) {
+        $token = null;
+        while (!$token || User::where('api_token', $token)->exists()) {
             $token = Str::random(60);
-            if (!User::where('api_token', $token)->exists()) {
-                break;
-            }
         }
         return $token;
+    }
+
+    public function resetToken(User $user) : void
+    {
+        $user->api_token = $this->generateToken();
+        $user->save();
     }
 }

@@ -11,9 +11,10 @@ class Signature extends Model
     use SoftDeletes;
 
     protected $fillable = [
-      'name',
-      'syntax',
-      'description',
+        'name',
+        'syntax',
+        'padding',
+        'description',
     ];
 
     protected $with = ['invoice_types'];

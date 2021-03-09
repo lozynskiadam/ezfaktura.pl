@@ -14,11 +14,10 @@ class ApiController extends Controller
         ]);
     }
 
-    public function reset_token()
+    public function reset_token(ApiService $apiService)
     {
         $user = Auth::user();
-        $user->api_token = ApiService::generateApiToken();
-        $user->save();
+        $apiService->resetToken($user);
 
         return response()->json(['key' => $user->api_token]);
     }

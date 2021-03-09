@@ -211,6 +211,8 @@ return [
     'signatures.counter_type' => 'Licznik',
     'signatures.counter_type.monthly' => 'Miesięczny',
     'signatures.counter_type.yearly' => 'Roczny',
+    'signatures.counter_padding' => 'Dopełnij zerami',
+    'signatures.counter_places' => 'miejsc',
     'signatures.invoice_types' => 'Typy faktur',
 
     // templates

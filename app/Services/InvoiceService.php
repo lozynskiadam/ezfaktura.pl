@@ -6,26 +6,34 @@ use App\Dictionaries\InvoiceTypeDictionary;
 use App\Dictionaries\SignatureModeDictionary;
 use App\Models\Contractor;
 use App\Models\Invoice;
+use App\Models\Signature;
 use App\Models\SignatureEntry;
 use App\Models\User;
 use Carbon\Carbon;
+use Exception;
 use InvoiceGenerator\InvoiceException;
 
 class InvoiceService
 {
+    private $signatureService;
+
+    public function __construct(SignatureService $signatureService)
+    {
+        $this->signatureService = $signatureService;
+    }
+
     /**
-     * @param $user_id
-     * @param $contractor_id
-     * @param $signature_entry_id
-     * @param $invoice_data
+     * @param User $seller
+     * @param Contractor $buyer
+     * @param Signature $signature
+     * @param array $invoice_data
      * @return Invoice
      * @throws InvoiceException
+     * @throws Exception
      */
-    public function createInvoice($user_id, $contractor_id, $signature_entry_id, $invoice_data): Invoice
+    public function issue(User $seller, Contractor $buyer, Signature $signature, array $invoice_data): Invoice
     {
-        $user = User::findOrFail($user_id);
-        $contractor = Contractor::findOrFail($contractor_id);
-        $signature_entry = SignatureEntry::findOrFail($signature_entry_id);
+        $signature_entry = $this->signatureService->addEntry($signature, Carbon::createFromFormat('Y-m-d', $invoice_data['issue_date']));
 
         $generator = new \InvoiceGenerator\Invoice([
             'signature' => $signature_entry->value,
@@ -35,18 +43,18 @@ class InvoiceService
             'payment_method' => $invoice_data['payment_method'],
             'positions' => $invoice_data['positions'],
             'seller' => [
-                'name' => $user->name,
-                'address' => $user->address,
-                'city' => $user->city,
-                'zip_code' => $user->postcode,
-                'tax_id' => $user->nip,
+                'name' => $seller->name,
+                'address' => $seller->address,
+                'city' => $seller->city,
+                'zip_code' => $seller->postcode,
+                'tax_id' => $seller->nip,
             ],
             'buyer' => [
-                'name' => $contractor->name,
-                'address' => $contractor->address,
-                'city' => $contractor->city,
-                'zip_code' => $contractor->postcode,
-                'tax_id' => $contractor->nip,
+                'name' => $buyer->name,
+                'address' => $buyer->address,
+                'city' => $buyer->city,
+                'zip_code' => $buyer->postcode,
+                'tax_id' => $buyer->nip,
             ],
         ]);
         $output = '/generated/' . time() . '.pdf';
@@ -54,7 +62,7 @@ class InvoiceService
 
         $invoice = new Invoice();
         $invoice->fill((array)$generator);
-        $invoice->user_id = $user->id;
+        $invoice->user_id = $seller->id;
         $invoice->signature_entry_id = $signature_entry->id;
         $invoice->invoice_type_id = InvoiceTypeDictionary::BASIC;
         $invoice->file_path = $output;
@@ -88,9 +96,9 @@ class InvoiceService
                         ->whereYear('date', $date->format('Y'))
                         ->whereMonth('date', $date->format('m'))
                         ->count() === 0;
-            default:
-                return false;
         }
+
+        return false;
     }
 
     public function canSetPaid(Invoice $invoice): bool
@@ -98,6 +106,7 @@ class InvoiceService
         if($invoice->is_paid) {
             return false;
         }
+
         return true;
     }
 
@@ -106,6 +115,7 @@ class InvoiceService
         if($invoice->is_sent) {
             return false;
         }
+
         return true;
     }
 
@@ -114,6 +124,7 @@ class InvoiceService
         if($invoice->signature_entry()->exists() && !$this->isLastInSignature($invoice)) {
             return false;
         }
+
         return true;
     }
 }

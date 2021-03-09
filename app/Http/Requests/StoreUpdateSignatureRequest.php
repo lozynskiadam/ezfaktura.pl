@@ -39,6 +39,7 @@ class StoreUpdateSignatureRequest extends FormRequest
             'syntax' => 'required|max:50|regex:/{counter}/',
             'description' => 'max:255',
             'mode' => 'required|in:monthly,yearly',
+            'padding' => 'required|integer|min:0|max:10',
             'invoice_types' => 'required|exists:invoice_types,id'
         ];
     }

@@ -6,9 +6,9 @@ use App\Classes\DataTables\InvoicesTableBuilder;
 use App\Http\Requests\DownloadPreviewInvoiceRequest;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Models\Invoice;
+use App\Models\Signature;
 use App\Services\ContractorService;
 use App\Services\InvoiceService;
-use App\Services\SignatureService;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +18,13 @@ use Throwable;
 
 class InvoiceController extends Controller
 {
+    private $invoiceService;
+
+    public function __construct(InvoiceService $invoiceService)
+    {
+        $this->invoiceService = $invoiceService;
+    }
+
     public function index(InvoicesTableBuilder $dataTable)
     {
         return view('pages.invoices.index', [
@@ -56,31 +63,37 @@ class InvoiceController extends Controller
 
     /**
      * @param StoreInvoiceRequest $request
+     * @param ContractorService $contractorService
      * @return JsonResponse
      * @throws Throwable
      */
-    public function store(StoreInvoiceRequest $request)
+    public function store(StoreInvoiceRequest $request, ContractorService $contractorService)
     {
         DB::beginTransaction();
 
-        $user = Auth::user();
-        $contractor = (new ContractorService)->updateOrCreateContractor($user->id, $request->get('buyer'));
-        $signature_entry = (new SignatureService)->addEntry($request->get('signature_id'), $request->get('issue_date'));
-        $invoice = (new InvoiceService)->createInvoice($user->id, $contractor->id, $signature_entry->id, $request->get('invoice'));
+        try {
+            $user = Auth::user();
+            $signature = Signature::findOrFail($request->get('signature_id'));
+            $contractor = $contractorService->updateOrCreateContractor($user, $request->get('buyer'));
+            $invoice = $this->invoiceService->issue($user, $contractor, $signature, $request->get('invoice'));
+            DB::commit();
+        }
+        catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['success' => false]);
+        }
 
-        DB::commit();
-
-        return response()->json(['row' => $invoice]);
+        return response()->json(['success' => true, 'row' => $invoice]);
     }
 
-    public function show(Request $request, Invoice $invoice, InvoiceService $service)
+    public function show(Request $request, Invoice $invoice)
     {
         return view('pages.invoices.dialogs.show', [
             'user' => Auth::user(),
             'invoice' => $invoice,
-            'can_set_paid' => $service->canSetPaid($invoice),
-            'can_set_sent' => $service->canSetSent($invoice),
-            'can_delete' => $service->canDelete($invoice),
+            'can_set_paid' => $this->invoiceService->canSetPaid($invoice),
+            'can_set_sent' => $this->invoiceService->canSetSent($invoice),
+            'can_delete' => $this->invoiceService->canDelete($invoice),
         ]);
     }
 
@@ -99,9 +112,9 @@ class InvoiceController extends Controller
         return response()->file($filePath, $headers);
     }
 
-    public function set_paid(DownloadPreviewInvoiceRequest $request, Invoice $invoice, InvoiceService $service)
+    public function set_paid(DownloadPreviewInvoiceRequest $request, Invoice $invoice)
     {
-        if(!$service->canSetPaid($invoice)) {
+        if(!$this->invoiceService->canSetPaid($invoice)) {
             return abort(500, __('translations.invoices.exception.can_not_set_paid'));
         }
         $invoice->is_paid = 1;
@@ -110,9 +123,9 @@ class InvoiceController extends Controller
         return response()->json(['success' => true]);
     }
 
-    public function set_sent(DownloadPreviewInvoiceRequest $request, Invoice $invoice, InvoiceService $service)
+    public function set_sent(DownloadPreviewInvoiceRequest $request, Invoice $invoice)
     {
-        if(!$service->canSetSent($invoice)) {
+        if(!$this->invoiceService->canSetSent($invoice)) {
             return abort(500, __('translations.invoices.exception.can_not_set_sent'));
         }
         $invoice->is_sent = 1;
@@ -121,18 +134,13 @@ class InvoiceController extends Controller
         return response()->json(['success' => true]);
     }
 
-    public function destroy(DownloadPreviewInvoiceRequest $request, Invoice $invoice, InvoiceService $service)
+    public function destroy(DownloadPreviewInvoiceRequest $request, Invoice $invoice)
     {
-        if(!$service->canDelete($invoice)) {
+        if(!$this->invoiceService->canDelete($invoice)) {
             return abort(500, __('translations.invoices.exception.can_not_delete'));
         }
 
-        DB::beginTransaction();
-
-        $invoice->signature_entry()->first()->delete();
         $invoice->delete();
-
-        DB::commit();
 
         return response()->json(['success' => true]);
     }
