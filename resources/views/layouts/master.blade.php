@@ -33,7 +33,7 @@
 
     <!-- Logo Header -->
     <div class="logo-header" data-background-color="blue">
-      <a href="{{ route('home') }}" class="logo">
+      <a href="{{ route('app.home') }}" class="logo">
         <img src="/assets/img/logo.png" alt="navbar brand" class="navbar-brand">
       </a>
       <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse"

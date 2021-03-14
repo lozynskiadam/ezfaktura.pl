@@ -18,12 +18,12 @@
           <div class="collapse in @if (in_array(request()->path(), ['profile'])) show @endif" id="profile-collapse">
             <ul class="nav">
               <li class="@if (request()->path() == 'profile') active @endif">
-              <a href="{{ route('profile.index') }}">
+              <a href="{{ route('app.profile.index') }}">
                 <span class="link-collapse">{{ __('translations.menu.profile') }}</span>
               </a>
               </li>
               <li>
-                <a href="{{ route('logout') }}">
+                <a href="{{ route('app.logout') }}">
                   <span class="link-collapse">{{ __('translations.menu.logout') }}</span>
                 </a>
               </li>
@@ -34,7 +34,7 @@
       <ul class="nav nav-primary">
 
         <li class="nav-item @if (in_array(request()->path(), ['/', 'invoices'])) active @endif">
-          <a href="{{ route('invoices.index') }}">
+          <a href="{{ route('app.invoices.index') }}">
             <i class="far fa-copy"></i>
             <p>{{ __('translations.menu.invoices_list') }}</p>
           </a>
@@ -42,7 +42,7 @@
 
         @if(Auth::user()->hasModule(\App\Dictionaries\ModuleDictionary::TEMPLATES))
         <li class="nav-item @if (request()->path() == 'template') active @endif">
-          <a href="{{ route('template.index') }}">
+          <a href="{{ route('app.template.index') }}">
             <i class="fas fa-file-invoice"></i>
             <p>{{ __('translations.menu.template') }}</p>
           </a>
@@ -51,7 +51,7 @@
 
         @if(Auth::user()->hasModule(\App\Dictionaries\ModuleDictionary::SIGNATURES))
         <li class="nav-item @if (request()->path() == 'signatures') active @endif">
-          <a href="{{ route('signatures.index') }}">
+          <a href="{{ route('app.signatures.index') }}">
             <i class="fas fa-tag"></i>
             <p>{{ __('translations.menu.signatures') }}</p>
           </a>
@@ -60,7 +60,7 @@
 
         @if(Auth::user()->hasModule(\App\Dictionaries\ModuleDictionary::REPORTS))
         <li class="nav-item @if (request()->path() == 'reports') active @endif">
-          <a href="{{ route('reports.index') }}">
+          <a href="{{ route('app.reports.index') }}">
             <i class="fas fa-chart-line"></i>
             <p>{{ __('translations.menu.reports') }}</p>
           </a>
@@ -69,7 +69,7 @@
 
         @if(Auth::user()->hasModule(\App\Dictionaries\ModuleDictionary::API))
         <li class="nav-item @if (request()->path() == 'api') active @endif">
-          <a href="{{ route('api') }}">
+          <a href="{{ route('app.api') }}">
             <i class="fab fa-cloudversify"></i>
             <p>{{ __('translations.menu.api') }}</p>
           </a>
@@ -82,7 +82,7 @@
 
       <ul class="nav nav-primary">
         <li class="nav-item @if (request()->path() == 'modules') active @endif">
-          <a href="{{ route('modules.index') }}">
+          <a href="{{ route('app.modules.index') }}">
             <i class="fas fa-plus-square"></i>
             <p>{{ __('translations.menu.modules') }}</p>
           </a>

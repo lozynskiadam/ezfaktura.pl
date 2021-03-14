@@ -66,8 +66,8 @@
 {{--                <a class="dropdown-lang" href="{{ URL::to('language/pl') }}"><img src="/assets/img/flags/pl.png"/> PL</a>--}}
 {{--              </div>--}}
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{{ route('profile.index') }}">{{ __('translations.menu.profile') }}</a>
-              <a class="dropdown-item" href="{{ route('logout') }}">{{ __('translations.menu.logout') }}</a>
+              <a class="dropdown-item" href="{{ route('app.profile.index') }}">{{ __('translations.menu.profile') }}</a>
+              <a class="dropdown-item" href="{{ route('app.logout') }}">{{ __('translations.menu.logout') }}</a>
             </li>
           </div>
         </ul>

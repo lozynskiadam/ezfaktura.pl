@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-8 pr-0">
-    <iframe class="preview-pdf" src="{{ route('invoice.preview', ['invoice' => $invoice->id]) }}">
+    <iframe class="preview-pdf" src="{{ route('app.invoice.preview', ['invoice' => $invoice->id]) }}">
       {{ __('translations.templates.preview.no_pdf_support') }}
     </iframe>
   </div>

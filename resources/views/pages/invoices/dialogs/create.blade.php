@@ -3,7 +3,7 @@
     <div class="alert alert-warning">
       <strong>{{ __('translations.invoices.no_signature_warning.title') }}</strong>
       {{ __('translations.invoices.no_signature_warning.content') }}
-      <a href="{{ route('signatures.index') }}">{{ __('translations.invoices.no_signature_warning.button') }}</a>
+      <a href="{{ route('app.signatures.index') }}">{{ __('translations.invoices.no_signature_warning.button') }}</a>
     </div>
   @endif
 

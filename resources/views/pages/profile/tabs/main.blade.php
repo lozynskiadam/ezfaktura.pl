@@ -3,7 +3,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-body">
-        <form action="{{ route('profile.index') }}" method="POST" autocomplete="off">
+        <form action="{{ route('app.profile.index') }}" method="POST" autocomplete="off">
           @csrf
           <x-input name="email" :label="__('translations.profile.main.email')" :value="$user->email" disabled/>
           <x-input name="name" :label="__('translations.profile.main.name')" :value="$user->name"/>

@@ -40,6 +40,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->routes(function () {
             Route::middleware('api')
                 ->domain(env('APP_API_URL'))
+                ->name('api.')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/routes.api.php'));
 
@@ -50,6 +51,7 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->namespace($this->namespace)
+                ->name('app.')
                 ->domain(env('APP_PANEL_URL'))
                 ->group(base_path('routes/routes.app.php'));
         });

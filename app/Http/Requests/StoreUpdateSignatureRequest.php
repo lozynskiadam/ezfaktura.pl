@@ -14,11 +14,11 @@ class StoreUpdateSignatureRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->route()->getName() == 'signatures.store') {
+        if ($this->route()->getName() == 'app.signatures.store') {
             return true;
         }
 
-        if ($this->route()->getName() == 'signatures.update') {
+        if ($this->route()->getName() == 'app.signatures.update') {
             if (Auth::user()->signatures()->find($this->route('signature'))->first()) {
                 return true;
             }

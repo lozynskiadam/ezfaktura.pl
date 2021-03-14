@@ -26,12 +26,12 @@
 <div class="wrapper wrapper-login">
   <div class="container container-login animated fadeIn" @if (request()->path() !== 'login') style="display: none;" @endif>
     <h3 class="text-center">{{ __('translations.login.header') }}</h3>
-    <form action="{{ route('login') }}" method="POST" class="login-form" autocomplete="off">
+    <form action="{{ route('app.login') }}" method="POST" class="login-form" autocomplete="off">
       @csrf
       <div class="form-group form-floating-label">
         <input id="email" name="email" type="email" class="form-control input-border-bottom" value="{{ old('email') }}" required>
         <label for="email" class="placeholder">{{ __('translations.login.email') }}</label>
-        @if (request()->path() == 'login')
+        @if (request()->path() == 'app.login')
           @error('email') <label class="text-danger">{{ $message }}</label> @enderror
         @endif
       </div>
@@ -65,9 +65,9 @@
     </form>
   </div>
 
-  <div class="container container-register animated fadeIn" @if (request()->path() !== 'register') style="display: none;" @endif>
+  <div class="container container-register animated fadeIn" @if (request()->path() !== 'app.register') style="display: none;" @endif>
     <h3 class="text-center">{{ __('translations.register.header') }}</h3>
-    <form action="{{ route('register') }}" method="POST" class="login-form" autocomplete="off">
+    <form action="{{ route('app.register') }}" method="POST" class="login-form" autocomplete="off">
       @csrf
       <div class="form-group form-floating-label">
         <input id="nip" name="nip" type="text" class="form-control input-border-bottom" maxlength="10" size="10" value="{{ old('nip') }}" required>
@@ -77,7 +77,7 @@
       <div class="form-group form-floating-label">
         <input id="emailsignin" name="email" type="email" class="form-control input-border-bottom" value="{{ old('email') }}" required>
         <label for="emailsignin" class="placeholder">{{ __('translations.register.email') }}</label>
-        @if (request()->path() == 'register')
+        @if (request()->path() == 'app.register')
           @error('email') <label class="text-danger">{{ $message }}</label> @enderror
         @endif
       </div>

@@ -13,7 +13,7 @@ class RegisterController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            return redirect()->route('home');
+            return redirect()->route('app.home');
         }
         return view('pages.login.index', []);
     }
@@ -29,6 +29,6 @@ class RegisterController extends Controller
 
         Auth::attempt($request->only('email', 'password'));
 
-        return redirect()->route('home');
+        return redirect()->route('app.home');
     }
 }
